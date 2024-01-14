@@ -1,0 +1,79 @@
+{
+  "version": "v1.0",
+  "data": [
+    {
+      "title": "ticketmaster.com",
+      "paragraphs": [
+        {
+          "qas": [
+            {
+              "question": "Does the privacy policy mention about the data practice for interantional audiences?",
+              "type": "International and Specific Audiences|||Audience Type|||Citizens from other countries",
+              "id": "jmti4stsogolp49z",
+              "answers": [
+                {
+                  "text": "If you live in Canada, please read our Canadian Privacy Policy.",
+                  "answer_start": 294
+                }
+              ]
+            }
+          ],
+          "index": 1,
+          "context": "This Privacy Policy applies to the sites and apps where it appears. This Policy describes how we treat personal information we collect both online and offline. This includes on our websites or in our apps. It also includes at our box offices or in phone or email interactions you have with us. If you live in Canada, please read our Canadian Privacy Policy.",
+          "summary": [
+            "The text does not fit into our label scheme.",
+            "The policy makes specific provisions for international audiences, non-US citizens, or non-European citizens (e.g., about international data transfer).",
+            "The text introduces the policy, a section, or a group of practices, but it does not mention a specific practice."
+          ]
+        },
+        {
+          "qas": [
+            {
+              "question": "Do you ask for my contact information?",
+              "type": "First Party Collection/Use|||Personal Information Type|||Contact",
+              "id": "el20m9l5wj8fq2om",
+              "answers": [
+                {
+                  "text": "Contact information. For example, we might collect your name and street address. We might also collect your phone number or email.",
+                  "answer_start": 43
+                },
+                {
+                  "text": "name and street address. We might also collect your phone number or email.",
+                  "answer_start": 99
+                }
+              ]
+            },
+            {
+              "question": "Does the collected data reveal my identity?",
+              "type": "First Party Collection/Use|||Identifiability|||Identifiable",
+              "id": "x3elyri8l6ol3zqr",
+              "answers": [
+                {
+                  "text": "name and street address",
+                  "answer_start": 99
+                }
+              ]
+            },
+            {
+              "question": "Will they use the data collected from me?",
+              "type": "First Party Collection/Use|||Does/Does Not|||Does",
+              "id": "hezwq0unnhmezwlw",
+              "answers": [
+                {
+                  "text": "We collect information from and about you.",
+                  "answer_start": 0
+                }
+              ]
+            }
+          ],
+          "index": 2,
+          "context": "We collect information from and about you. Contact information. For example, we might collect your name and street address. We might also collect your phone number or email.",
+          "summary": [
+            "The site collects your contact information for an unspecified purpose. Collection happens in an unspecified way.",
+            "The site collects your contact information for an unspecified purpose. Collection happens in an unspecified way, and your data is identifiable."
+          ]
+        }
+      ]
+    }
+  ]
+}
