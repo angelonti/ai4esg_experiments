@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.92.0"
+uvicorn = "^0.20.0"
+beautifulsoup4 = "^4.11.2"
+openai = "^0.27.0"
+requests = "^2.28.2"
+numpy = "^1.24.2"
+black = "^23.3.0"
+transformers = "^4.30.1"
+einops = "^0.6.1"
+accelerate = "^0.20.3"
+langchain = "^0.0.198"
+pydantic = {version = "^1.0", extras = ["email"]}
+bitsandbytes = "^0.39.0"
+safetensors = "^0.3.1"
+pre-commit = "^3.3.3"
+python-multipart = "^0.0.6"
+torch = "2.0.0"
+python-jose = "^3.3.0"
+passlib = "^1.7.4"
+bcrypt = "^4.0.1"
+lxml = "^4.9.2"
+sqlalchemy = "^2.0.17"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "^2.9.6"
+alembic = "^1.11.1"
+fastapi-sqlalchemy = "^0.2.1"
+azure-storage-blob = "^12.16.0"
+PyMuPDF = "^1.16.14"
+websockets = "^11.0.3"
+replicate = "^0.11.0"
+jupyter = "^1.0.0"
+tiktoken = "^0.1.1"
+torchmetrics = "^1.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
