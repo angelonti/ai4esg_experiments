@@ -7,7 +7,7 @@ load_dotenv()
 
 
 class Config:
-    api_key: str = os.getenv("API_KEY", "insert your api key here")
+    api_key: str = os.getenv("API_KEY", "insert your OpenAI api key here")
     embedding_model: str = os.getenv("EMBEDDING_MODEL", "text-embedding-ada-002")
     chunk_size: int = int(os.getenv("CHUNK_SIZE", 1024))
     overlap_size: int = int(os.getenv("OVERLAP_SIZE", 256))
