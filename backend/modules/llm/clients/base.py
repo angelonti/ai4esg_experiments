@@ -30,12 +30,16 @@ class LLMClient(ABC):
 
         num_tokens = len(self.token_encoding.encode(prompt))
 
-        answer_generator = self.get_completion(prompt)
+        answer_generator = self.get_completion_azure(prompt)
 
         return question_embedding, AnsweredCreate(answer="", embeddings=embeddings, model=self.model, question=question), answer_generator, num_tokens
 
     @abstractmethod
     def get_completion(self, prompt: str) -> Generator[str, None, None]:
+        pass
+
+    @abstractmethod
+    def get_completion_azure(self, prompt: str) -> Generator[str, None, None]:
         pass
 
     @staticmethod

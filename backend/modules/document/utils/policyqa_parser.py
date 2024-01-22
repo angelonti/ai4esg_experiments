@@ -93,6 +93,44 @@ def calculate_avg_answer_size(file_path: str):
             return total / count
 
 
+def calculate_min_max_answer_size(file_path: str):
+    with open(file_path) as f:
+        json_data = json.load(f)
+        if 'data' in json_data and isinstance(json_data['data'], list):
+            max = 0
+            min = float('inf')
+            for item in json_data['data']:
+                if 'paragraphs' in item and isinstance(item['paragraphs'], list):
+                    for paragraph in item['paragraphs']:
+                        if 'qas' in paragraph and isinstance(paragraph['qas'], list):
+                            for qa in paragraph['qas']:
+                                if 'answers' in qa and isinstance(qa['answers'], list):
+                                    for answer in qa['answers']:
+                                        if 'text' in answer:
+                                            if len(answer['text']) > max:
+                                                max = len(answer['text'])
+                                            if len(answer['text']) < min:
+                                                min = len(answer['text'])
+            return min, max
+
+
+def calculate_min_max_context_size(file_path: str):
+    with open(file_path) as f:
+        json_data = json.load(f)
+        if 'data' in json_data and isinstance(json_data['data'], list):
+            max = 0
+            min = float('inf')
+            for item in json_data['data']:
+                if 'paragraphs' in item and isinstance(item['paragraphs'], list):
+                    for paragraph in item['paragraphs']:
+                        if 'context' in paragraph:
+                            if len(paragraph['context']) > max:
+                                max = len(paragraph['context'])
+                            if len(paragraph['context']) < min:
+                                min = len(paragraph['context'])
+            return min, max
+
+
 def count_answers(file_path: str):
     with open(file_path) as f:
         json_data = json.load(f)
@@ -108,6 +146,7 @@ def count_answers(file_path: str):
                                         count += 1
             return count
 
+
 def count_questions(file_path: str):
     with open(file_path) as f:
         json_data = json.load(f)
@@ -120,3 +159,15 @@ def count_questions(file_path: str):
                             for qa in paragraph['qas']:
                                 count += 1
             return count
+
+
+def get_max_text_size(file_path: str):
+    all_policy_titles = get_all_policy_titles(file_path)
+    max_text_len = 0
+    max_text_title = ""
+    for title in all_policy_titles:
+        policy = parse_policy_text_by_title(title, file_path)
+        if len(policy.text) > max_text_len:
+            max_text_len = len(policy.text)
+            max_text_title = title
+    return max_text_len, max_text_title

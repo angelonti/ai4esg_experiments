@@ -43,3 +43,22 @@ class OpenAILLMClient(LLMClient):
             chunk = chunk_all["choices"][0]["delta"]
             self.fill_dict(response, chunk)
             yield response["content"]
+
+    @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
+    def get_completion_azure(self, prompt: str) -> Generator[str, None, None]:
+        chunk_generator = openai.ChatCompletion.create(
+            engine=self.model.value,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that can truthfully answer questions using "
+                                              "contexts, if the information is there."},
+                {"role": "user", "content": prompt},
+            ],
+            stream=True,
+        )
+
+        response = {}
+        for chunk_all in chunk_generator:
+            if "content" in chunk_all["choices"][0]["delta"]:
+                chunk = chunk_all["choices"][0]["delta"]
+                self.fill_dict(response, chunk)
+                yield response["content"]
