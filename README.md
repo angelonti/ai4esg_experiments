@@ -9,5 +9,5 @@
 5. Create a virtual environment with `poetry shell`
 6. Install dependencies with `poetry install --no-root`
 7. Update database table structure: `poetry run alembic upgrade head`
-8. Set your OpenAI API key in `backend\config.py`
+8. Set your OpenAI API info in the .env file or in `backend\config.py`
 9. Now you can run the cells in the notebook `experimets/AI4ESG_experiments.ipynb`
