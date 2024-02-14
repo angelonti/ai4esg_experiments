@@ -3,7 +3,7 @@ import asyncio
 from config import config
 from modules.document.models import DocumentModel
 from modules.embedding.schemas import Embedding, EmbeddingCreate
-from modules.embedding.service import create
+from modules.embedding.service import create, get_embedding_from_embedding_create
 from modules.llm.schemas import EmbeddingResponse
 from modules.llm.utils import get_text_embedding
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -35,30 +35,47 @@ async def create_embeddings_for_document(document: DocumentModel) -> list[Embedd
         )
     return embedding_objs
 
-#async def create_embeddings_for_document(document: DocumentModel) -> list[Embedding]:
-#    tasks: list[EmbeddingResponse] = []
-#    offsets = range(0, len(document.text), config.chunk_size - config.overlap_size)
-#    for offset in offsets:
-#        text = document.text[offset: offset + config.chunk_size]
-#        if config.add_title:
-#            text = f"title:{document.title}\n{text}"
-#        tasks.append(get_text_embedding(text))
-#
-#    embedding_objs = []
-#    embeddings = await asyncio.gather(*tasks)
-#    for i, embedding in enumerate(embeddings):
-#        embedding_objs.append(
-#            create(
-#                EmbeddingCreate(
-#                    document_id=document.id,
-#                    values=embedding.data[0].embedding,
-#                    document=document,
-#                    offset=offsets[i],
-#                    size=config.chunk_size,
-#                ),
-#            )
-#        )
-#    return embedding_objs
+
+def get_embeddings_from_document(document: DocumentModel) -> list[Embedding]:
+    chunks = text_to_chunks(document.text)
+    embedding_objs = []
+    for i, chunk in enumerate(chunks):
+        embedding_objs.append(
+            get_embedding_from_embedding_create(
+                EmbeddingCreate(
+                    document_id=document.id,
+                    values=[],
+                    document=document,
+                    offset=chunks[i].offset,
+                    size=chunks[i].size,
+                ),
+                document=document,
+            )
+        )
+    return embedding_objs
+
+
+def get_embeddings_from_contexts(document: DocumentModel, json_data: dict) -> list[Embedding]:
+    embedding_objs = []
+    if "data" in json_data:
+        for policy in json_data["data"]:
+            for paragraph in policy["paragraphs"]:
+                context = paragraph["context"]
+                size = len(context)
+                offset = document.text.find(context)
+                embedding_objs.append(
+                    get_embedding_from_embedding_create(
+                        EmbeddingCreate(
+                            document_id=document.id,
+                            values=[],
+                            document=document,
+                            offset=offset,
+                            size=size,
+                        ),
+                        document=document,
+                    )
+                )
+    return embedding_objs
 
 
 class Chunk(NamedTuple):

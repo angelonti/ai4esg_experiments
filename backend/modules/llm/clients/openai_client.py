@@ -1,4 +1,11 @@
 from typing import Generator
+from config import config
+import logging
+import sys
+logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logger = logging.getLogger(__name__)
+consoleHandler = logging.StreamHandler(stream=sys.stdout)
+logger.addHandler(consoleHandler)
 
 import openai
 
@@ -28,11 +35,12 @@ class OpenAILLMClient(LLMClient):
 
     @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
     def get_completion(self, prompt: str) -> Generator[str, None, None]:
+        priming = """You are a helpful legal expert in the area of website privacy policies that can
+         answer questions, you always answer by copying exactly an excerpt of the contexts"""
         chunk_generator = openai.ChatCompletion.create(
             model=self.model.value,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that can truthfully answer questions using "
-                                              "contexts, if the information is there."},
+                {"role": "system", "content": priming},
                 {"role": "user", "content": prompt},
             ],
             stream=True,
@@ -46,6 +54,8 @@ class OpenAILLMClient(LLMClient):
 
     @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
     def get_completion_azure(self, prompt: str) -> Generator[str, None, None]:
+        logger.debug(f"calling openai API with prompt: \n\n{prompt}\n\n")
+        logger.debug(f"calling openai API with temperature {config.temperature}")
         chunk_generator = openai.ChatCompletion.create(
             engine=self.model.value,
             messages=[
@@ -53,6 +63,7 @@ class OpenAILLMClient(LLMClient):
                                               "contexts, if the information is there."},
                 {"role": "user", "content": prompt},
             ],
+            temperature=config.temperature,
             stream=True,
         )
 

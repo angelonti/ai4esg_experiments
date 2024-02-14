@@ -17,8 +17,20 @@ class LLMClient(ABC):
     def __init__(self, model: Model):
         self.model = model
         self.token_encoding = tiktoken.get_encoding("cl100k_base")
+        self.default_prompt = self.get_default_prompt()
 
-    async def ask(self, question: str, prompt: str | None = None) -> tuple[list[float], AnsweredCreate, Generator[str, None, None], int]:
+    @staticmethod
+    def get_default_prompt() -> str:
+        if config.answer_do_not_know:
+            default_prompt = '''Answer the question as truthfully as possible using the provided contexts, "
+            "and if the answer is not contained within the text in the contexts, say `I don't know.`'''
+        else:
+            default_prompt = '''Answer the question as truthfully as possible using the provided contexts.'''
+
+        return default_prompt
+
+    async def ask(self, question: str, prompt: str | None = None) -> tuple[
+        list[float], AnsweredCreate, Generator[str, None, None], int]:
         self.prompt = prompt
         question_embedding_response = await get_text_embedding(question)
         question_embedding = question_embedding_response.data[0].embedding
@@ -32,7 +44,8 @@ class LLMClient(ABC):
 
         answer_generator = self.get_completion_azure(prompt)
 
-        return question_embedding, AnsweredCreate(answer="", embeddings=embeddings, model=self.model, question=question), answer_generator, num_tokens
+        return question_embedding, AnsweredCreate(answer="", embeddings=embeddings, model=self.model,
+                                                  question=question), answer_generator, num_tokens
 
     @abstractmethod
     def get_completion(self, prompt: str) -> Generator[str, None, None]:
@@ -53,9 +66,7 @@ class LLMClient(ABC):
             return f"{self.prompt}\nContexts: {self.generate_context_string(embeddings)}\nQuestion: {question}\nAnswer:"
 
         return (
-            "Answer the question as truthfully as possible using the provided contexts, "
-            "and if the answer is not contained within the text in the contexts, say `I don't know.`"
-            f"\nContexts: {self.generate_context_string(embeddings)} \nQuestion: {question} \n Answer:"
+            f"{self.default_prompt} \nContexts: {self.generate_context_string(embeddings)} \nQuestion: {question}\nAnswer:"
         )
 
     @staticmethod

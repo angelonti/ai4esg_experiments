@@ -4,9 +4,10 @@ from db.engine import db
 from modules.document.models import DocumentModel
 from modules.document.schemas import Document, DocumentParsed
 from modules.embedding.utils import create_embeddings_for_document
+from typing import Union
 
 
-def get(id: UUID) -> Document:
+def get(id: UUID) -> Union[Document, None]:
     doc_model = db.session.query(DocumentModel).get(id)
     if doc_model is None:
         return None
@@ -26,6 +27,11 @@ async def create(document: DocumentParsed) -> Document:
 
     await create_embeddings_for_document(doc_obj)
 
+    return Document.from_orm(doc_obj)
+
+
+def get_document_from_parsed_document(document: DocumentParsed) -> Document:
+    doc_obj = DocumentModel(**document.dict(), id=uuid4())
     return Document.from_orm(doc_obj)
 
 

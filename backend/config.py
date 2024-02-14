@@ -20,6 +20,8 @@ class Config:
         self.max_content: int = int(os.getenv("MAX_CONTENT", 5))
         self.prompt_size: int = int(os.getenv("PROMPT_SIZE", 5000))
         self.add_title: bool = bool(os.getenv("ADD_TITLE", True))
+        self.answer_do_not_know: bool = bool(os.getenv("ANSWER_DO_NOT_KNOW", False))
+        self.temperature: float = float(os.getenv("TEMPERATURE", 0.0001))
 
         self.db_user: str = os.getenv("DB_USER", "postgres")
         self.db_pass: str = os.getenv("DB_PASS", "postgres")

@@ -33,3 +33,10 @@ def create(embedding: EmbeddingCreate) -> Embedding:
     db.session.commit()
     db.session.refresh(embedding_obj)
     return Embedding.from_orm(embedding_obj)
+
+
+def get_embedding_from_embedding_create(embedding: EmbeddingCreate, document) -> Embedding:
+    embedding_obj = EmbeddingModel(**embedding.dict(), id=uuid4())
+    embed_dict = dict.copy(embedding_obj.__dict__)
+    embed_dict['document'] = document
+    return Embedding.parse_obj(embed_dict)
