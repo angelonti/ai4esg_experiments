@@ -8,10 +8,10 @@ load_dotenv(find_dotenv())
 
 class Config:
     def __init__(self):
-        self.api_type: str = os.getenv("API_TYPE", "azure")
-        self.api_key: str = os.getenv("API_KEY", "insert your OpenAI api key here")
-        self.embed_api_key: str = os.getenv("EMBED_API_KEY", "insert your OpenAI embedding api key here")
+        self.openai_api_key: str = os.getenv("OPENAI_API_KEY", "insert your OpenAI api key here")
+        self.azure_openai_key: str = os.getenv("AZURE_OPENAI_KEY", "insert your OpenAI embedding api key here")
         self.api_endpoint: str = os.getenv("API_ENDPOINT", "insert your OpenAI api endpoint here")
+        self.api_version: str = os.getenv("API_VERSION", "2023-05-15")
         self.gpt4_deployment_name: str = os.getenv("GPT4_DEPLOYMENT_NAME", "insert your OpenAI GPT4 deployment name "
                                                                            "here")
         self.embedding_model: str = os.getenv("EMBEDDING_MODEL", "text-embedding-ada-002")

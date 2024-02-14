@@ -19,7 +19,7 @@ async def get_text_embedding(text: str) -> EmbeddingResponse:
     url = "https://api.openai.com/v1/embeddings"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {config.embed_api_key}"
+        "Authorization": f"Bearer {config.openai_api_key}"
     }
 
     async with semaphore, aiohttp.ClientSession() as session:
