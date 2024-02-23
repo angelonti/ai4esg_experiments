@@ -18,6 +18,8 @@ class LLMClient(ABC):
         self.model = model
         self.token_encoding = tiktoken.get_encoding("cl100k_base")
         self.default_prompt = self.get_default_prompt()
+        self.priming = """You are a helpful assistant and legal expert. You
+         answer questions strictly by always by copying an excerpt of the text in 'Contexts', you never additional text to your answer."""
 
     @staticmethod
     def get_default_prompt() -> str:
@@ -42,17 +44,13 @@ class LLMClient(ABC):
 
         num_tokens = len(self.token_encoding.encode(prompt))
 
-        answer_generator = self.get_completion_azure(prompt)
+        answer_generator = self.get_completion(prompt)
 
         return question_embedding, AnsweredCreate(answer="", embeddings=embeddings, model=self.model,
                                                   question=question), answer_generator, num_tokens
 
     @abstractmethod
     def get_completion(self, prompt: str) -> Generator[str, None, None]:
-        pass
-
-    @abstractmethod
-    def get_completion_azure(self, prompt: str) -> Generator[str, None, None]:
         pass
 
     @staticmethod

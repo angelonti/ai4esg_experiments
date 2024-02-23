@@ -1,3 +1,5 @@
+import sys
+
 from torchmetrics.functional.text import squad
 from torchmetrics.retrieval import RetrievalMAP
 from torchmetrics.retrieval import RetrievalMRR
@@ -6,7 +8,10 @@ import json
 import torch
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logger = logging.getLogger(__name__)
+consoleHandler = logging.StreamHandler(stream=sys.stdout)
+logger.addHandler(consoleHandler)
 
 
 def eval_squad_metrics(file_path: str):
@@ -66,14 +71,14 @@ def eval_retrieval_metrics(file_path: str, top_k: int = 5):
             questions_answered += 1
         else:
             question_ids_unanswered.append(question_ids[i])
-        logging.info(f"question_id:{question_ids[i]} MAP: {batch_map}, MRR: {batch_mrr}")
+        logger.info(f"question_id:{question_ids[i]} MAP: {batch_map}, MRR: {batch_mrr}")
 
     map_value = map.compute()
     mrr_value = mrr.compute()
 
     answers_found_ratio = torch.tensor(questions_answered / len(question_ids))
     relevant_embeddings_ratio = torch.tensor(sum(targets) / len(targets))
-    logging.info(f"questions answered: {[item for item in question_ids_unanswered]}")
+    logger.info(f"questions answered: {[item for item in question_ids_unanswered]}")
 
     return {
         f'map@{top_k}': map_value,
@@ -95,13 +100,18 @@ def prepare_retrieval_data(file_path: str, top_k: int = 5):
     logging.info(f"Preparing data for retrieval metrics")
     for i, item in tqdm(enumerate(data)):
         ids.append(item['id'])
-        for embedding in item['relevant_embeddings'][:top_k]:
+        if len(item['relevant_embeddings']) > 0:
+            for embedding in item['relevant_embeddings'][:top_k]:
+                indexes.append(i)
+                preds.append(embedding['score'])
+                if any(answer for answer in item['answers'] if answer['text'] in embedding['text']):
+                    targets.append(True)
+                else:
+                    targets.append(False)
+        else:
             indexes.append(i)
-            preds.append(embedding['score'])
-            if any(answer for answer in item['answers'] if answer['text'] in embedding['text']):
-                targets.append(True)
-            else:
-                targets.append(False)
+            preds.append(0)
+            targets.append(False)
 
     indexes = torch.tensor(indexes)
     preds = torch.tensor(preds)

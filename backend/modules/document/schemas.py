@@ -13,7 +13,7 @@ class DocumentBase(BaseModel):
     source: str | None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class DocumentParsed(DocumentBase):
     title: str

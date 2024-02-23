@@ -1,0 +1,51 @@
+{
+  "host": "127.0.0.1",
+  "port": 8000,
+  "models": [
+    {
+      "model": ".models/mistral-7b-instruct-v0.2.Q4_K_M.gguf",
+      "model_alias": "mistral",
+      "chat_format": "llama-2",
+      "n_gpu_layers": -1,
+      "offload_kqv": true,
+      "n_batch": 6000,
+      "n_ctx": 6000
+    },
+    {
+      "model": ".models/mistral-7b-instruct-v0.2.Q8_0.gguf",
+      "model_alias": "mistral_q8",
+      "chat_format": "mistral-instruct",
+      "n_gpu_layers": -1,
+      "offload_kqv": true,
+      "n_batch": 6000,
+      "n_ctx": 6000
+    },
+    {
+      "model": ".models/mixtral-8x7b-instruct-v0.1.Q3_K_M.gguf",
+      "model_alias": "mixtral",
+      "chat_format": "mistral-instruct",
+      "n_gpu_layers": -1,
+      "offload_kqv": true,
+      "n_batch": 6000,
+      "n_ctx": 6000
+    },
+    {
+      "model": ".models/Truthful_DPO_TomGrc_FusionNet_7Bx2_MoE_13B-Q6_K.gguf",
+      "model_alias": "fusion_net",
+      "chat_format": "llama-2",
+      "n_gpu_layers": -1,
+      "offload_kqv": true,
+      "n_batch": 6000,
+      "n_ctx": 6000
+    },
+    {
+      "model": ".models/Truthful_DPO_TomGrc_FusionNet_7Bx2_MoE_13B-Q8_0.gguf",
+      "model_alias": "fusion_net_Q8",
+      "chat_format": "mistral-instruct",
+      "n_gpu_layers": -1,
+      "offload_kqv": true,
+      "n_batch": 6000,
+      "n_ctx": 6000
+    }
+  ]
+}

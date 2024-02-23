@@ -12,8 +12,7 @@ class Config:
         self.azure_openai_key: str = os.getenv("AZURE_OPENAI_KEY", "insert your OpenAI embedding api key here")
         self.api_endpoint: str = os.getenv("API_ENDPOINT", "insert your OpenAI api endpoint here")
         self.api_version: str = os.getenv("API_VERSION", "2023-05-15")
-        self.gpt4_deployment_name: str = os.getenv("GPT4_DEPLOYMENT_NAME", "insert your OpenAI GPT4 deployment name "
-                                                                           "here")
+        self.azure_gpt4_deployment_name: str = os.getenv("AZURE_GPT4_DEPLOYMENT_NAME", "insert your OpenAI GPT4 deployment name here")
         self.embedding_model: str = os.getenv("EMBEDDING_MODEL", "text-embedding-ada-002")
         self.chunk_size: int = int(os.getenv("CHUNK_SIZE", 1024))
         self.overlap_size: int = int(os.getenv("OVERLAP_SIZE", 256))

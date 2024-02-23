@@ -14,6 +14,13 @@ def get(id: UUID) -> Union[Document, None]:
     return Document.from_orm(doc_model)
 
 
+def get_by_title(title: str) -> Union[Document, None]:
+    doc_model = db.session.query(DocumentModel).filter(DocumentModel.title == title).first()
+    if doc_model is None:
+        return None
+    return Document.from_orm(doc_model)
+
+
 def get_all() -> list[Document]:
     doc_models = db.session.query(DocumentModel).all()
     return [Document.from_orm(doc_model) for doc_model in doc_models]

@@ -4,15 +4,21 @@ from fastapi import HTTPException
 from db.engine import db
 
 from modules.answer.models import AnswerModel
-from modules.answer.schemas import Answer, AnswerCreate
+from modules.answer.schemas import AnswerCreate
 from modules.embedding.schemas import Embedding
 from modules.llm.llm_infos import Model
 from modules.embedding.models import EmbeddingModel
-from modules.llm.clients.openai_client import OpenAILLMClient
+from modules.llm.clients.openai.openai_client import OpenAILLMClient
+from modules.llm.clients.openai.azure_openai_client import AzureOpenAILLMClient
+from modules.llm.clients.open_source.local_llm_client import LocalLLMClient
 
 MODEL_MAPPING = {
     Model.Gpt3: lambda: OpenAILLMClient(model=Model.Gpt3),
     Model.Gpt4: lambda: OpenAILLMClient(model=Model.Gpt4),
+    Model.AZURE_GPT4: lambda: AzureOpenAILLMClient(model=Model.AZURE_GPT4),
+    Model.Mistral: lambda: LocalLLMClient(model=Model.Mistral),
+    Model.Mixtral: lambda: LocalLLMClient(model=Model.Mixtral),
+    Model.Fusion_Net: lambda: LocalLLMClient(model=Model.Fusion_Net),
 }
 
 

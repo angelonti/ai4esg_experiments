@@ -12,7 +12,7 @@ class EmbeddingBase(BaseModel):
     offset: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class EmbeddingCreate(EmbeddingBase):

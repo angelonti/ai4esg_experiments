@@ -190,3 +190,8 @@ pgdata*/**
 *.iml
 
 .idea/
+.models/
+backend/AutoGPTQ/
+llama-cpp-python/
+learning/
+local.env
