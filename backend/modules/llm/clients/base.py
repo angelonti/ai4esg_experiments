@@ -18,8 +18,8 @@ class LLMClient(ABC):
         self.model = model
         self.token_encoding = tiktoken.get_encoding("cl100k_base")
         self.default_prompt = self.get_default_prompt()
-        self.priming = """You are a helpful assistant and legal expert. You
-         answer questions strictly by always by copying an excerpt of the text in 'Contexts', you never additional text to your answer."""
+        self.priming = """You are a helpful assistant and legal expert that can
+         answer questions, you always answer by copying exactly an excerpt of the provided contexts"""
 
     @staticmethod
     def get_default_prompt() -> str:

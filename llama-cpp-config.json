@@ -32,7 +32,7 @@
     {
       "model": ".models/Truthful_DPO_TomGrc_FusionNet_7Bx2_MoE_13B-Q6_K.gguf",
       "model_alias": "fusion_net",
-      "chat_format": "llama-2",
+      "chat_format": "chatml",
       "n_gpu_layers": -1,
       "offload_kqv": true,
       "n_batch": 6000,

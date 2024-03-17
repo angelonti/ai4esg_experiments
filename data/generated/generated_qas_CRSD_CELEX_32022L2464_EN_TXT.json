@@ -1,0 +1,540 @@
+{
+	"qas": [
+		{
+			"question": "What is the European Green Deal?",
+			"answer": "The European Green Deal is the new growth strategy of the Union. It aims to transform the Union into a modern, resource-efficient and competitive economy with no net emissions of greenhouse gases (GHG) by 2050. It also aims to protect, conserve and enhance the Union's natural capital, and protect the health and well-being of Union citizens from environment-related risks and impacts."
+		},
+		{
+			"question": "What is the purpose of the Action Plan on Financing Sustainable Growth?",
+			"answer": "The Action Plan on Financing Sustainable Growth set out measures to achieve the following objectives: reorient capital flows towards sustainable investment in order to achieve sustainable and inclusive growth, manage financial risks stemming from climate change, resource depletion, environmental degradation and social issues, and foster transparency and long-termism in financial and economic activity."
+		},
+		{
+			"question": "What is the role of third-party data providers in sustainability reporting?",
+			"answer": "The role of third-party data providers is gaining in importance given the new obligations that investors and asset managers need to fulfil. With the increased availability of disaggregated data, sustainability information should come at a more reasonable cost."
+		},
+		{
+			"question": "What are the benefits of sustainability reporting for undertakings?",
+			"answer": "Undertakings themselves stand to benefit from carrying out high-quality reporting on sustainability matters. The growth in the number of investment products that aim to pursue sustainability objectives means that good sustainability reporting can enhance an undertaking’s access to financial capital. Sustainability reporting can help undertakings to identify and manage their own risks and opportunities related to sustainability matters."
+		},
+		{
+			"question": "What is the 2030 Agenda?",
+			"answer": "The 2030 Agenda has at its core the UN Sustainable Development Goals (‘SDGs’) and three dimensions of sustainability: economic, social and environmental."
+		},
+		{
+			"question": "What is the purpose of Directive 2014/95/EU?",
+			"answer": "Directive 2014/95/EU introduced a requirement on undertakings to report information on, as a minimum, environmental, social and employee matters, respect for human rights, anti-corruption and bribery matters."
+		},
+		{
+			"question": "What is the Paris Agreement?",
+			"answer": "The Paris Agreement under the United Nations Framework Convention on Climate Change adopted on 12 December 2015, the UN Convention on Biological Diversity and Union policies."
+		},
+		{
+			"question": "What are the consequences of the gap between users’ information needs and the sustainability information provided by undertakings?",
+			"answer": "The gap has significant negative consequences. Investors are unable to take sufficient account of sustainability-related risks and opportunities in their investment decisions. The aggregation of multiple investment decisions that do not take adequate account of sustainability-related risks has the potential to create systemic risks that threaten financial stability."
+		},
+		{
+			"question": "What is the impact of different reporting requirements in different Member States?",
+			"answer": "Different reporting requirements in different Member States could create additional costs and complexity for undertakings operating across borders and therefore undermine the internal market, and could undermine the right of establishment and the free movement of capital across the Union."
+		},
+		{
+			"question": "Which undertakings are required to report sustainability information?",
+			"answer": "It is therefore appropriate to require all large undertakings and all undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to report sustainability information."
+		},
+		{
+			"question": "Who should report in accordance with the sustainability reporting standards for small and medium-sized undertakings?",
+			"answer": "Small and medium-sized undertakings whose securities are admitted to trading on a regulated market in the Union that are public-interest entities should be allowed to report in accordance with the sustainability reporting standards for small and medium-sized undertakings."
+		},
+		{
+			"question": "What is the requirement for large undertakings whose securities are not admitted to trading on a regulated market in the Union?",
+			"answer": "Large undertakings whose securities are not admitted to trading on a regulated market in the Union should disclose information on sustainability matters."
+		},
+		{
+			"question": "What is the requirement for third-country undertakings whose securities are admitted to trading on a regulated market in the Union?",
+			"answer": "Third-country undertakings whose securities are admitted to trading on a regulated market in the Union should also disclose information on sustainability matters."
+		},
+		{
+			"question": "What is the requirement for third-country undertakings which have a significant activity on the territory of the Union?",
+			"answer": "Third-country undertakings which have a significant activity on the territory of the Union should also be required to provide sustainability information, especially on their impacts on social and environmental matters."
+		},
+		{
+			"question": "What is the requirement for small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union?",
+			"answer": "Small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union should disclose information on sustainability matters."
+		},
+		{
+			"question": "What is the requirement for credit institutions and insurance undertakings?",
+			"answer": "Credit institutions and insurance undertakings other than those that are required to comply with Directive 2013/34/EU, including cooperatives and mutual undertakings, should therefore be subject to sustainability reporting requirements, provided that they meet certain size criteria."
+		},
+		{
+			"question": "What is the requirement for parent undertakings?",
+			"answer": "Parent undertakings reporting at group level provide an adequate understanding of the risks for, and impacts of, their subsidiary undertakings, including information on their due diligence processes where appropriate."
+		},
+		{
+			"question": "What is the requirement for subsidiary undertakings?",
+			"answer": "Subsidiary undertakings should include in their management report the name and registered office of the parent undertaking that is reporting sustainability information at group level, the weblinks to the consolidated management report of their parent undertaking and a reference in their management report to the fact that they are exempted from sustainability reporting."
+		},
+		{
+			"question": "What is the requirement for undertakings in terms of business strategy and resilience?",
+			"answer": "Undertakings should be required to disclose information about their business strategy and the resilience of the business model and strategy in relation to risks related to sustainability matters."
+		},
+		{
+			"question": "What is the requirement for undertakings in terms of due diligence?",
+			"answer": "The due diligence disclosure requirements should be specified in greater detail than is currently the case in point (b) of Article 19a(1) and point (b) of Article 29a(1) of Directive 2013/34/EU."
+		},
+		{
+			"question": "What is the due diligence process in relation to an undertaking's activities?",
+			"answer": "The due diligence process concerns the whole value chain of the undertaking including its own operations, its products and services, its business relationships and its supply chains."
+		},
+		{
+			"question": "What is considered a principal impact?",
+			"answer": "An actual or potential adverse impact is to be considered a principal impact where it ranks among the greatest impacts connected with the undertaking’s activities based on: the gravity of the impact on people or the environment; the number of individuals that are or could be affected, or the scale of damage to the environment; and the ease with which the harm could be remediated, restoring the environment or affected people to their prior state."
+		},
+		{
+			"question": "What is the requirement for reporting on intangible resources?",
+			"answer": "To enable investors to better understand the increasing gap between the accounting book value of many undertakings and their market valuation, which is observed in many sectors of the economy, adequate reporting on intangible resources should be required of all large undertakings and all undertakings, except micro-undertakings, whose securities are admitted to trading on a regulated market in the Union."
+		},
+		{
+			"question": "What should the sustainability information reported include?",
+			"answer": "Articles 19a and 29a of Directive 2013/34/EU should therefore specify that the sustainability information reported is to include forward-looking and retrospective information and both qualitative and quantitative information."
+		},
+		{
+			"question": "What is the objective of the amending Directive in relation to intellectual property?",
+			"answer": "It is not the objective of this amending Directive to require undertakings to disclose intellectual capital, intellectual property, know-how or the results of innovation that would qualify as trade secrets as defined in Directive (EU) 2016/943 of the European Parliament and of the Council (22)."
+		},
+		{
+			"question": "What is the requirement for undertakings that do not pursue policies in relation to one or more of the matters listed in Articles 19a(1) and 29a(1)?",
+			"answer": "Article 19a(1) and Article 29a(1) of Directive 2013/34/EU require undertakings to provide a clear and reasoned explanation for not pursuing policies in relation to one or more of the matters listed in those Articles, where the undertaking does not do so."
+		},
+		{
+			"question": "What is the role of the European Financial Reporting Advisory Group (EFRAG)?",
+			"answer": "The European Financial Reporting Advisory Group (EFRAG) is a non-profit association established under Belgian law that serves the public interest by providing advice to the Commission on the endorsement of international financial reporting standards."
+		},
+		{
+			"question": "What should sustainability reporting standards take into account?",
+			"answer": "Sustainability reporting standards should take account of the Guidelines on non-financial reporting and the Guidelines on reporting climate-related information."
+		},
+		{
+			"question": "What is the role of the European Securities and Markets Authority (ESMA), the European Banking Authority (EBA) and the European Insurance and Occupational Pensions Authority (EIOPA)?",
+			"answer": "The European Securities and Markets Authority (ESMA), the European Banking Authority (EBA) and the European Insurance and Occupational Pensions Authority (EIOPA) play a role in drafting regulatory technical standards pursuant to Regulation (EU) 2019/2088 and there needs to be coherence between those regulatory technical standards and sustainability reporting standards."
+		},
+		{
+			"question": "What should sustainability reporting standards be aligned with?",
+			"answer": "Those standards should in particular be aligned with the disclosure requirements laid down in Regulation (EU) 2019/2088, and they should take account of underlying indicators and methodologies set out in the various delegated acts adopted pursuant to Regulation (EU) 2020/852, disclosure requirements applicable to benchmark administrators pursuant to Regulation (EU) 2016/1011 of the European Parliament and of the Council (25), the minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks, and of any work carried out by the EBA in the implementation of the Pillar III disclosure requirements of Regulation (EU) No 575/2013."
+		},
+		{
+			"question": "What should sustainability reporting standards specify?",
+			"answer": "The sustainability reporting standards should therefore specify the information that undertakings are to disclose on all major environmental factors, including their impacts and dependencies on climate, air, land, water and biodiversity."
+		},
+		{
+			"question": "What are users interested in knowing about undertakings’ climate-related information?",
+			"answer": "Users are interested in knowing about undertakings’ physical and transition risks, and about their resilience as regards, and plans to adapt to, different climate scenarios and plans to adapt to the Union’s objective of climate neutrality by 2050."
+		},
+		{
+			"question": "What should sustainability reporting standards specify about social factors?",
+			"answer": "Sustainability reporting standards should specify the information that undertakings should disclose on social factors, including working conditions, social partner involvement, collective bargaining, equality, non-discrimination, diversity and inclusion, and human rights."
+		},
+		{
+			"question": "What information should undertakings disclose about human rights?",
+			"answer": "The information that undertakings disclose about human rights should include information about forced labour and child labour in their value chains where relevant."
+		},
+		{
+			"question": "What should sustainability reporting standards specify about governance factors?",
+			"answer": "Sustainability reporting standards should specify the information that undertakings should disclose on governance factors. Such information should cover the role of an undertaking’s administrative, management and supervisory bodies with regard to sustainability matters, the expertise and skills needed to fulfil that role or the access such bodies have to such expertise and skills, whether the company has a policy in terms of incentives which are offered to members of those bodies and which are linked to sustainability matters, and information on an undertaking’s internal control and risk management systems in relation to the sustainability reporting process."
+		},
+		{
+			"question": "When should the Commission adopt the first set of sustainability reporting standards?",
+			"answer": "The Commission should adopt a first set of sustainability reporting standards by means of delegated acts by 30 June 2023."
+		},
+		{
+			"question": "What is the requirement for undertakings in terms of digitalisation?",
+			"answer": "Undertakings should therefore be required to prepare their management report in the electronic reporting format specified in Article 3 of Commission Delegated Regulation (EU) 2019/815 (33), and to mark up their sustainability reporting, including the disclosures required by Article 8 of Regulation (EU) 2020/852, in accordance with the electronic reporting format specified in Delegated Regulation (EU) 2019/815 once that is determined."
+		},
+		{
+			"question": "What is the collective responsibility of the members of the administrative, management and supervisory bodies of an undertaking?",
+			"answer": "That collective responsibility should be extended to the digitalisation requirements laid down in Delegated Regulation (EU) 2019/815, to the requirement to comply with Union sustainability reporting standards and to the requirement to mark up sustainability reporting."
+		},
+		{
+			"question": "What is the difference between limited assurance engagements and reasonable assurance engagements?",
+			"answer": "The assurance profession distinguishes between limited assurance engagements and reasonable assurance engagements. The conclusion of a limited assurance engagement is usually provided in a negative form of expression by stating that no matter has been identified by the practitioner to conclude that the subject matter is materially misstated. In a limited assurance engagement, the auditor performs fewer tests than in a reasonable assurance engagement. The amount of work for a limited assurance engagement is therefore less than for a reasonable assurance engagement. The amount of work in a reasonable assurance engagement entails extensive procedures including consideration of internal controls of the reporting undertaking and substantive testing, and is therefore significantly greater than in a limited assurance engagement."
+		},
+		{
+			"question": "What is the requirement for the statutory auditor in terms of sustainability reporting?",
+			"answer": "The absence of an assurance requirement concerning sustainability reporting, in contrast to the requirement for the statutory auditor to carry out statutory audits based on a reasonable assurance engagement, would threaten the credibility of the sustainability information disclosed, thus failing to meet the needs of the users."
+		},
+		{
+			"question": "What is the initial obligation of the statutory auditor or audit firm regarding sustainability reporting?",
+			"answer": "Starting with an obligation on the statutory auditor or audit firm to express an opinion about the compliance of the sustainability reporting with Union requirements based on a limited assurance engagement."
+		},
+		{
+			"question": "What should the opinion of the statutory auditor or audit firm cover?",
+			"answer": "That opinion should cover the compliance of the sustainability reporting with Union sustainability reporting standards, the process carried out by the undertaking to identify the information reported pursuant to the sustainability reporting standards and compliance with the requirement to mark up sustainability reporting."
+		},
+		{
+			"question": "What is the deadline for the Commission to adopt assurance standards for reasonable assurance of sustainability reporting?",
+			"answer": "When the Commission adopts assurance standards for reasonable assurance of sustainability reporting by means of delegated acts no later than 1 October 2028."
+		},
+		{
+			"question": "What is the role of statutory auditors or audit firms in sustainability reporting?",
+			"answer": "The assurance of sustainability reporting by the statutory auditors or audit firms would help to ensure the connectivity between, and consistency of, financial and sustainability information."
+		},
+		{
+			"question": "What is the role of Member States in accrediting independent assurance services providers?",
+			"answer": "Member States should therefore be allowed to accredit independent assurance services providers in accordance with Regulation (EC) No 765/2008 of the European Parliament and of the Council (34) to provide an assurance opinion on sustainability reporting."
+		},
+		{
+			"question": "What are the requirements for independent assurance services providers?",
+			"answer": "All independent assurance services providers should be subject to requirements that are equivalent to the requirements set out in Directive 2006/43/EC of the European Parliament and of the Council (35) as regards the assurance of sustainability reporting."
+		},
+		{
+			"question": "What is the role of the Commission in assurance practices?",
+			"answer": "In order to provide for uniform assurance practices and high-quality assurance of sustainability reporting across the Union, the Commission should be empowered to adopt sustainability assurance standards by means of delegated acts."
+		},
+		{
+			"question": "What should be included in an assurance report?",
+			"answer": "The results of the assurance of sustainability reporting should be presented in an assurance report."
+		},
+		{
+			"question": "What are the requirements for statutory auditors carrying out the assurance of sustainability reporting?",
+			"answer": "Statutory auditors or audit firms that carry out the assurance of sustainability reporting should have a high level of technical and specialised expertise in the field of sustainability."
+		},
+		{
+			"question": "What are the tasks of the audit committee with regard to the assurance of sustainability reporting?",
+			"answer": "Those tasks should include the obligation to inform the administrative or supervisory body of the public-interest entity of the outcome of the assurance of sustainability reporting, and to explain how the audit committee contributed to the integrity of sustainability reporting and what the role of the audit committee was in that process."
+		},
+		{
+			"question": "What is the task assigned to national supervisors by Directive 2004/109/EC?",
+			"answer": "Directive 2004/109/EC assigns to national supervisors the task of enforcing compliance with corporate reporting requirements by undertakings whose securities are admitted to trading on a regulated market in the Union."
+		},
+		{
+			"question": "What is the role of ESMA in relation to sustainability reporting requirements?",
+			"answer": "ESMA should issue guidelines for national competent authorities to promote convergent supervision of sustainability reporting by issuers subject to Directive 2004/109/EC."
+		},
+		{
+			"question": "What is the deadline for the Commission to submit a report on the implementation of this amending Directive?",
+			"answer": "The report on the implementation of this amending Directive should be published by 30 April 2029 and every three years thereafter."
+		},
+		{
+			"question": "What is the definition of 'sustainability matters' according to the document?",
+			"answer": "'sustainability matters' means environmental, social and human rights, and governance factors, including sustainability factors defined in point (24) of Article 2 of Regulation (EU) 2019/2088."
+		},
+		{
+			"question": "What is the definition of 'sustainability reporting' according to the document?",
+			"answer": "'sustainability reporting' means reporting information related to sustainability matters in accordance with Articles 19a, 29a and 29d."
+		},
+		{
+			"question": "What information should large undertakings include in the management report?",
+			"answer": "Large undertakings, and small and medium-sized undertakings, except micro undertakings, which are public- interest entities as defined in point (a) of point (1) of Article 2 shall include in the management report information necessary to understand the undertaking’s impacts on sustainability matters, and information necessary to understand how sustainability matters affect the undertaking’s development, performance and position."
+		},
+		{
+			"question": "What is the role of the management of the undertaking in relation to workers' representatives?",
+			"answer": "The management of the undertaking shall inform the workers’ representatives at the appropriate level and discuss with them the relevant information and the means of obtaining and verifying sustainability information."
+		},
+		{
+			"question": "What is the deadline for small and medium-sized undertakings to include sustainability reporting in their management report?",
+			"answer": "For financial years starting before 1 January 2028, by way of derogation from paragraph 1 of this Article, small and medium-sized undertakings which are public-interest entities as defined in point (a) of point (1) of Article 2 may decide not to include in their management report the information referred to in paragraph 1 of this Article."
+		},
+		{
+			"question": "What is the definition of 'independent assurance services provider' according to the document?",
+			"answer": "'independent assurance services provider' means a conformity assessment body accredited in accordance with Regulation (EC) No 765/2008 of the European Parliament and of the Council (*) for the specific conformity assessment activity referred to in point (aa) of the second subparagraph of Article 34(1) of this Directive."
+		},
+		{
+			"question": "What is the definition of 'key intangible resources' according to the document?",
+			"answer": "'key intangible resources' means resources without physical substance on which the business model of the undertaking fundamentally depends and which are a source of value creation for the undertaking."
+		},
+		{
+			"question": "What are the requirements for undertakings to be deemed compliant with Article 19(1)?",
+			"answer": "Undertakings that comply with the requirements set out in paragraphs 1 to 4 of this Article and undertakings that rely on the derogation laid down in paragraph 6 of this Article shall be deemed to have complied with the requirement set out in the third subparagraph of Article 19(1)."
+		},
+		{
+			"question": "Who can be exempted from the obligations set out in paragraphs 1 to 4 of this Article?",
+			"answer": "An undertaking which is a subsidiary undertaking shall be exempted from the obligations set out in paragraphs 1 to 4 of this Article if such undertaking and its subsidiary undertakings are included in the consolidated management report of a parent undertaking, drawn up in accordance with Articles 29 and 29a."
+		},
+		{
+			"question": "What conditions must be met for a subsidiary undertaking to be exempted from the obligations?",
+			"answer": "The exemption in the first subparagraph shall be subject to the following conditions: (a) the management report of the exempted subsidiary undertaking contains all of the following information: (i) the name and registered office of the parent undertaking that reports information at group level in accordance with this Article or in a manner equivalent to the sustainability reporting standards adopted pursuant to Article 29b of this Directive, as determined in accordance with an implementing act on the equivalence of sustainability reporting standards adopted pursuant to the third subparagraph of Article 23(4) of Directive 2004/109/EC; (ii) the weblinks to the consolidated management report of the parent undertaking or, where applicable, to the consolidated sustainability reporting of the parent undertaking, as referred to in the first subparagraph of this paragraph, and to the assurance opinion referred to in point (aa) of the second subparagraph of Article 34(1) of this Directive or to the assurance opinion referred to in point (b) of this subparagraph; (iii) the information that the undertaking is exempted from the obligations set out in paragraphs 1 to 4 of this Article."
+		},
+		{
+			"question": "What information should be included in the consolidated management report of a parent undertaking?",
+			"answer": "Parent undertakings of a large group as referred to in Article 3(7) shall include in the consolidated management report information necessary to understand the group’s impacts on sustainability matters, and information necessary to understand how sustainability matters affect the group’s development, performance and position."
+		},
+		{
+			"question": "What should the information in the consolidated management report contain?",
+			"answer": "The information referred to in paragraph 1 shall contain: (a) a brief description of the group’s business model and strategy, including: (i) the resilience of the group’s business model and strategy in relation to risks related to sustainability matters; (ii) the opportunities for the group related to sustainability matters; (iii) the plans of the group, including implementing actions and related financial and investment plans, to ensure that its business model and strategy are compatible with the transition to a sustainable economy and with the limiting of global warming to 1,5 °C in line with the Paris Agreement and the objective of achieving climate neutrality by 2050 as established in Regulation (EU) 2021/1119 and where relevant, the exposure of the group to coal-, oil- and gas-related activities; (iv) how the group’s business model and strategy take account of the interests of the group’s stakeholders and of the impacts of the group on sustainability matters; (v) how the group’s strategy has been implemented with regard to sustainability matters."
+		},
+		{
+			"question": "What is the role of the administrative, management and supervisory bodies with regard to sustainability matters?",
+			"answer": "A description of the role of the administrative, management and supervisory bodies with regard to sustainability matters, and of their expertise and skills in relation to fulfilling that role or the access such bodies have to such expertise and skills."
+		},
+		{
+			"question": "What is the requirement for parent undertakings in relation to the sustainability reporting standards?",
+			"answer": "Parent undertakings shall report the information referred to in paragraphs 1 to 3 of this Article in accordance with the sustainability reporting standards adopted pursuant to Article 29b."
+		},
+		{
+			"question": "What is the requirement for the management of the parent undertaking in relation to workers’ representatives?",
+			"answer": "The management of the parent undertaking shall inform the workers’ representatives at the appropriate level and discuss with them the relevant information and the means of obtaining and verifying sustainability information."
+		},
+		{
+			"question": "What is the exemption for a parent undertaking which is a subsidiary undertaking?",
+			"answer": "A parent undertaking which is a subsidiary undertaking shall be exempted from the obligations set out in paragraphs 1 to 5 of this Article (the “exempted parent undertaking”) if such parent undertaking and its subsidiary undertakings are included in the consolidated management report of another undertaking, drawn up in accordance with Article 29 and this Article."
+		},
+		{
+			"question": "What conditions must be met for a parent undertaking to be exempted from the obligations?",
+			"answer": "The exemption in the first subparagraph shall be subject to the following conditions: (a) the management report of the exempted parent undertaking contains all of the following information: (i) the name and registered office of the parent undertaking that reports information at group level in accordance with this Article, or in a manner equivalent to the sustainability reporting standards adopted pursuant to Article 29b of this Directive, as determined in accordance with an implementing act on the equivalence of sustainability reporting standards adopted pursuant to the third subparagraph of Article 23(4) of Directive 2004/109/EC; (ii) the weblinks to the consolidated management report of the parent undertaking or, where applicable, to the consolidated sustainability reporting of the parent undertaking, as referred to in the first subparagraph of this paragraph, and to the assurance opinion referred to in point (aa) of the second subparagraph of Article 34(1) of this Directive or to the assurance opinion referred to in point (b) of this subparagraph; (iii) the information that the parent undertaking is exempted from the obligations set out in paragraphs 1 to 5 of this Article."
+		},
+		{
+			"question": "What is the requirement for parent undertakings established in a third country?",
+			"answer": "The disclosures laid down in Article 8 of Regulation (EU) 2020/852, covering the activities carried out by the subsidiary undertaking established in the Union and exempted from sustainability reporting on the basis of Article 19a(9) of this Directive, shall be included in the management report of the exempted parent undertaking, or in the consolidated sustainability reporting carried out by the parent undertaking established in a third country."
+		},
+		{
+			"question": "What is the role of the Commission in sustainability reporting standards?",
+			"answer": "The Commission shall adopt delegated acts in accordance with Article 49 supplementing this Directive to provide for sustainability reporting standards."
+		},
+		{
+			"question": "When should the Commission specify the information that undertakings are to report?",
+			"answer": "In the delegated acts referred to in the first subparagraph of this paragraph the Commission shall, by 30 June 2023, specify the information that undertakings are to report in accordance with Article 19a(1) and (2), and Article 29a(1) and (2) where appropriate."
+		},
+		{
+			"question": "What should the sustainability reporting standards ensure?",
+			"answer": "The sustainability reporting standards shall ensure the quality of reported information, by requiring that it is understandable, relevant, verifiable, comparable and represented in a faithful manner."
+		},
+		{
+			"question": "What information should undertakings disclose about environmental factors?",
+			"answer": "Specify the information that undertakings are to disclose about the following environmental factors: (i) climate change mitigation, including as regards scope 1, scope 2 and, where relevant, scope 3 greenhouse gas emissions; (ii) climate change adaptation; (iii) water and marine resources; (iv) resource use and the circular economy; (v) pollution; (vi) biodiversity and ecosystems."
+		},
+		{
+			"question": "What information should undertakings disclose about social and human rights factors?",
+			"answer": "Specify the information that undertakings are to disclose about the following social and human rights factors: (i) equal treatment and opportunities for all, including gender equality and equal pay for work of equal value, training and skills development, the employment and inclusion of people with disabilities, measures against violence and harassment in the workplace, and diversity; (ii) working conditions, including secure employment, working time, adequate wages, social dialogue, freedom of association, existence of works councils, collective bargaining, including the proportion of workers covered by collective agreements, the information, consultation and participation rights of workers, work- life balance, and health and safety; (iii) respect for the human rights, fundamental freedoms, democratic principles and standards established in the International Bill of Human Rights and other core UN human rights conventions."
+		},
+		{
+			"question": "What information should undertakings disclose about governance factors?",
+			"answer": "Specify the information that undertakings are to disclose about the following governance factors: (i) the role of the undertaking’s administrative, management and supervisory bodies with regard to sustainability matters, and their composition, as well as their expertise and skills in relation to fulfilling that role or the access such bodies have to such expertise and skills; (ii) the main features of the undertaking’s internal control and risk management systems, in relation to the sustainability reporting and decision-making process; (iii) business ethics and corporate culture, including anti-corruption and anti-bribery, the protection of whistleblowers and animal welfare; (iv) activities and commitments of the undertaking related to exerting its political influence, including its lobbying activities; (v) the management and quality of relationships with customers, suppliers and communities affected by the activities of the undertaking, including payment practices, especially with regard to late payment to small and medium-sized undertakings."
+		},
+		{
+			"question": "What should sustainability reporting standards for small and medium-sized undertakings take into account?",
+			"answer": "Sustainability reporting standards for small and medium-sized undertakings shall take into account the criteria set out in Article 29b(2) to (5)."
+		},
+		{
+			"question": "What is the requirement for undertakings subject to the requirements of Article 19a of this Directive?",
+			"answer": "Undertakings subject to the requirements of Article 19a of this Directive shall prepare their management report in the electronic reporting format specified in Article 3 of Commission Delegated Regulation (EU) 2019/815 (*) and shall mark up their sustainability reporting, including the disclosures provided for in Article 8 of Regulation (EU) 2020/852, in accordance with the electronic reporting format specified in that Delegated Regulation."
+		},
+		{
+			"question": "What is the requirement for parent undertakings subject to the requirements of Article 29a?",
+			"answer": "Parent undertakings subject to the requirements of Article 29a shall prepare their consolidated management report in the electronic reporting format specified in Article 3 of Delegated Regulation (EU) 2019/815 and shall mark up their sustainability reporting, including the disclosures provided for in Article 8 of Regulation (EU) 2020/852, in accordance with the electronic reporting format specified in that Delegated Regulation."
+		},
+		{
+			"question": "What is the maximum period within which undertakings should publish their annual financial statements and the management report?",
+			"answer": "Member States shall ensure that undertakings publish within a reasonable period of time, which shall not exceed 12 months after the balance sheet date, the duly approved annual financial statements and the management report"
+		},
+		{
+			"question": "What are the responsibilities of the members of the administrative, management and supervisory bodies of an undertaking?",
+			"answer": "Member States shall ensure that the members of the administrative, management and supervisory bodies of an undertaking, acting within the competences assigned to them by national law, have collective responsibility for ensuring that the following documents are drawn up and published in accordance with the requirements of this Directive"
+		},
+		{
+			"question": "What is the role of an independent assurance services provider?",
+			"answer": "Member States may allow an independent assurance services provider established in their territory to express the opinion referred to in point (aa) of the second subparagraph of paragraph 1, provided that such independent assurance services provider is subject to requirements that are equivalent to those set out in Directive 2006/43/EC of the European Parliament and of the Council (*) as regards the assurance of sustainability reporting as defined in point 22 of Article 2 of that Directive"
+		},
+		{
+			"question": "What are the requirements for independent assurance services providers?",
+			"answer": "in particular the requirements on: (a) training and examination, ensuring that independent assurance services providers acquire the necessary expertise concerning sustainability reporting and the assurance of sustainability reporting; (b) continuing education; (c) quality assurance systems; (d) professional ethics, independence, objectivity, confidentiality and professional secrecy; (e) appointment and dismissal; (f) investigations and sanctions; (g) the organisation of the work of the independent assurance services provider, in particular in terms of sufficient resources and personnel and the maintenance of client account records and files; and (h) reporting irregularities."
+		},
+		{
+			"question": "What is the responsibility of a branch of a third-country undertaking?",
+			"answer": "Member States shall provide that the branches of third-country undertakings are responsible for ensuring, to the best of their knowledge and ability, that their sustainability report is drawn up in accordance with Article 40a, and that that report is published and made accessible in accordance with Article 40d."
+		},
+		{
+			"question": "What is the deadline for publishing the sustainability report?",
+			"answer": "The subsidiary undertakings and branches referred to in Article 40a(1) of this Directive shall publish their sustainability report, together with the assurance opinion and, where applicable, the statement mentioned in the fourth subparagraph of Article 40a(2) of this Directive, within 12 months of the balance sheet date of the financial year for which the report is drawn up"
+		},
+		{
+			"question": "What happens if the sustainability report is not made accessible on the website of the register?",
+			"answer": "Where the sustainability report together with the assurance opinion and, where applicable, with the statement published in accordance with paragraph 1 of this Article, are not made accessible, free of charge, to the public on the website of the register referred to in Article 16 of Directive (EU) 2017/1132, Member States shall ensure that the sustainability report together with the assurance opinion and, where applicable, with the statement published by the undertakings in accordance with paragraph 1 of this Article, are made accessible to the public in at least one of the official languages of the Union, free of charge, no later than 12 months after the balance sheet date of the financial year for which the report is drawn up, on the website of the subsidiary undertaking or the branch as referred to in Article 40a(1) of this Directive."
+		},
+		{
+			"question": "What is the transitional provision for Union subsidiary undertakings?",
+			"answer": "Until 6 January 2030, Member States shall permit a Union subsidiary undertaking which is subject to Article 19a or 29a and whose parent undertaking is not governed by the law of a Member State to prepare consolidated sustainability reporting, in accordance with the requirements of Article 29a, that includes all Union subsidiary undertakings of such parent undertaking that are subject to Article 19a or 29a."
+		},
+		{
+			"question": "What is the requirement for a subsidiary undertaking established in a Member State whose ultimate parent undertaking is governed by the law of a third country?",
+			"answer": "A Member State shall require that a subsidiary undertaking established in its territory whose ultimate parent undertaking is governed by the law of a third country publish and make accessible a sustainability report covering the information specified in points (a)(iii) to (a)(v), points (b) to (f) and, where appropriate, point (h) of Article 29a(2) at the group level of that ultimate third-country parent undertaking."
+		},
+		{
+			"question": "What is the requirement for a branch of an undertaking governed by the law of a third country?",
+			"answer": "A Member State shall require that a branch located in its territory, and which is a branch of an undertaking governed by the law of a third country, which is either not part of a group or is ultimately held by an undertaking that is formed in accordance with the law of a third country publish and make accessible a sustainability report covering the information specified in points (a)(iii) to (a)(v), points (b) to (f) and, where appropriate, point (h) of Article 29a(2), at the group level, or, if not applicable, the individual level, of the third-country undertaking."
+		},
+		{
+			"question": "Until when shall Member States permit the consolidated sustainability reporting?",
+			"answer": "Until 6 January 2030"
+		},
+		{
+			"question": "What is the Union subsidiary undertaking referred to in paragraph 1?",
+			"answer": "The Union subsidiary undertaking referred to in paragraph 1 shall be one of the Union subsidiary undertakings of the group that generated the greatest turnover in the Union in at least one of the preceding five financial years, on a consolidated basis where applicable."
+		},
+		{
+			"question": "When should the consolidated sustainability reporting be published?",
+			"answer": "The consolidated sustainability reporting referred to in paragraph 1 of this Article shall be published in accordance with Article 30."
+		},
+		{
+			"question": "Who can revoke the delegation of power referred to in Article 1(2), Article 3(13), Articles 29b, 29c and 40b, and Article 46(2)?",
+			"answer": "The delegation of power referred to in Article 1(2), Article 3(13), Articles 29b, 29c and 40b, and Article 46(2) may be revoked at any time by the European Parliament or by the Council."
+		},
+		{
+			"question": "What is the definition of 'sustainability reporting' in Article 2(1)?",
+			"answer": "“sustainability reporting” means sustainability reporting as defined in point (18) of Article 2 of Directive 2013/34/EU of the European Parliament and of the Council."
+		},
+		{
+			"question": "Who should the Commission consult on the technical advice provided by EFRAG?",
+			"answer": "The Commission shall consult jointly the Member State Expert Group on Sustainable Finance, referred to in Article 24 of Regulation (EU) 2020/852, and the Accounting Regulatory Committee, referred to in Article 6 of Regulation (EC) No 1606/2002, on the draft delegated acts prior to their adoption as referred to in Articles 29b and 29c of this Directive."
+		},
+		{
+			"question": "What is the role of ESMA in the supervision of sustainability reporting?",
+			"answer": "After consulting the European Environment Agency and the European Union Agency for Fundamental Rights, ESMA shall issue guidelines in accordance with Article 16 of Regulation (EU) No 1095/2010 on the supervision of sustainability reporting by national competent authorities."
+		},
+		{
+			"question": "What is the subject matter of Directive 2006/43/EC?",
+			"answer": "This Directive establishes rules concerning the statutory audit of annual and consolidated accounts and the assurance of annual and consolidated sustainability reporting."
+		},
+		{
+			"question": "What is the definition of 'assurance of sustainability reporting'?",
+			"answer": "“assurance of sustainability reporting” means the performance of procedures resulting in the opinion expressed by the statutory auditor or audit firm in accordance with point (aa) of the second subparagraph of Article 34(1) and Article 34(2) of Directive 2013/34/EU."
+		},
+		{
+			"question": "What are the educational qualifications required for a natural person to be approved to carry out a statutory audit?",
+			"answer": "A natural person may be approved to carry out a statutory audit only after having attained university entrance or equivalent level, then completed a course of theoretical instruction, undergone practical training and passed an examination of professional competence of university final or equivalent examination level, organised or recognised by the Member State concerned."
+		},
+		{
+			"question": "What does Article 7 guarantee for the statutory auditor?",
+			"answer": "The examination of professional competence referred to in Article 6 shall guarantee the necessary level of theoretical knowledge of subjects relevant to statutory audit and the ability to apply such knowledge in practice."
+		},
+		{
+			"question": "What additional subjects should the test of theoretical knowledge cover according to Article 8?",
+			"answer": "In order for the statutory auditor to also be approved to carry out the assurance of sustainability reporting, the (a) legal requirements and standards relating to the preparation of annual and consolidated sustainability reporting; (b) sustainability analysis; (c) due diligence processes with regard to sustainability matters; (d) legal requirements and assurance standards for the sustainability reporting referred to in Article 26a."
+		},
+		{
+			"question": "What is the requirement for practical training according to Article 10(1)?",
+			"answer": "In order for the statutory auditor or the trainee to also be approved to carry out the assurance of sustainability reporting, at least eight months of the practical training referred to in the first subparagraph shall be on the assurance of annual and consolidated sustainability reporting or on other sustainability-related services."
+		},
+		{
+			"question": "What is the provision for statutory auditors approved before 1 January 2024 according to Article 14a?",
+			"answer": "Member States shall ensure that statutory auditors that are approved or recognised to carry out statutory audits before 1 January 2024 are not subject to the requirements of Article 7(2), Article 8(3), the second subparagraph of Article 10(1) and the fourth subparagraph of Article 14(2)."
+		},
+		{
+			"question": "What information should the public register contain about statutory auditors according to Article 16?",
+			"answer": "As regards statutory auditors, the public register shall contain at least the following information: (a) name, address and registration number; (b) if applicable, the name, address, website address and registration number of the audit firm(s) by which the statutory auditor is employed, or with whom he or she is associated as a partner or otherwise; (c) whether the statutory auditor is also approved for carrying out the assurance of sustainability reporting; (d) all other registration(s) as statutory auditor with the competent authorities of other Member States and as auditor with third countries, including the name(s) of the registration authority(ies), and, if applicable, the registration number(s), and an indication of whether the registration concerns the statutory audit, the assurance of sustainability reporting, or both."
+		},
+		{
+			"question": "What are the rules for audit and assurance fees according to Article 25?",
+			"answer": "Member States shall ensure that adequate rules are in place which provide that fees for statutory audits and the assurance of sustainability reporting: (a) are not influenced or determined by the provision of additional services to the entity that is the subject of the statutory audit or the assurance of sustainability reporting; and (b) cannot be based on any form of contingency."
+		},
+		{
+			"question": "What are the prohibited non-audit services according to Article 25c?",
+			"answer": "A statutory auditor or an audit firm carrying out the assurance of sustainability reporting of a public-interest entity, or any member of the network to which the statutory auditor or the audit firm belongs, shall not directly or indirectly provide to the public-interest entity that is the subject of the assurance of sustainability reporting, to its parent undertaking or to its controlled undertakings within the Union the prohibited non-audit services referred to in points (b) and (c) and points (e) to (k) of the second subparagraph of Article 5(1) of Regulation (EU) No 537/2014."
+		},
+		{
+			"question": "What is the requirement for assurance standards for sustainability reporting according to Article 26a?",
+			"answer": "Member States shall require statutory auditors and audit firms to carry out the assurance of sustainability reporting in compliance with the assurance standards adopted by the Commission in accordance with paragraph 3."
+		},
+		{
+			"question": "When should the Commission adopt delegated acts for assurance standards according to Article 26a?",
+			"answer": "The Commission shall, no later than 1 October 2026, adopt delegated acts in accordance with Article 48a in order to supplement this Directive in order to provide for limited assurance standards setting out the procedures that the auditor(s) and the audit firm(s) shall perform in order to draw his, her or its conclusions on the assurance of sustainability reporting."
+		},
+		{
+			"question": "What are the conditions for the Commission to adopt assurance standards according to Article 26a?",
+			"answer": "The Commission may adopt the assurance standards referred to in the first and second subparagraphs only if they: (a) have been developed with proper due process, public oversight and transparency; (b) contribute a high level of credibility and quality to the annual or consolidated sustainability reporting; and (c) are conducive to the Union public good."
+		},
+		{
+			"question": "Who bears the full responsibility for the assurance report on sustainability reporting?",
+			"answer": "in relation to the consolidated sustainability reporting, the group auditor bears the full responsibility for the assurance report on sustainability reporting referred to in Article 28a"
+		},
+		{
+			"question": "What should the group auditor do if unable to comply with point (c) of the first subparagraph of paragraph 1?",
+			"answer": "Where the group auditor is unable to comply with point (c) of the first subparagraph of paragraph 1, he, she or it shall take appropriate measures and inform the relevant competent authority."
+		},
+		{
+			"question": "What is the group auditor's responsibility when assurance of sustainability reporting is carried out by any independent assurance services provider(s), third-country auditor(s) or audit entity(ies)?",
+			"answer": "the group auditor shall, when requested, also be responsible for ensuring proper delivery of the additional documentation on the assurance work performed by such independent assurance services provider(s), third-country auditor(s) or audit entity(ies), including the working papers relevant to the assurance of consolidated sustainability reporting."
+		},
+		{
+			"question": "What should the assurance report on sustainability reporting include?",
+			"answer": "The assurance report on sustainability reporting shall be in writing and shall: (a) identify the entity whose annual or consolidated sustainability reporting is the subject of the assurance engagement; specify the annual or consolidated sustainability reporting and the date and period it covers; and identify the sustainability reporting framework that has been applied in its preparation; (b) include a description of the scope of the assurance of sustainability reporting which shall, as a minimum, identify the assurance standards in accordance with which the assurance of sustainability reporting was conducted; (c) include the opinion referred to in point (aa) of the second subparagraph of Article 34(1) of Directive 2013/34/EU."
+		},
+		{
+			"question": "Who should sign the assurance report on sustainability reporting?",
+			"answer": "The assurance report on sustainability reporting shall be signed and dated by the statutory auditor carrying out the assurance of sustainability reporting."
+		},
+		{
+			"question": "What are the sanctions for non-compliance with the provisions of the Directive?",
+			"answer": "Without prejudice to their civil liability regimes, Member States shall provide for effective, proportionate and dissuasive sanctions in respect of statutory auditors and audit firms, where statutory audits or assurance of sustainability reporting are not carried out in conformity with the provisions adopted in the implementation of this Directive, and, where applicable, with Regulation (EU) No 537/2014."
+		},
+		{
+			"question": "What is the role of the competent authority?",
+			"answer": "The competent authority shall be governed by non-practitioners who are knowledgeable in the areas relevant to statutory audit and, where applicable, to the assurance of sustainability reporting."
+		},
+		{
+			"question": "What is the requirement for the appointment of the statutory auditor or audit firm for the purpose of the assurance of sustainability reporting?",
+			"answer": "The first subparagraph shall apply to the appointment of the statutory auditor or audit firm for the purpose of the assurance of sustainability reporting."
+		},
+		{
+			"question": "What are the grounds for dismissal of statutory auditors or audit firms?",
+			"answer": "Member States shall ensure that statutory auditors or audit firms may be dismissed only where there are proper grounds. Divergence of opinions on accounting treatments, audit procedures or, where applicable, on sustainability reporting or assurance procedures shall not be proper grounds for dismissal."
+		},
+		{
+			"question": "What is the requirement for the registration of third-country auditors and audit entities?",
+			"answer": "The competent authorities of a Member State shall, in accordance with Articles 15, 16 and 17 of this Directive, register every third-country auditor and audit entity, where that third-country auditor or audit entity provides an audit report concerning the annual or consolidated financial statements, or, where applicable, an assurance report concerning the annual or consolidated sustainability reporting of an undertaking incorporated outside the Union whose transferable securities are admitted to trading on a regulated market of that Member State."
+		},
+		{
+			"question": "What is the minimum denomination per unit for securities admitted to trading on a regulated market in a Member State prior to 31 December 2010?",
+			"answer": "at least EUR 50 000 or, in the case of debt securities denominated in another currency, equivalent, at the date of issue, to at least EUR 50 000"
+		},
+		{
+			"question": "What is the minimum denomination per unit for securities admitted to trading on a regulated market in a Member State from 31 December 2010?",
+			"answer": "at least EUR 100 000 or, in case of debt securities denominated in another currency, equivalent, at the date of issue, to at least EUR 100 000"
+		},
+		{
+			"question": "What are the requirements for a third-country audit entity to be registered for the purpose of the audit of financial statements?",
+			"answer": "the majority of the members of the administrative or management body of the third-country audit entity meet requirements which are equivalent to those laid down in Articles 4 to 10, with the exception of Article 7(2), Article 8(3) and the second subparagraph of Article 10(1); (b) the third-country auditor carrying out the audit on behalf of the third-country audit entity meets requirements which are equivalent to those laid down in Articles 4 to 10, with the exception of Article 7(2), Article 8(3) and the second subparagraph of Article 10(1); (c) the audits of the annual or consolidated financial statements referred to in paragraph 1 of this Article are carried out in accordance with international auditing standards as referred to in Article 26, as well as the requirements laid down in Articles 22, 22b and 25, or with equivalent standards and requirements; (d) the third-country audit entity publishes on its website an annual transparency report which includes the information referred to in Article 13 of Regulation (EU) No 537/2014 or it complies with equivalent disclosure requirements"
+		},
+		{
+			"question": "When should Member States bring into force the laws, regulations and administrative provisions necessary to comply with Articles 1 to 3 of this Directive?",
+			"answer": "by 6 July 2024"
+		},
+		{
+			"question": "When should Member States apply the measures necessary to comply with Article 1, with the exception of point (14)?",
+			"answer": "for financial years starting on or after 1 January 2024"
+		},
+		{
+			"question": "When should Member States apply the measures necessary to comply with Article 2?",
+			"answer": "for financial years starting on or after 1 January 2024"
+		},
+		{
+			"question": "When should Member States apply the measures necessary to comply with Article 3?",
+			"answer": "for financial years starting on or after 1 January 2024"
+		},
+		{
+			"question": "When should the Commission submit a report to the European Parliament and to the Council on the implementation of this amending Directive?",
+			"answer": "by 30 April 2029 and every three years thereafter"
+		},
+		{
+			"question": "When should the Commission review and report on the level of concentration of the sustainability assurance market?",
+			"answer": "By 31 December 2028"
+		},
+		{
+			"question": "When does this Directive enter into force?",
+			"answer": "on the twentieth day following that of its publication in the Official Journal of the European Union"
+		},
+		{
+			"question": "Who is the Directive addressed to?",
+			"answer": "This Directive is addressed to the Member States."
+		},
+		{
+			"question": "When was the Directive done at Strasbourg?",
+			"answer": "Done at Strasbourg, 14 December 2022."
+		},
+		{
+			"question": "Which Article is binding in its entirety and directly applicable in all Member States?",
+			"answer": "Article 4 shall be binding in its entirety and directly applicable in all Member States."
+		},
+		{
+			"question": "Who is the President for the European Parliament?",
+			"answer": "For the European Parliament The President R. METSOLA"
+		}
+	]
+}

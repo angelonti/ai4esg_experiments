@@ -11,7 +11,7 @@ class AnswerBase(BaseModel):
     model: Model
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class AnswerCreate(AnswerBase):
