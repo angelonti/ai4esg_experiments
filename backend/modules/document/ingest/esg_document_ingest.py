@@ -25,6 +25,15 @@ from backend.modules.prompts.legal_info_extraction_prompts import (
     key_parameters
 )
 
+from backend.modules.document.utils.DocumentReader import (
+    DocumentReader,
+    get_document_metadata,
+)
+from backend.modules.document.utils.DocumentReaderProviders import Providers
+from modules.document.schemas import DocumentParsed, DocType
+from modules.document.service import create_from_partitions as create_document_from_partitions
+from modules.embedding.utils import chunk_partitions
+
 logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
@@ -33,31 +42,77 @@ logger.addHandler(consoleHandler)
 _ = load_dotenv(find_dotenv(filename="local.env"))
 
 OUTPUT_KEY = "response"
-KEY_PARAMETERS_FILE = "key_parameters.json"
+# KEY_PARAMETERS_FILE = "key_parameters.json"
 REQUIREMENTS_AND_PENALTIES_FILE = "reqs_and_penalties.json"
-KEY_PARAMETERS_DIR = "key_parameters"
+# KEY_PARAMETERS_DIR = "key_parameters"
 REQUIREMENTS_AND_PENALTIES_DIR = "reqs_and_penalties"
 
 
 class EsgRegulationIngestor:
-    def __init__(self, documents: list[Element], batch_size: int, num_pages: int = None, init_docs: bool = True) -> None:
+    def __init__(self, file_path: str, title: str = None, batch_size: int = 2, num_pages: int = None,
+                 init_docs: bool = True) -> None:
         if init_docs:
-            self.documents = documents
-            self.documents_paged = self.to_paged_texts(documents)
+            self.documents = (DocumentReader(provider=Providers.UNSTRUCTURED, file_path=file_path)).read()
+            self.documents_paged = self.to_paged_texts(self.documents)
             self.num_pages = num_pages or len(self.documents_paged)
-            self.metadata = self.get_document_metadata()
-        self.key_parameters_parser = self.get_default_key_parameters_parser()
+            self.metadata = get_document_metadata(self.documents, title=title)
+        # self.key_parameters_parser = self.get_default_key_parameters_parser()
         self.reqs_and_penalties_parser = self.get_default_reqs_and_penalties_parser()
         self.system_message_prompt_template = SystemMessagePromptTemplate.from_template(" ".join(priming.split()))
-        self.prompt_template_key_parameters = self.system_message_prompt_template + prompt_key_parameters
+        # self.prompt_template_key_parameters = self.system_message_prompt_template + prompt_key_parameters
         self.prompt_template_reqs_and_penalties = self.system_message_prompt_template + prompt_requirements_and_penalties
         self.chatModel = self.get_chat_model()
         self.batch_size = batch_size
 
-    def ingest_all(self) -> None:
-        self.ingest_key_parameters()
-        self.ingest_reqs_and_penalties()
+    async def ingest_all(self) -> None:
+        # self.ingest_key_parameters()
+        await create_document_from_partitions(self.documents, title=self.metadata["title"])
+        await self.ingest_reqs_and_penalties()
 
+    async def ingest_reqs_and_penalties(self) -> None:
+        chain_reqs_and_penalties = self.get_chain_reqs_and_penalties()
+
+        start = 0
+
+        title = self.metadata["title"].replace(" ", "_").replace("/", "_")
+
+        full_file_path = os.path.join(REQUIREMENTS_AND_PENALTIES_DIR, f'{title}_{REQUIREMENTS_AND_PENALTIES_FILE}')
+
+        reqs_and_penalties_data = self.load_saved_data(full_file_path)
+
+        if reqs_and_penalties_data is not None:
+            start = reqs_and_penalties_data["metadata"]["processed_pages"]
+
+        for i in range(start, self.num_pages, self.batch_size):
+            end = min(i + self.batch_size, self.num_pages)
+            logger.debug(f"########## READING PAGES {i} to {end}  ##########")
+            doc_batch = "".join([f'{doc}\n\n' for doc in self.documents_paged[i:end]])
+
+            response_reqs_and_penalties = chain_reqs_and_penalties.apply([
+                {
+                    "doc": doc_batch,
+                    "format_instructions": self.reqs_and_penalties_parser.get_format_instructions()
+                }
+            ])
+            response_reqs_and_penalties = response_reqs_and_penalties[0]["response"]
+            logger.debug("########## RESPONSE ##########")
+            logger.debug(response_reqs_and_penalties)
+            if reqs_and_penalties_data is None:
+                reqs_and_penalties_data = response_reqs_and_penalties
+            else:
+                reqs_and_penalties_data = self.merge_reqs_and_penalties_json(reqs_and_penalties_data,
+                                                                             response_reqs_and_penalties)
+            reqs_and_penalties_data["metadata"] = self.metadata
+            reqs_and_penalties_data["metadata"]["processed_pages"] = end
+            os.makedirs(REQUIREMENTS_AND_PENALTIES_DIR, exist_ok=True)
+            with open(full_file_path, "w") as f:
+                json.dump(reqs_and_penalties_data, f, indent=4)
+
+        if reqs_and_penalties_data["metadata"]["processed_pages"] == len(self.documents_paged):
+            # save_reqs_and_penalties_db(reqs_and_penalties_data) TODO: Implement this function
+            logger.debug("##########REQS AND PENALTIES INGESTION COMPLETED ##########")
+
+    """
     def ingest_key_parameters(self) -> None:
         chain_key_parameters = self.get_chain_key_parameters()
 
@@ -97,58 +152,7 @@ class EsgRegulationIngestor:
             os.makedirs(KEY_PARAMETERS_DIR, exist_ok=True)
             with open(full_file_path, "w") as f:
                 json.dump(key_parameters_data, f, indent=4)
-
-    def ingest_reqs_and_penalties(self) -> None:
-        chain_reqs_and_penalties = self.get_chain_reqs_and_penalties()
-
-        start = 0
-
-        title = self.metadata["title"].replace(" ", "_").replace("/", "_")
-
-        full_file_path = os.path.join(REQUIREMENTS_AND_PENALTIES_DIR, f'{title}_{REQUIREMENTS_AND_PENALTIES_FILE}')
-
-        reqs_and_penalties_data = self.load_saved_data(full_file_path)
-
-        if reqs_and_penalties_data is not None:
-            start = reqs_and_penalties_data["metadata"]["processed_pages"]
-
-        for i in range(start, self.num_pages, self.batch_size):
-            end = min(i + self.batch_size, self.num_pages)
-            logger.debug(f"########## READING PAGES {i} to {end}  ##########")
-            doc_batch = "".join([f'{doc}\n\n' for doc in self.documents_paged[i:end]])
-
-            response_reqs_and_penalties = chain_reqs_and_penalties.apply([
-                {
-                    "doc": doc_batch,
-                    "format_instructions": self.reqs_and_penalties_parser.get_format_instructions()
-                }
-            ])
-            response_reqs_and_penalties = response_reqs_and_penalties[0]["response"]
-            logger.debug("########## RESPONSE ##########")
-            logger.debug(response_reqs_and_penalties)
-            if reqs_and_penalties_data is None:
-                reqs_and_penalties_data = response_reqs_and_penalties
-            else:
-                reqs_and_penalties_data = self.merge_reqs_and_penalties_json(reqs_and_penalties_data, response_reqs_and_penalties)
-            reqs_and_penalties_data["metadata"] = self.metadata
-            reqs_and_penalties_data["metadata"]["processed_pages"] = end
-            os.makedirs(REQUIREMENTS_AND_PENALTIES_DIR, exist_ok=True)
-            with open(full_file_path, "w") as f:
-                json.dump(reqs_and_penalties_data, f, indent=4)
-
-    def get_document_metadata(self) -> dict[str, str]:
-        title = ""
-        title_found = False
-        for doc in self.documents:
-            if title_found and type(doc).__name__ != "Title":
-                title = title.strip()
-                break
-            if type(doc).__name__ == "Title":
-                title_found = True
-                title += doc.text + " "
-        source = self.documents[0].metadata.filename
-        metadata = {"title": title, "source": source}
-        return metadata
+          
 
     def get_chain_key_parameters(self):
         return LLMChain(
@@ -158,7 +162,27 @@ class EsgRegulationIngestor:
             output_parser=self.key_parameters_parser,
             output_key=OUTPUT_KEY
         )
-
+    
+        
+    @staticmethod
+    def merge_key_parameters_json(dest_json: dict[str, list[RegulationKeyParameterData]],
+                                  source_json: dict[str, list[RegulationKeyParameterData]]) -> dict[
+        str, list[RegulationKeyParameterData]]:
+        for source_data in source_json["data"]:
+            key_parameter_name = source_data["key_parameter"]
+            key_parameter_excerpts = source_data["excerpts"]
+            for dest_data in dest_json["data"]:
+                if dest_data["key_parameter"] == key_parameter_name:
+                    dest_data["excerpts"].extend(key_parameter_excerpts)
+                    break
+            else:
+                dest_json["data"].append(source_data)
+        return dest_json
+        
+    @staticmethod
+    def get_default_key_parameters_parser():
+        return SimpleJsonOutputParser(pydantic_object=RegulationKeyParameterDataList)
+    """
     def get_chain_reqs_and_penalties(self):
         return LLMChain(
             llm=self.chatModel,
@@ -177,21 +201,6 @@ class EsgRegulationIngestor:
         return None
 
     @staticmethod
-    def merge_key_parameters_json(dest_json: dict[str, list[RegulationKeyParameterData]],
-                                  source_json: dict[str, list[RegulationKeyParameterData]]) -> dict[
-        str, list[RegulationKeyParameterData]]:
-        for source_data in source_json["data"]:
-            key_parameter_name = source_data["key_parameter"]
-            key_parameter_excerpts = source_data["excerpts"]
-            for dest_data in dest_json["data"]:
-                if dest_data["key_parameter"] == key_parameter_name:
-                    dest_data["excerpts"].extend(key_parameter_excerpts)
-                    break
-            else:
-                dest_json["data"].append(source_data)
-        return dest_json
-
-    @staticmethod
     def merge_reqs_and_penalties_json(dest_json: dict[str, dict],
                                       source_json: dict[str, dict]) -> dict[str, dict]:
         for source_key, source_value in source_json["data"].items():
@@ -201,10 +210,6 @@ class EsgRegulationIngestor:
                     dest_value["excerpts"].extend(key_excerpts)
                     break
         return dest_json
-
-    @staticmethod
-    def get_default_key_parameters_parser():
-        return SimpleJsonOutputParser(pydantic_object=RegulationKeyParameterDataList)
 
     @staticmethod
     def get_default_reqs_and_penalties_parser():

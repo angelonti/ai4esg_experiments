@@ -3,8 +3,17 @@ from uuid import UUID, uuid4
 from db.engine import db
 from modules.document.models import DocumentModel
 from modules.document.schemas import Document, DocumentParsed
-from modules.embedding.utils import create_embeddings_for_document
+from modules.embedding.utils import create_embeddings_for_document, create_embeddings_for_chunks, chunk_partitions
+from modules.document.utils import DocumentReader
 from typing import Union
+from unstructured.documents.elements import Element
+import logging
+import sys
+
+logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logger = logging.getLogger(__name__)
+consoleHandler = logging.StreamHandler(stream=sys.stdout)
+logger.addHandler(consoleHandler)
 
 
 def get(id: UUID) -> Union[Document, None]:
@@ -33,6 +42,23 @@ async def create(document: DocumentParsed) -> Document:
     db.session.refresh(doc_obj)
 
     await create_embeddings_for_document(doc_obj)
+
+    return Document.from_orm(doc_obj)
+
+
+async def create_from_partitions(partitions: list[Element], title: str = None) -> Document:
+    document = DocumentReader.parse_esg_document(partitions, title=title)
+    saved_document = get_by_title(document.title)
+    if saved_document is not None:
+        logger.info(f"document {title} already exists, returning existing document")
+        return saved_document
+    chunks = chunk_partitions(partitions)
+    doc_obj = DocumentModel(**document.dict(), id=uuid4())
+    db.session.add(doc_obj)
+    db.session.commit()
+    db.session.refresh(doc_obj)
+
+    await create_embeddings_for_chunks(doc_obj, chunks)
 
     return Document.from_orm(doc_obj)
 

@@ -33,5 +33,6 @@ class OpenAILLMClient(LLMClient):
                                                              {"role": "system", "content": self.priming},
                                                              {"role": "user", "content": prompt},
                                                          ],
+                                                         temperature=config.temperature,
                                                          stream=True)
         return streamed_content_generator(chunk_generator)

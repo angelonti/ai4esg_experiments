@@ -6,15 +6,15 @@ from config import config
 from modules.answer.schemas import AnsweredCreate
 from modules.llm.llm_infos import CONTEXT_SIZE, Model
 from modules.embedding.schemas import Embedding
-from modules.embedding.service import get_all
-from modules.llm.utils import vector_similarity, get_text_embedding
+from modules.embedding.service import get_all, get_similar
+from modules.llm.utils import get_text_embedding
 import tiktoken
 
 
 class LLMClient(ABC):
     prompt: str | None = None
 
-    def __init__(self, model: Model):
+    def __init__(self, model: Model = Model.AZURE_GPT4):
         self.model = model
         self.token_encoding = tiktoken.get_encoding("cl100k_base")
         self.default_prompt = self.get_default_prompt()
@@ -31,14 +31,14 @@ class LLMClient(ABC):
 
         return default_prompt
 
-    async def ask(self, question: str, prompt: str | None = None) -> tuple[
-        list[float], AnsweredCreate, Generator[str, None, None], int]:
+    async def ask(self, question: str, prompt: str | None = None) \
+            -> tuple[list[float], AnsweredCreate, Generator[str, None, None], int]:
         self.prompt = prompt
         question_embedding_response = await get_text_embedding(question)
         question_embedding = question_embedding_response.data[0].embedding
 
         max_embedding_cnt = self.get_max_embedding_cnt()
-        embeddings = self.get_relevant_embeddings(question_embedding, self.get_embeddings(), max_embedding_cnt)
+        embeddings = self.get_relevant_embeddings(question_embedding, max_embedding_cnt)
 
         prompt = self.generate_prompt(question, embeddings)
 
@@ -54,10 +54,8 @@ class LLMClient(ABC):
         pass
 
     @staticmethod
-    def get_relevant_embeddings(question_embedding: list[float], all_embeddings: list[Embedding], max_num: int) -> list[
-        Embedding]:
-        return sorted(all_embeddings, reverse=True, key=lambda x: vector_similarity(x.values, question_embedding))[
-               :max_num]
+    def get_relevant_embeddings(question_embedding: list[float], max_num: int, title: str = None) -> list[Embedding]:
+        return get_similar(question_embedding, max_num, title=title)
 
     def generate_prompt(self, question: str, embeddings: list[Embedding]) -> str:
         if self.prompt:

@@ -1,4 +1,5 @@
 from langchain_core.pydantic_v1 import BaseModel, Field
+from enum import Enum
 
 
 class LawText(BaseModel):
@@ -35,3 +36,16 @@ class RegulationKeyParameterData(BaseModel):
 class RegulationKeyParameterDataList(BaseModel):
     data: list[RegulationKeyParameterData] = Field(default=list(),
                                                    description="list of key parameters and their relevant excerpts from the document that supports the applicability of the key parameter")
+
+
+class EvaluationAnswer(Enum):
+    YES = "yes"
+    NO = "no"
+    UNCLEAR = "unclear"
+
+
+class KeyParameterEvaluation(BaseModel):
+    relevant_excerpts: list[LawText] = Field(default=list(),
+                                             description="relevant excerpts from the document that supports the applicability of the key parameter")
+    reasoning: str = Field(default="", description="reasoning to arrive at the answer")
+    answer: EvaluationAnswer = Field(default="", description="the answer to the question")

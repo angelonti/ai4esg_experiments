@@ -10,9 +10,11 @@ class EmbeddingBase(BaseModel):
     values: list[float]
     size: int
     offset: int
+    page_number: int = 0
 
     class Config:
         from_attributes = True
+        arbitrary_types_allowed = True
 
 
 class EmbeddingCreate(EmbeddingBase):
