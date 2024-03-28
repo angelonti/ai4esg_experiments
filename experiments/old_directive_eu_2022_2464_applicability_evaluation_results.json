@@ -1,0 +1,190 @@
+{
+    "input_params": {
+        "is_capital_market_oriented": "is not",
+        "num_employees": 1000,
+        "assets": 1000000,
+        "revenue": 1000000,
+        "currency": "EUR",
+        "is_offering_financial_products": "is not",
+        "is_REACH": "is not",
+        "is_battery": "is not",
+        "jurisdiction": "EU",
+        "markets": "EU",
+        "sourcing": "EU",
+        "production": "EU",
+        "products_and_services_offered": "Baby food"
+    },
+    "data": [
+        {
+            "key_parameter": "Capital market oriented companies",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "It is therefore appropriate to require all large undertakings and all undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to report sustainability information."
+                    },
+                    {
+                        "text": "The requirement provided for in this amending Directive that also large undertakings whose securities are not admitted to trading on a regulated market in the Union should disclose information on sustainability matters is mainly justified by concerns about the impacts and accountability of such undertakings, including through their value chain."
+                    }
+                ],
+                "reasoning": "The document states that the regulation applies to all large undertakings and all undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union. However, it also states that large undertakings whose securities are not admitted to trading on a regulated market in the Union should disclose information on sustainability matters. Therefore, even though company X is not a capital market oriented company, the regulation still applies to it if it is a large undertaking.",
+                "answer": "yes"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Number of employees",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Articles 19a and 29a of Directive 2013/34/EU apply to large undertakings that are public-interest entities with an average number of employees in excess of 500, and to public-interest entities that are parent undertakings of a large group with an average number of employees in excess of 500 on a consolidated basis, respectively."
+                    },
+                    {
+                        "text": "The coordination measures prescribed by Articles 19a, 29a, 29d, 30 and 33, point (aa) of the second subparagraph of Article 34(1), Article 34(2) and (3) and Article 51 of this Directive shall also apply to the laws, regulations and administrative provisions of the Member States relating to the following undertakings regardless of their legal form, provided that those undertakings are large undertakings, or small and medium-sized undertakings, except micro undertakings, which are public-interest entities as defined in point (a) of point (1) of Article 2 of this Directive exceeding on their balance sheet dates the average number of 500 employees during the financial year"
+                    }
+                ],
+                "reasoning": "The document states that the directive applies to large undertakings that are public-interest entities with an average number of employees in excess of 500. It also applies to undertakings regardless of their legal form, provided they are large undertakings or small and medium-sized undertakings, except micro undertakings, which are public-interest entities exceeding on their balance sheet dates the average number of 500 employees during the financial year. Since company X has 1000 employees, it falls into the category of large undertakings with an average number of employees in excess of 500.",
+                "answer": "yes"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Revenue",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Therefore, third-country undertakings which generate a net turnover of more than EUR 150 million in the Union and which have a subsidiary undertaking or a branch on the territory of the Union should be subject to Union sustainability reporting requirements."
+                    },
+                    {
+                        "text": "net turnover means the amounts derived from the sale of products and the provision of services after deducting sales rebates and value added tax and other taxes directly linked to turnover;"
+                    }
+                ],
+                "reasoning": "The document states that the regulation applies to companies that generate a net turnover of more than EUR 150 million in the Union. Company X only generates EUR 1 million in annual revenue, which is significantly less than the threshold mentioned in the document.",
+                "answer": "no"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Assets",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Directive 2013/34/EU provides for three possible criteria to determine whether an undertaking is to be considered a large undertaking, namely the balance sheet total, net turnover and the average number of employees during the financial year."
+                    }
+                ],
+                "reasoning": "The document does not provide specific thresholds for the balance sheet total, net turnover, or average number of employees that would classify an undertaking as large. Therefore, it is unclear whether this regulation applies to company X based on its assets in EUR.",
+                "answer": "unclear"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Sourcing (countries)",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Information about the undertakings whole value chain would include information related to its value chain within the Union and information that covers third countries if the undertakings value chain extends outside the Union."
+                    }
+                ],
+                "reasoning": "The document states that information about the undertaking's whole value chain would include information related to its value chain within the Union and information that covers third countries if the undertaking's value chain extends outside the Union. Since company X sources from the EU, this regulation applies to it.",
+                "answer": "yes"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Offering of financial products",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document does not provide any specific regulations or rules that apply to companies that do not offer financial products. The regulations mentioned in the document are specifically related to financial institutions, financial products, and financial statements.",
+                "answer": "no"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Products and Services offered",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "The due diligence process concerns the whole value chain of the undertaking including its own operations, its products and services, its business relationships and its supply chains."
+                    },
+                    {
+                        "text": "Reported sustainability information should also take into account short-, medium- and long-term time horizons and contain information about the undertakings whole value chain, including its own operations, its products and services, its business relationships and its supply chain, as appropriate."
+                    },
+                    {
+                        "text": "net turnover means the amounts derived from the sale of products and the provision of services after deducting sales rebates and value added tax and other taxes directly linked to turnover"
+                    }
+                ],
+                "reasoning": "The document mentions that the due diligence process and sustainability reporting should take into account the whole value chain of the undertaking, including its products and services. Since company X offers baby food as a product, it falls under the scope of this regulation. Furthermore, the definition of 'net turnover' in the document also includes the sale of products, which applies to company X.",
+                "answer": "yes"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Production (Countries)",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Information about the undertakings whole value chain would include information related to its value chain within the Union and information that covers third countries if the undertakings value chain extends outside the Union."
+                    }
+                ],
+                "reasoning": "The document states that the regulation applies to the value chain of the company within the Union. Since company X produces in the EU, the regulation applies to it.",
+                "answer": "yes"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Markets (countries)",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Such exemption should not apply to large undertakings whose securities are admitted to trading on a regulated market in the Union for reasons of investor protection, in order to ensure greater transparency as regards such undertakings."
+                    },
+                    {
+                        "text": "Those guidelines should only apply to the supervision of undertakings whose securities are admitted to trading on a regulated market in the Union."
+                    },
+                    {
+                        "text": "an assessment of whether and how the scope of the provisions amended by this amending Directive should be further extended, in particular in relation to small and medium-sized undertakings and to third-country undertakings operating directly on the Union internal market without a subsidiary or a branch on the territory of the Union;"
+                    }
+                ],
+                "reasoning": "The document mentions that the regulation applies to large undertakings whose securities are admitted to trading on a regulated market in the Union. It also mentions that the guidelines apply to the supervision of such undertakings. Furthermore, the document discusses the possibility of extending the scope of the provisions to third-country undertakings operating directly on the Union internal market without a subsidiary or a branch on the territory of the Union. Therefore, if company X is a large undertaking whose securities are admitted to trading on a regulated market in the Union, or if it is a third-country undertaking operating directly on the Union internal market without a subsidiary or a branch on the territory of the Union, then the regulation applies to it.",
+                "answer": "unclear"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Jurisdiction",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Third-country undertakings which have a significant activity on the territory of the Union should also be required to provide sustainability information, especially on their impacts on social and environmental matters, in order to ensure that third-country undertakings are accountable for their impacts on people and the environment and that there is a level playing field for companies operating in the internal market."
+                    },
+                    {
+                        "text": "Directive 2004/109/EC of the European Parliament and of the Council (17) applies to undertakings whose securities are admitted to trading on a regulated market in the Union."
+                    },
+                    {
+                        "text": "An undertaking can therefore be exempted from consolidated financial reporting requirements but not from consolidated sustainability reporting requirements where its ultimate parent undertaking prepares consolidated financial statements and consolidated management reports in accordance with Union law, or in accordance with equivalent requirements if the undertaking is established in a third country."
+                    }
+                ],
+                "reasoning": "The document mentions that third-country undertakings which have significant activity in the EU are required to provide sustainability information. It also states that Directive 2004/109/EC applies to undertakings whose securities are admitted to trading on a regulated market in the Union. Furthermore, an undertaking can be exempted from consolidated financial reporting requirements but not from consolidated sustainability reporting requirements if the undertaking is established in a third country. Therefore, based on these excerpts, it can be inferred that the regulation applies to Company X, which is subject to the jurisdiction of the EU.",
+                "answer": "yes"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH)",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document provided does not contain any information or text related to the REACH regulation or its applicability to company X.",
+                "answer": "unclear"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Manufacturers or distributors of batteries",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document does not contain any text, therefore there are no regulations that could apply to company X.",
+                "answer": "no"
+            },
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        }
+    ]
+}

@@ -1,0 +1,481 @@
+{
+    "data": [
+        {
+            "key_parameter": "Capital market oriented companies",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Regulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022."
+                    },
+                    {
+                        "text": "The introduction of the requirement for small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to disclose information on sustainability matters is also necessary to ensure that financial market participants have the information they need from investee undertakings to be able to comply with their own sustainability disclosure requirements laid down in Regulation (EU) 2019/2088."
+                    }
+                ],
+                "reasoning": "The document mentions that the regulations apply to institutions and undertakings whose securities are admitted to trading on a regulated market. Since company X is not a capital market oriented company, it can be inferred that these regulations do not apply to it.",
+                "answer": "no"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.8015295267105103,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7965778708457947,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "1ccf5f1e-204e-4374-aac4-f2f2401d36db",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 30394,
+                    "score": 0.7941291332244873,
+                    "text": "It will therefore help to protect and enhance the access of smaller undertakings whose securities are admitted to trading on a regulated market in the Union to financial capital, and avoid discrimination against such undertakings on the part of financial market participants. The introduction of the requirement for small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to disclose information on sustainability matters is also necessary to ensure that financial market participants have the information they need from investee undertakings to be able to comply with their own sustainability disclosure requirements laid down in Regulation (EU) 2019/2088. Small and medium-sized undertakings whose securities are admitted to trading on a regulated market in the Union should be given the possibility of reporting in accordance with standards that are proportionate to their capacities and resources, and relevant to the scale and complexity of their activities. Small and medium-sized undertakings whose securities are not admitted to trading on a regulated market in the Union should also have the possibility of choosing to use such proportionate standards on a voluntary basis."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Number of employees",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "(17) Articles 19a and 29a of Directive 2013/34/EU apply to large undertakings that are public-interest entities with an average number of employees in excess of 500, and to public-interest entities that are parent undertakings of a large group with an average number of employees in excess of 500 on a consolidated basis, respectively."
+                    },
+                    {
+                        "text": "It is therefore appropriate to require all large undertakings and all undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to report sustainability information."
+                    }
+                ],
+                "reasoning": "The document states that the directive applies to large undertakings with an average number of employees in excess of 500. Since company X has 1000 employees, it falls under the category of 'large undertakings' as defined in the document.",
+                "answer": "yes"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "a79d8d77-7b5b-4833-bbc3-ae5da50a4e66",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 22570,
+                    "score": 0.769240140914917,
+                    "text": "(17) Articles 19a and 29a of Directive 2013/34/EU apply to large undertakings that are public-interest entities with an average number of employees in excess of 500, and to public-interest entities that are parent undertakings of a large group with an average number of employees in excess of 500 on a consolidated basis, respectively. In view of the growth of users needs for sustainability information, additional categories of undertakings should be required to report sustainability information. It is therefore appropriate to require all large undertakings and all undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to report sustainability information. The provisions of this amending Directive amending Articles 19a and 29a of Directive 2013/34/EU explicitly set out the scope of the reporting requirements with reference to Articles 2 and 3 of Directive 2013/34/EU. Therefore, they do not simplify or modify another requirement and the restriction of exemptions for public-interest entities provided for in Article 40 of Directive 2013/34/EU does not apply. In particular, public- interest entities should not be treated as large undertakings for the purposes of the application of the sustainability"
+                },
+                {
+                    "embedding_id": "041fbdac-48a5-4ab8-825a-571581504a6d",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 146858,
+                    "score": 0.7654133439064026,
+                    "text": "For the purposes of the first subparagraph of this paragraph, insurance undertakings referred to in point (a) of the first subparagraph of Article 1(3) of this Directive that are part of a group, on the basis of financial relationships as referred to in point (c)(ii) of Article 212(1) of Directive 2009/138/EC, and which are subject to group supervision in accordance with points (a) to (c) of Article 213(2) of that Directive shall be treated as subsidiary undertakings of the parent undertaking of that group.\n\nThe exemption laid down in paragraph 9 shall also apply to public-interest entities subject to the requirements 10. of this Article, with the exception of large undertakings which are public-interest entities defined in point (a) of point (1) of Article 2 of this Directive.\n\n_____________ (*)\n\nRegulation (EU) 2021/1119 of the European Parliament and of the Council of 30 June 2021 establishing the framework for achieving climate neutrality and amending Regulations (EC) No 401/2009 and (EU) 2018/1999 (European Climate Law) (OJ L 243, 9.7.2021, p. 1). Directive (EU) 2022/2464 of the European Parliament and of the Council of 14 December 2022 amending Regulation (EU) No 537/2014, Directive 2004/109/EC, Directive 2006/43/EC and Directive 2013/34/EU, as regards corporate sustainability reporting (OL L 322, 16.12.2022, p. 15). Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (OJ L 335, 17.12.2009, p. 1)."
+                },
+                {
+                    "embedding_id": "a6fe03b4-0cae-4cdc-b581-55fb044356a4",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 258999,
+                    "score": 0.7648816704750061,
+                    "text": "to issuers as defined in point (d) of Article 2(1) of Directive 2004/109/EC which are parent undertakings of a large group within the meaning of Article 3(7) of Directive 2013/34/EU exceeding on its balance sheet dates, on a consolidated basis, the average number of 500 employees during the financial year;\n\nfor financial years starting on or after 1 January 2025:\n\nto issuers as defined in point (d) of Article 2(1) of Directive 2004/109/EC which are large undertakings within the meaning of Article 3(4) of Directive 2013/34/EU other than those referred to in point (a) (i) of this subparagraph;\n\nto issuers as defined in point (d) of Article 2(1) of Directive 2004/109/EC which are parent undertakings of a large group within the meaning of Article 3(7) of Directive 2013/34/EU other than those referred to in point (a) (ii) of this subparagraph;\n\nfor financial years starting on or after 1 January 2026:\n\nto issuers as defined in point (d) of Article 2(1) of Directive 2004/109/EC which are small and medium-sized undertakings within the meaning of Article 3(2) and (3) of Directive 2013/34/EU and which are not micro- undertakings as defined in Article 3(1) of Directive 2013/34/EU;"
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Assets",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document does not provide any specific asset-based criteria for the applicability of the regulation. Therefore, it is not possible to determine the applicability of the regulation to company X based on its assets in EUR.",
+                "answer": "unclear"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7982819080352783,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7946646213531494,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "e6ec506d-798c-47fc-8356-44e8ef53f9ec",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 63562,
+                    "score": 0.7891122102737427,
+                    "text": "(23) Regulation (EC) No 1606/2002 of the European Parliament and of the Council of 19 July 2002 on the application of international accounting standards (OJ L 243, 11.9.2002, p. 1).\n\nThe European Securities and Markets Authority (ESMA), the European Banking Authority (EBA) and the European Insurance and Occupational Pensions Authority (EIOPA) play a role in drafting regulatory technical standards pursuant to Regulation (EU) 2019/2088 and there needs to be coherence between those regulatory technical standards and sustainability reporting standards. Under Regulation (EU) No 1095/2010 of the European Parliament and of the Council (24), ESMA also plays a role in promoting supervisory convergence in the enforcement of corporate reporting by issuers whose securities are admitted to trading on a regulated market in the Union and who will be required to report in accordance with those sustainability reporting standards. Therefore, ESMA, EBA and EIOPA should be required to provide an opinion on EFRAGs technical advice. Such opinions should be provided within two months of the date of receipt of the request from the Commission. In addition, the Commission should consult the European Environment Agency, the European Union Agency for Fundamental Rights, the ECB, the Committee of European Auditing Oversight Bodies (CEAOB) and the Platform on Sustainable Finance to ensure that the sustainability reporting standards are coherent with relevant Union policy and law. Where any of those entities decide to submit an opinion, they should do so within two months of the date of being consulted by the Commission."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Revenue",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document does not provide any information about the applicability of the regulation based on a company's annual revenue.",
+                "answer": "unclear"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "4503a1c5-9a62-487c-a348-72e433bc6f33",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 173782,
+                    "score": 0.7878016233444214,
+                    "text": "3. The Commission shall, at least every three years after their date of application, review the delegated acts adopted pursuant to this Article, taking into consideration the technical advice of the EFRAG and, where necessary, it shall amend such delegated acts to take into account relevant developments, including developments with regard to international standards.\n\n_____________ (1)* Commission Delegated Regulation (EU) 2020/1816 of 17 July 2020 supplementing Regulation (EU) 2016/1011 of the European Parliament and of the Council as regards the explanation in the benchmark statement of how environmental, social and governance factors are reflected in each benchmark provided and published (OJ L 406, 3.12.2020, p. 1).\n\n(2)* Commission Delegated Regulation (EU) 2020/1817 of 17 July 2020 supplementing Regulation (EU) 2016/1011 of the European Parliament and of the Council as regards the minimum content of the explanation on how environmental, social and governance factors are reflected in the benchmark methodology (OJ L 406, 3.12.2020, p. 12)."
+                },
+                {
+                    "embedding_id": "e6ec506d-798c-47fc-8356-44e8ef53f9ec",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 63562,
+                    "score": 0.7863925099372864,
+                    "text": "(23) Regulation (EC) No 1606/2002 of the European Parliament and of the Council of 19 July 2002 on the application of international accounting standards (OJ L 243, 11.9.2002, p. 1).\n\nThe European Securities and Markets Authority (ESMA), the European Banking Authority (EBA) and the European Insurance and Occupational Pensions Authority (EIOPA) play a role in drafting regulatory technical standards pursuant to Regulation (EU) 2019/2088 and there needs to be coherence between those regulatory technical standards and sustainability reporting standards. Under Regulation (EU) No 1095/2010 of the European Parliament and of the Council (24), ESMA also plays a role in promoting supervisory convergence in the enforcement of corporate reporting by issuers whose securities are admitted to trading on a regulated market in the Union and who will be required to report in accordance with those sustainability reporting standards. Therefore, ESMA, EBA and EIOPA should be required to provide an opinion on EFRAGs technical advice. Such opinions should be provided within two months of the date of receipt of the request from the Commission. In addition, the Commission should consult the European Environment Agency, the European Union Agency for Fundamental Rights, the ECB, the Committee of European Auditing Oversight Bodies (CEAOB) and the Platform on Sustainable Finance to ensure that the sustainability reporting standards are coherent with relevant Union policy and law. Where any of those entities decide to submit an opinion, they should do so within two months of the date of being consulted by the Commission."
+                },
+                {
+                    "embedding_id": "d3ef651d-70e8-45f8-9f98-305756daadf4",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 33153,
+                    "score": 0.7842649221420288,
+                    "text": "(22) Member States should be free to assess the impact of their national transposition measures on small and medium- sized undertakings, in order to ensure that they are not disproportionately affected, with specific attention to be given to micro-undertakings and to avoiding an unnecessary administrative burden. Member States should consider introducing measures to support small and medium-sized undertakings in applying the sustainability reporting standards.\n\n(23) Directive 2004/109/EC of the European Parliament and of the Council (17) applies to undertakings whose securities are admitted to trading on a regulated market in the Union. In order to ensure that undertakings whose securities are admitted to trading on a regulated market in the Union, including third-country issuers, fall under the same sustainability reporting requirements, Directive 2004/109/EC should contain the necessary cross-references to any requirement on sustainability reporting in the annual financial report."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Offering of financial products",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document mentions regulations related to financial products and services, such as disclosure requirements for benchmark administrators and ESG risk disclosure requirements for investment firms. However, it is stated that company X does not offer financial products. Therefore, these regulations do not apply to company X.",
+                "answer": "no"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7910668253898621,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "041fbdac-48a5-4ab8-825a-571581504a6d",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 146858,
+                    "score": 0.7891920804977417,
+                    "text": "For the purposes of the first subparagraph of this paragraph, insurance undertakings referred to in point (a) of the first subparagraph of Article 1(3) of this Directive that are part of a group, on the basis of financial relationships as referred to in point (c)(ii) of Article 212(1) of Directive 2009/138/EC, and which are subject to group supervision in accordance with points (a) to (c) of Article 213(2) of that Directive shall be treated as subsidiary undertakings of the parent undertaking of that group.\n\nThe exemption laid down in paragraph 9 shall also apply to public-interest entities subject to the requirements 10. of this Article, with the exception of large undertakings which are public-interest entities defined in point (a) of point (1) of Article 2 of this Directive.\n\n_____________ (*)\n\nRegulation (EU) 2021/1119 of the European Parliament and of the Council of 30 June 2021 establishing the framework for achieving climate neutrality and amending Regulations (EC) No 401/2009 and (EU) 2018/1999 (European Climate Law) (OJ L 243, 9.7.2021, p. 1). Directive (EU) 2022/2464 of the European Parliament and of the Council of 14 December 2022 amending Regulation (EU) No 537/2014, Directive 2004/109/EC, Directive 2006/43/EC and Directive 2013/34/EU, as regards corporate sustainability reporting (OL L 322, 16.12.2022, p. 15). Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (OJ L 335, 17.12.2009, p. 1)."
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7849077582359314,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH)",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document does not mention the REACH regulation, therefore it cannot be determined if it applies to company X.",
+                "answer": "unclear"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7888192534446716,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7817148566246033,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "4503a1c5-9a62-487c-a348-72e433bc6f33",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 173782,
+                    "score": 0.7807581424713135,
+                    "text": "3. The Commission shall, at least every three years after their date of application, review the delegated acts adopted pursuant to this Article, taking into consideration the technical advice of the EFRAG and, where necessary, it shall amend such delegated acts to take into account relevant developments, including developments with regard to international standards.\n\n_____________ (1)* Commission Delegated Regulation (EU) 2020/1816 of 17 July 2020 supplementing Regulation (EU) 2016/1011 of the European Parliament and of the Council as regards the explanation in the benchmark statement of how environmental, social and governance factors are reflected in each benchmark provided and published (OJ L 406, 3.12.2020, p. 1).\n\n(2)* Commission Delegated Regulation (EU) 2020/1817 of 17 July 2020 supplementing Regulation (EU) 2016/1011 of the European Parliament and of the Council as regards the minimum content of the explanation on how environmental, social and governance factors are reflected in the benchmark methodology (OJ L 406, 3.12.2020, p. 12)."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Manufacturers or distributors of batteries",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document does not mention any specific regulations or requirements for manufacturers or distributors of batteries. Therefore, based on the information provided, it cannot be determined that this regulation applies specifically to company X, which is not a manufacturer or distributor of batteries.",
+                "answer": "no"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7736949920654297,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "c009a1c0-db7c-4028-aeff-9aee7f269860",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 206182,
+                    "score": 0.770654559135437,
+                    "text": "the following subparagraph is added:\n\nThe criteria that the Commission shall use when assessing the equivalence of sustainability reporting standards used by third-country issuers referred to in the third subparagraph shall at least ensure the following:\n\nthat the sustainability reporting standards require undertakings to disclose information on environmental, social and governance factors;\n\nthat the sustainability reporting standards require undertakings to disclose information necessary to understand their information necessary to understand how sustainability matters affect their development, performance and position.;\n\nthe following Article is inserted:\n\nArticle 28d\n\nESMA guidelines\n\nAfter consulting the European Environment Agency and the European Union Agency for Fundamental Rights, ESMA shall issue guidelines in accordance with Article 16 of Regulation (EU) No 1095/2010 on the supervision of sustainability reporting by national competent authorities..\n\nArticle 3\n\nAmendments to Directive 2006/43/EC\n\nDirective 2006/43/EC is amended as follows:\n\n(1) Article 1 is replaced by the following:\n\nArticle 1"
+                },
+                {
+                    "embedding_id": "5eb2115f-0edb-4e7d-b8a3-ad2ac6e372f4",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 93159,
+                    "score": 0.7678381204605103,
+                    "text": "(33) Commission Delegated Regulation (EU) 2019/815 of 17 December 2018 supplementing Directive 2004/109/EC of the European Parliament and of the Council with regard to regulatory technical standards on the specification of a single electronic reporting format (OJ L 143, 29.5.2019, p. 1).\n\nreport can also give the impression, internally and externally, that sustainability information belongs to a category of less relevant information, which can impact negatively on the perceived reliability of the information. Undertakings should therefore report sustainability information in a clearly identifiable dedicated section of the management report and Member States should no longer be allowed to exempt undertakings from the obligation to include in the management report information on sustainability matters.\n\nSuch obligation would also help to clarify the role of national competent authorities in supervising sustainability reporting, as part of the management report prepared in accordance with Directive 2004/109/EC. In addition, undertakings required to report sustainability information should in no case be exempted from the obligation to publish the management report, as it is important to ensure that sustainability information is publicly available."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Jurisdiction",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account."
+                    },
+                    {
+                        "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks."
+                    },
+                    {
+                        "text": "Regulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022."
+                    }
+                ],
+                "reasoning": "The document mentions several regulations and directives of the European Parliament and of the Council that apply to undertakings in the EU. These include regulations and directives related to environmental, social and governance (ESG) disclosure requirements, standards for sustainable economic activities, and ESG risk disclosure requirements. Since company X is subject to the jurisdiction of the EU, these regulations and directives apply to it.",
+                "answer": "yes"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7890728712081909,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7863463163375854,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "4503a1c5-9a62-487c-a348-72e433bc6f33",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 173782,
+                    "score": 0.7834369540214539,
+                    "text": "3. The Commission shall, at least every three years after their date of application, review the delegated acts adopted pursuant to this Article, taking into consideration the technical advice of the EFRAG and, where necessary, it shall amend such delegated acts to take into account relevant developments, including developments with regard to international standards.\n\n_____________ (1)* Commission Delegated Regulation (EU) 2020/1816 of 17 July 2020 supplementing Regulation (EU) 2016/1011 of the European Parliament and of the Council as regards the explanation in the benchmark statement of how environmental, social and governance factors are reflected in each benchmark provided and published (OJ L 406, 3.12.2020, p. 1).\n\n(2)* Commission Delegated Regulation (EU) 2020/1817 of 17 July 2020 supplementing Regulation (EU) 2016/1011 of the European Parliament and of the Council as regards the minimum content of the explanation on how environmental, social and governance factors are reflected in the benchmark methodology (OJ L 406, 3.12.2020, p. 12)."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Markets (countries)",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates."
+                    },
+                    {
+                        "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable."
+                    },
+                    {
+                        "text": "Regulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022."
+                    },
+                    {
+                        "text": "The introduction of the requirement for small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to disclose information on sustainability matters is also necessary to ensure that financial market participants have the information they need from investee undertakings to be able to comply with their own sustainability disclosure requirements laid down in Regulation (EU) 2019/2088."
+                    }
+                ],
+                "reasoning": "The document mentions several regulations that apply to companies operating in the EU, including those that have issued securities that are admitted to trading on a regulated market. These regulations require such companies to disclose information on ESG risks. The document also mentions that small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union are required to disclose information on sustainability matters. Therefore, if company X is either a large institution or a small/medium-sized undertaking (except micro undertakings) that has issued securities admitted to trading on a regulated market in the EU, these regulations would apply.",
+                "answer": "unclear"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7990961670875549,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7961946725845337,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "1ccf5f1e-204e-4374-aac4-f2f2401d36db",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 30394,
+                    "score": 0.7875188589096069,
+                    "text": "It will therefore help to protect and enhance the access of smaller undertakings whose securities are admitted to trading on a regulated market in the Union to financial capital, and avoid discrimination against such undertakings on the part of financial market participants. The introduction of the requirement for small and medium-sized undertakings, except micro undertakings, whose securities are admitted to trading on a regulated market in the Union to disclose information on sustainability matters is also necessary to ensure that financial market participants have the information they need from investee undertakings to be able to comply with their own sustainability disclosure requirements laid down in Regulation (EU) 2019/2088. Small and medium-sized undertakings whose securities are admitted to trading on a regulated market in the Union should be given the possibility of reporting in accordance with standards that are proportionate to their capacities and resources, and relevant to the scale and complexity of their activities. Small and medium-sized undertakings whose securities are not admitted to trading on a regulated market in the Union should also have the possibility of choosing to use such proportionate standards on a voluntary basis."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Sourcing (countries)",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable."
+                    },
+                    {
+                        "text": "Regulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022."
+                    },
+                    {
+                        "text": "Directive 2004/109/EC, as amended by this amending Directive, should provide for appropriate mechanisms to determine the equivalence of sustainability reporting standards, and undertakings whose securities are admitted to trading on a regulated market in the Union and undertakings whose securities are not admitted to trading on a regulated market in the Union should be required to report in accordance with the same sustainability reporting standards."
+                    }
+                ],
+                "reasoning": "The document mentions several regulations and directives that apply to companies operating within the European Union. These include requirements for disclosing information on ESG risks, the need for sustainable investments, and the requirement to report in accordance with sustainability reporting standards. Since company X sources from the EU, it is likely that these regulations apply to it.",
+                "answer": "yes"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7975056171417236,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "53c9ab46-8a47-4a82-a98d-9bd9059bb3c3",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 37093,
+                    "score": 0.7938020825386047,
+                    "text": "Directive 2004/109/EC, as amended by this amending Directive, should provide for appropriate mechanisms to determine the equivalence of sustainability reporting standards, and undertakings whose securities are admitted to trading on a regulated market in the Union and undertakings whose securities are not admitted to trading on a regulated market in the Union should be required to report in accordance with the same sustainability reporting standards. In this context, the implementing acts adopted by the Commission pursuant to point (i) of the first subparagraph of Article 23(4) and the fourth subparagraph of Article 23(4) of Directive 2004/109/EC establishing a mechanism for the determination of equivalence of standards should be used to determine whether to exempt subsidiary undertakings of third-country parent undertakings under the regime of Directive 2013/34/EU. Therefore, the subsidiary undertaking should be exempted when the consolidated sustainability reporting is carried out in accordance with the sustainability reporting standards adopted by the Commission pursuant to Article 29b of Directive 2013/34/EU introduced by this amending Directive or in a manner equivalent to those sustainability reporting standards, as determined in accordance with an implementing act on the equivalence of sustainability"
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7925477027893066,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Production (Countries)",
+            "response": {
+                "relevant_excerpts": [
+                    {
+                        "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable."
+                    },
+                    {
+                        "text": "Regulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022."
+                    },
+                    {
+                        "text": "The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022."
+                    }
+                ],
+                "reasoning": "The document mentions several regulations of the European Parliament and of the Council that apply to companies operating within the EU. These regulations include requirements for disclosing information on ESG risks and the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process. Therefore, if company X is producing in the EU, these regulations would apply to it.",
+                "answer": "yes"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7890630960464478,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.780647873878479,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "53c9ab46-8a47-4a82-a98d-9bd9059bb3c3",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 37093,
+                    "score": 0.7796157002449036,
+                    "text": "Directive 2004/109/EC, as amended by this amending Directive, should provide for appropriate mechanisms to determine the equivalence of sustainability reporting standards, and undertakings whose securities are admitted to trading on a regulated market in the Union and undertakings whose securities are not admitted to trading on a regulated market in the Union should be required to report in accordance with the same sustainability reporting standards. In this context, the implementing acts adopted by the Commission pursuant to point (i) of the first subparagraph of Article 23(4) and the fourth subparagraph of Article 23(4) of Directive 2004/109/EC establishing a mechanism for the determination of equivalence of standards should be used to determine whether to exempt subsidiary undertakings of third-country parent undertakings under the regime of Directive 2013/34/EU. Therefore, the subsidiary undertaking should be exempted when the consolidated sustainability reporting is carried out in accordance with the sustainability reporting standards adopted by the Commission pursuant to Article 29b of Directive 2013/34/EU introduced by this amending Directive or in a manner equivalent to those sustainability reporting standards, as determined in accordance with an implementing act on the equivalence of sustainability"
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        },
+        {
+            "key_parameter": "Products and Services offered",
+            "response": {
+                "relevant_excerpts": [],
+                "reasoning": "The document primarily discusses regulations related to environmentally sustainable economic activities, ESG disclosure requirements for benchmark administrators, and ESG risk disclosure requirements for investment firms. It does not mention or imply any regulations specifically related to the production or sale of baby food.",
+                "answer": "no"
+            },
+            "relevant_embeddings": [
+                {
+                    "embedding_id": "9225f41d-c2b9-4dcf-961e-307419f34a8b",
+                    "rank": 1,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 4438,
+                    "score": 0.7865089178085327,
+                    "text": "Regulation (EU) 2020/852 of the European Parliament and of the Council (6) creates a classification system of environmentally sustainable economic activities with the aim of scaling up sustainable investments and combatting greenwashing of financial products that unduly claim to be sustainable. Regulation (EU) 2019/2089 of the European Parliament and of the Council (7), complemented by Commission Delegated Regulations (EU) 2020/1816 (8), (EU) 2020/1817 (9) and (EU) 2020/1818 (10), introduces environmental, social and governance (ESG) disclosure requirements for benchmark administrators and minimum standards for the construction of EU Climate Transition Benchmarks and EU Paris-aligned Benchmarks.\n\nRegulation (EU) No 575/2013 of the European Parliament and of the Council (11) requires large institutions which have issued securities that are admitted to trading on a regulated market to disclose information on ESG risks from 28 June 2022. The prudential framework for investment firms established by Regulation (EU) 2019/2033 of the European Parliament and of the Council (12) and Directive (EU) 2019/2034 of the European Parliament and of the Council (13) contains provisions concerning the introduction of an ESG risk dimension in the Supervisory Review and Evaluation Process (SREP) by competent authorities, and contains ESG risk disclosure requirements for investment firms, applicable from 26 December 2022. On 6 July 2021, the Commission also adopted a proposal for a Regulation of the European Parliament and of the Council on European green bonds, following up on the Action Plan on Financing Sustainable Growth."
+                },
+                {
+                    "embedding_id": "c9e43357-3cc0-46e0-97d5-cc15d0d309ae",
+                    "rank": 2,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 66272,
+                    "score": 0.7767549753189087,
+                    "text": "Standards should take account of Union environmental law, including Regulation (EC) No 1221/2009 of the European Parliament and of the Council (26) and Directive 2003/87/EC of the European Parliament and of the Council (27), and should take account of Commission Recommendation 2013/179/EU (28), its annexes and their updates. Other relevant Union law, including Directive 2010/75/EU of the European Parliament and of the Council (29), and other requirements laid down in Union law for undertakings as regards directors duties and due diligence should also be taken into account.\n\n(24) Regulation (EU) No 1095/2010 of the European Parliament and of the Council of 24 November 2010 establishing a European Supervisory Authority (European Securities and Markets Authority), amending Decision No 716/2009/EC and repealing Commission Decision 2009/77/EC (OJ L 331, 15.12.2010, p. 84).\n\n(25) Regulation (EU) 2016/1011 of the European Parliament and of the Council of 8 June 2016 on indices used as benchmarks in financial instruments and financial contracts or to measure the performance of investment funds and amending Directives 2008/48/EC and 2014/17/EU and Regulation (EU) No 596/2014 (OJ L 171, 29.6.2016, p. 1)."
+                },
+                {
+                    "embedding_id": "041fbdac-48a5-4ab8-825a-571581504a6d",
+                    "rank": 3,
+                    "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+                    "offset": 146858,
+                    "score": 0.7764327526092529,
+                    "text": "For the purposes of the first subparagraph of this paragraph, insurance undertakings referred to in point (a) of the first subparagraph of Article 1(3) of this Directive that are part of a group, on the basis of financial relationships as referred to in point (c)(ii) of Article 212(1) of Directive 2009/138/EC, and which are subject to group supervision in accordance with points (a) to (c) of Article 213(2) of that Directive shall be treated as subsidiary undertakings of the parent undertaking of that group.\n\nThe exemption laid down in paragraph 9 shall also apply to public-interest entities subject to the requirements 10. of this Article, with the exception of large undertakings which are public-interest entities defined in point (a) of point (1) of Article 2 of this Directive.\n\n_____________ (*)\n\nRegulation (EU) 2021/1119 of the European Parliament and of the Council of 30 June 2021 establishing the framework for achieving climate neutrality and amending Regulations (EC) No 401/2009 and (EU) 2018/1999 (European Climate Law) (OJ L 243, 9.7.2021, p. 1). Directive (EU) 2022/2464 of the European Parliament and of the Council of 14 December 2022 amending Regulation (EU) No 537/2014, Directive 2004/109/EC, Directive 2006/43/EC and Directive 2013/34/EU, as regards corporate sustainability reporting (OL L 322, 16.12.2022, p. 15). Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (OJ L 335, 17.12.2009, p. 1)."
+                }
+            ],
+            "title": "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL"
+        }
+    ]
+}
