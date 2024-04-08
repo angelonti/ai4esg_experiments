@@ -26,3 +26,5 @@ def downgrade() -> None:
     op.execute("ALTER TABLE embeddings ALTER COLUMN values TYPE float[]")
     op.execute("DROP EXTENSION IF EXISTS vector")
     # ### end Alembic commands ###
+
+

@@ -29,10 +29,9 @@ Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>
 '''
 
-prompt_requirements_and_penalties = '''Given the following document determine if the document contains information
-about the requirements for companies to comply with the law, and penalties for non-compliance.
-If the document contains any such information extract all relevant excerpts for the document.
-Make sure to be as thorough as possible to not miss any relevant information.
+prompt_requirements_and_penalties = '''Given the following legal document determine if the document contains information about what measures companies should take in order to be in compliance with this law, and also what are the penalties for companies in case of non-compliance.
+Only if the document contains such information, then extract the relevant excerpts.
+Be as thorough as possible, make sure to extract only the relevant excerpts that explain what companies must do to be compliant and the penalties in case of non-compliance, nothing else.
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>

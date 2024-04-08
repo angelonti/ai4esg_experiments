@@ -14,25 +14,26 @@ from unstructured.partition.pdf import Element
 
 from backend.config import config
 from backend.modules.document.pydantic.models import (
-    RegulationKeyParameterDataList,
-    RegulationKeyParameterData,
     RequirementsAndPenalties
 )
-from backend.modules.prompts.legal_info_extraction_prompts import (
-    priming,
-    prompt_key_parameters,
-    prompt_requirements_and_penalties,
-    key_parameters
-)
-
 from backend.modules.document.utils.DocumentReader import (
     DocumentReader,
     get_document_metadata,
 )
 from backend.modules.document.utils.DocumentReaderProviders import Providers
-from modules.document.schemas import DocumentParsed, DocType
+from backend.modules.prompts.legal_info_extraction_prompts import (
+    priming,
+    prompt_requirements_and_penalties
+)
+from modules.document.schemas import Document
 from modules.document.service import create_from_partitions as create_document_from_partitions
-from modules.embedding.utils import chunk_partitions
+from modules.penalty.schemas import PenaltyCreate
+from modules.penalty.service import create as create_penalty
+from modules.requirement.schemas import RequirementCreate
+from modules.requirement.service import create as create_requirement
+from modules.requirement.service import get_summary_by_document_id as get_requirement_summary_by_document_id
+from modules.penalty.service import get_summary_by_document_id as get_penalty_summary_by_document_id
+from modules.document.summary.service import SummaryService
 
 logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
@@ -62,14 +63,29 @@ class EsgRegulationIngestor:
         # self.prompt_template_key_parameters = self.system_message_prompt_template + prompt_key_parameters
         self.prompt_template_reqs_and_penalties = self.system_message_prompt_template + prompt_requirements_and_penalties
         self.chatModel = self.get_chat_model()
+        self.summary_service = SummaryService(self.chatModel)
         self.batch_size = batch_size
 
     async def ingest_all(self) -> None:
         # self.ingest_key_parameters()
-        await create_document_from_partitions(self.documents, title=self.metadata["title"])
-        await self.ingest_reqs_and_penalties()
+        created_doc = await create_document_from_partitions(self.documents, title=self.metadata["title"])
+        await self.ingest_reqs_and_penalties(created_doc)
+        await self.create_summaries(created_doc.id)
 
-    async def ingest_reqs_and_penalties(self) -> None:
+    async def create_summaries(self, document_id) -> None:
+        requirements_summary = get_requirement_summary_by_document_id(document_id)
+        if requirements_summary is None:
+            await self.summary_service.create_requirements_summary(document_id)
+        else:
+            logger.debug("Requirements summary already exists")
+
+        penalties_summary = get_penalty_summary_by_document_id(document_id)
+        if penalties_summary is None:
+            await self.summary_service.create_penalties_summary(document_id)
+        else:
+            logger.debug("Penalties summary already exists")
+
+    async def ingest_reqs_and_penalties(self, created_doc) -> None:
         chain_reqs_and_penalties = self.get_chain_reqs_and_penalties()
 
         start = 0
@@ -95,6 +111,8 @@ class EsgRegulationIngestor:
                 }
             ])
             response_reqs_and_penalties = response_reqs_and_penalties[0]["response"]
+            self.save_reqs_db(response_reqs_and_penalties, doc=created_doc, pages_start=i, pages_end=end)
+            self.save_penalties_db(response_reqs_and_penalties, doc=created_doc, pages_start=i, pages_end=end)
             logger.debug("########## RESPONSE ##########")
             logger.debug(response_reqs_and_penalties)
             if reqs_and_penalties_data is None:
@@ -108,9 +126,37 @@ class EsgRegulationIngestor:
             with open(full_file_path, "w") as f:
                 json.dump(reqs_and_penalties_data, f, indent=4)
 
-        if reqs_and_penalties_data["metadata"]["processed_pages"] == len(self.documents_paged):
-            # save_reqs_and_penalties_db(reqs_and_penalties_data) TODO: Implement this function
-            logger.debug("##########REQS AND PENALTIES INGESTION COMPLETED ##########")
+        #if reqs_and_penalties_data["metadata"]["processed_pages"] == len(self.documents_paged):
+        # save_reqs_and_penalties_db(reqs_and_penalties_data) TODO: Implement this function
+        logger.debug("##########REQS AND PENALTIES INGESTION COMPLETED ##########")
+
+    def find_text_page_number(self, text: str, pages_start, pages_end):
+        for i in range(pages_start, pages_end):
+            if text in self.documents_paged[i]:
+                return i + 1  # page numbers are 1-indexed
+        return 0
+
+    def save_reqs_db(self, response_reqs_and_penalties: dict, doc: Document, pages_start: int, pages_end: int):
+        data = response_reqs_and_penalties["data"]
+        reqs = data["requirements_for_compliance"]["excerpts"]
+        for req in reqs:
+            req_create = RequirementCreate(
+                document_id=doc.id,
+                text=req["text"],
+                page_number=self.find_text_page_number(req["text"], pages_start, pages_end),
+            )
+            create_requirement(req_create)
+
+    def save_penalties_db(self, response_reqs_and_penalties: dict, doc: Document, pages_start: int, pages_end: int):
+        data = response_reqs_and_penalties["data"]
+        penalties = data["penalties"]["excerpts"]
+        for penalty in penalties:
+            penalty_create = PenaltyCreate(
+                document_id=doc.id,
+                text=penalty["text"],
+                page_number=self.find_text_page_number(penalty["text"], pages_start, pages_end),
+            )
+            create_penalty(penalty_create)
 
     """
     def ingest_key_parameters(self) -> None:
@@ -183,6 +229,7 @@ class EsgRegulationIngestor:
     def get_default_key_parameters_parser():
         return SimpleJsonOutputParser(pydantic_object=RegulationKeyParameterDataList)
     """
+
     def get_chain_reqs_and_penalties(self):
         return LLMChain(
             llm=self.chatModel,
