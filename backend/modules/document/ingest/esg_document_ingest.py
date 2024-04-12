@@ -12,16 +12,16 @@ from langchain_core.output_parsers import SimpleJsonOutputParser
 from langchain_core.prompts import SystemMessagePromptTemplate
 from unstructured.partition.pdf import Element
 
-from backend.config import config
-from backend.modules.document.pydantic.models import (
+from config import config
+from modules.document.pydantic.models import (
     RequirementsAndPenalties
 )
-from backend.modules.document.utils.DocumentReader import (
+from modules.document.utils.DocumentReader import (
     DocumentReader,
     get_document_metadata,
 )
-from backend.modules.document.utils.DocumentReaderProviders import Providers
-from backend.modules.prompts.legal_info_extraction_prompts import (
+from modules.document.utils.DocumentReaderProviders import Providers
+from modules.prompts.legal_info_extraction_prompts import (
     priming,
     prompt_requirements_and_penalties
 )
@@ -111,20 +111,21 @@ class EsgRegulationIngestor:
                 }
             ])
             response_reqs_and_penalties = response_reqs_and_penalties[0]["response"]
-            self.save_reqs_db(response_reqs_and_penalties, doc=created_doc, pages_start=i, pages_end=end)
-            self.save_penalties_db(response_reqs_and_penalties, doc=created_doc, pages_start=i, pages_end=end)
             logger.debug("########## RESPONSE ##########")
             logger.debug(response_reqs_and_penalties)
-            if reqs_and_penalties_data is None:
-                reqs_and_penalties_data = response_reqs_and_penalties
-            else:
-                reqs_and_penalties_data = self.merge_reqs_and_penalties_json(reqs_and_penalties_data,
-                                                                             response_reqs_and_penalties)
-            reqs_and_penalties_data["metadata"] = self.metadata
-            reqs_and_penalties_data["metadata"]["processed_pages"] = end
-            os.makedirs(REQUIREMENTS_AND_PENALTIES_DIR, exist_ok=True)
-            with open(full_file_path, "w") as f:
-                json.dump(reqs_and_penalties_data, f, indent=4)
+            if response_reqs_and_penalties is not None:
+                self.save_reqs_db(response_reqs_and_penalties, doc=created_doc, pages_start=i, pages_end=end)
+                self.save_penalties_db(response_reqs_and_penalties, doc=created_doc, pages_start=i, pages_end=end)
+                if reqs_and_penalties_data is None:
+                    reqs_and_penalties_data = response_reqs_and_penalties
+                else:
+                    reqs_and_penalties_data = self.merge_reqs_and_penalties_json(reqs_and_penalties_data,
+                                                                                 response_reqs_and_penalties)
+                reqs_and_penalties_data["metadata"] = self.metadata
+                reqs_and_penalties_data["metadata"]["processed_pages"] = end
+                os.makedirs(REQUIREMENTS_AND_PENALTIES_DIR, exist_ok=True)
+                with open(full_file_path, "w") as f:
+                    json.dump(reqs_and_penalties_data, f, indent=4)
 
         #if reqs_and_penalties_data["metadata"]["processed_pages"] == len(self.documents_paged):
         # save_reqs_and_penalties_db(reqs_and_penalties_data) TODO: Implement this function
@@ -270,6 +271,7 @@ class EsgRegulationIngestor:
 
         return AzureChatOpenAI(
             temperature=0.0,
+            model=config.azure_gpt4_deployment_name,
             deployment_name=config.azure_gpt4_deployment_name,
             openai_api_base=openai.api_base,
             openai_api_version=openai.api_version,

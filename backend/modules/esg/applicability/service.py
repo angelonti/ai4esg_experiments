@@ -6,10 +6,11 @@ import sys
 from modules.embedding.utils import to_relevant_embeddings
 from modules.prompts.applicability_evaluation_prompts import (
     KEY_PARAMETERS,
+    SEARCH_PROMPT_MAP,
     APPLICABILITY_PROMPT_MAP,
+    KEY_PARAMETERS_TO_VARIABLES_MAP
 )
 from dotenv import load_dotenv, find_dotenv
-from modules.document.ingest.esg_document_ingest import EsgRegulationIngestor
 import warnings
 from config import config
 import openai
@@ -35,8 +36,6 @@ openai.api_base = config.api_endpoint
 openai.api_version = "2023-05-15"
 
 warnings.filterwarnings("ignore")
-
-# esg_regulation_ingestor = EsgRegulationIngestor(documents=[], batch_size=2, init_docs=False)
 
 chatOpenAI = AzureChatOpenAI(
     temperature=config.temperature,
@@ -128,19 +127,21 @@ def get_remaining_key_parameters(remaining_key_parameters, saved_results, title)
     return remaining_key_parameters
 
 
-async def determine_applicability_single(input_params: dict, title: str) -> dict:
+async def determine_applicability_single(input_params: dict, title: str, evaluation_name: str) -> dict:
     """
     Determine if a regulation applies to a company based on the company's key parameters.
 
     Args:
-    extracted_file (str): The extracted text from the legal document.
-    regulation_title (str): The title of the regulation.
-    input (dict): The input data.
+    input_params (dict): The input data.
+    title (str): The title of the regulation.
+    evaluation_name (str): The name of the evaluation.
 
     Returns:
     dict: The output data.
     """
+    logger.info(f"Starting applicability evaluation with name: {evaluation_name}")
     logger.info(f"Starting applicability evaluation for {title}")
+    RESULTS_FILE = f"./{evaluation_name}_results.json"
     results = {"data": []}
 
     remaining_key_parameters = KEY_PARAMETERS
@@ -152,8 +153,9 @@ async def determine_applicability_single(input_params: dict, title: str) -> dict
 
     logger.info(f"Remaining key parameters: {remaining_key_parameters}")
     for key_parameter in remaining_key_parameters:
+        search_prompt = SEARCH_PROMPT_MAP[key_parameter]
         eval_prompt = APPLICABILITY_PROMPT_MAP[key_parameter]
-        embedding_response = await get_text_embedding(eval_prompt)
+        embedding_response = await get_text_embedding(search_prompt)
         question_embedding = embedding_response.data[0].embedding
         embeddings = LLMClient.get_relevant_embeddings(question_embedding, config.max_content, title=title)
         relevant_embeddings = to_relevant_embeddings(question_embedding, embeddings)
@@ -166,6 +168,7 @@ async def determine_applicability_single(input_params: dict, title: str) -> dict
         response = chain.invoke(invoke_params)
         results["data"].append({
             "key_parameter": key_parameter,
+            "key_parameter_value": input_params[KEY_PARAMETERS_TO_VARIABLES_MAP[key_parameter]],
             "response": response["response"],
             "relevant_embeddings": relevant_embeddings,
             "title": doc_title,
@@ -173,6 +176,9 @@ async def determine_applicability_single(input_params: dict, title: str) -> dict
         with open(RESULTS_FILE, "w") as f:
             json.dump(results, f, indent=4)
             print(f"saved results to results/{RESULTS_FILE} for key parameter {key_parameter}")
+        if response["response"]["answer"] == "yes":
+            break
+    logger.info(f"Applicability evaluation {evaluation_name} completed")
 
 
 def get_invoke_params(input_params, key_parameter, doc, output_parser):
@@ -199,6 +205,7 @@ def get_invoke_params(input_params, key_parameter, doc, output_parser):
 def get_invoke_params_capital_market_oriented(input_params, doc, output_parser):
     return {
         "is_capital_market_oriented": input_params["is_capital_market_oriented"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -207,6 +214,7 @@ def get_invoke_params_capital_market_oriented(input_params, doc, output_parser):
 def get_invoke_params_number_of_employees(input_params, doc, output_parser):
     return {
         "num_employees": input_params["num_employees"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -216,6 +224,7 @@ def get_invoke_params_assets(input_params, doc, output_parser):
     return {
         "assets": input_params["assets"],
         "currency": input_params["currency"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -225,6 +234,7 @@ def get_invoke_params_revenue(input_params, doc, output_parser):
     return {
         "revenue": input_params["revenue"],
         "currency": input_params["currency"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -233,6 +243,7 @@ def get_invoke_params_revenue(input_params, doc, output_parser):
 def get_invoke_params_offering_of_financial_products(input_params, doc, output_parser):
     return {
         "is_offering_financial_products": input_params["is_offering_financial_products"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -241,6 +252,7 @@ def get_invoke_params_offering_of_financial_products(input_params, doc, output_p
 def get_invoke_params_REACH(input_params, doc, output_parser):
     return {
         "is_REACH": input_params["is_REACH"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -249,6 +261,7 @@ def get_invoke_params_REACH(input_params, doc, output_parser):
 def get_invoke_params_battery(input_params, doc, output_parser):
     return {
         "is_battery": input_params["is_battery"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -257,6 +270,7 @@ def get_invoke_params_battery(input_params, doc, output_parser):
 def get_invoke_params_jurisdiction(input_params, doc, output_parser):
     return {
         "jurisdiction": input_params["jurisdiction"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -265,6 +279,7 @@ def get_invoke_params_jurisdiction(input_params, doc, output_parser):
 def get_invoke_params_markets(input_params, doc, output_parser):
     return {
         "markets": input_params["markets"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -273,6 +288,7 @@ def get_invoke_params_markets(input_params, doc, output_parser):
 def get_invoke_params_sourcing(input_params, doc, output_parser):
     return {
         "sourcing": input_params["sourcing"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -281,6 +297,7 @@ def get_invoke_params_sourcing(input_params, doc, output_parser):
 def get_invoke_params_production(input_params, doc, output_parser):
     return {
         "production": input_params["production"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }
@@ -289,6 +306,7 @@ def get_invoke_params_production(input_params, doc, output_parser):
 def get_invoke_params_products_and_services_offered(input_params, doc, output_parser):
     return {
         "products_and_services_offered": input_params["products_and_services_offered"],
+        "company_name": input_params["company_name"],
         "doc": doc,
         "format_instructions": output_parser.get_format_instructions()
     }

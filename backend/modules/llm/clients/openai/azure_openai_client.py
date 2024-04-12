@@ -2,6 +2,7 @@ from typing import Generator
 from config import config
 import logging
 import sys
+import openai
 
 from openai import AzureOpenAI
 
@@ -19,6 +20,11 @@ logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)
 
+openai.api_key = config.azure_openai_key
+openai.api_base = config.api_endpoint
+openai.api_version = "2023-05-15"
+
+logger.info(f"calling openai chat with api_key: {config.azure_openai_key}")
 azure_client = AzureOpenAI(
     api_key=config.azure_openai_key,
     api_version=config.api_version,

@@ -33,6 +33,8 @@ prompt_requirements_and_penalties = '''Given the following legal document determ
 Only if the document contains such information, then extract the relevant excerpts.
 Be as thorough as possible, make sure to extract only the relevant excerpts that explain what companies must do to be compliant and the penalties in case of non-compliance, nothing else.
 {format_instructions}
+If there is no requirements information, leave the excerpts with its default value (empty).
+Do the same for penalties. Always return a valid json and follow the json formatting instructions, i.e excerpts is a list of objects with a text field.
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>
 '''

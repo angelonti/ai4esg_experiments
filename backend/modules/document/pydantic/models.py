@@ -8,12 +8,12 @@ class LawText(BaseModel):
 
 class RequirementsForCompliance(BaseModel):
     excerpts: list[LawText] = Field(default=list(),
-                                    description="excerpts from the document that contains information about the requirements for compliance with the law")
+                                    description="list of objects with text excerpts from the document that contains information about the requirements for compliance with the law")
 
 
 class Penalties(BaseModel):
     excerpts: list[LawText] = Field(default=list(),
-                                    description="excerpts from the document that contains information about the penalties for non-compliance")
+                                    description="list of objects with text excerpts from the document that contains information about the penalties for non-compliance")
 
 
 class RequirementsAndPenaltiesData(BaseModel):

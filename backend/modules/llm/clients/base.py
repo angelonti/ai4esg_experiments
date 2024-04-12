@@ -31,14 +31,14 @@ class LLMClient(ABC):
 
         return default_prompt
 
-    async def ask(self, question: str, prompt: str | None = None) \
+    async def ask(self, question: str, prompt: str | None = None, title: str = None) \
             -> tuple[list[float], AnsweredCreate, Generator[str, None, None], int]:
         self.prompt = prompt
         question_embedding_response = await get_text_embedding(question)
         question_embedding = question_embedding_response.data[0].embedding
 
         max_embedding_cnt = self.get_max_embedding_cnt()
-        embeddings = self.get_relevant_embeddings(question_embedding, max_embedding_cnt)
+        embeddings = self.get_relevant_embeddings(question_embedding, max_embedding_cnt, title=title)
 
         prompt = self.generate_prompt(question, embeddings)
 

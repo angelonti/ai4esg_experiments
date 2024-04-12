@@ -35,6 +35,11 @@ def get_all() -> list[Document]:
     return [Document.from_orm(doc_model) for doc_model in doc_models]
 
 
+def get_all_titles() -> list[str]:
+    doc_models = db.session.query(DocumentModel).all()
+    return [doc_model.title for doc_model in doc_models]
+
+
 async def create(document: DocumentParsed) -> Document:
     doc_obj = DocumentModel(**document.dict(), id=uuid4())
     db.session.add(doc_obj)
