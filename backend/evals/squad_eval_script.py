@@ -19,7 +19,7 @@ class Evaluator(object):
         """
         assert (path is None) != (articles is None)
         if path is not None:
-            with open(path, 'r') as fileobj:
+            with open(path, 'r', encoding="utf-8") as fileobj:
                 articles = json.loads(fileobj.read())['data']
         self._answers = {}
         for article in articles:
@@ -119,7 +119,7 @@ class Evaluator(object):
         return f1, max_precision, max_recall
 
     def evaluate(self, file_path: str):
-        with open(file_path, "r") as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             results = json.load(f)
 
         preds = {result["id"]: result["pred_answer"] for result in results["data"]}

@@ -60,7 +60,7 @@ def gather_policy_text(policy_data: Any) -> str:
 
 
 def calculate_avg_context_size(file_path: str) -> float:
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             total = 0
@@ -75,7 +75,7 @@ def calculate_avg_context_size(file_path: str) -> float:
 
 
 def calculate_avg_answer_size(file_path: str):
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             total = 0
@@ -94,7 +94,7 @@ def calculate_avg_answer_size(file_path: str):
 
 
 def calculate_min_max_answer_size(file_path: str):
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             max = 0
@@ -115,7 +115,7 @@ def calculate_min_max_answer_size(file_path: str):
 
 
 def calculate_min_max_context_size(file_path: str):
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             max = 0
@@ -132,7 +132,7 @@ def calculate_min_max_context_size(file_path: str):
 
 
 def count_answers(file_path: str):
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             count = 0
@@ -148,7 +148,7 @@ def count_answers(file_path: str):
 
 
 def count_questions(file_path: str):
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             count = 0

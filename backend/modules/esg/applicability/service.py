@@ -19,8 +19,11 @@ from langchain.chains import LLMChain
 from langchain.chat_models import AzureChatOpenAI
 from langchain_core.output_parsers import SimpleJsonOutputParser
 from modules.document.pydantic.models import KeyParameterEvaluation
+from modules.document.utils.token_utils import TokenStats
 from modules.llm.utils import get_text_embedding
 from modules.llm.clients.base import LLMClient
+from modules.evaluation_result.schemas import EvaluationResultCreate
+from modules.evaluation_result.service import create as create_evaluation_result
 
 logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
@@ -139,8 +142,13 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
     Returns:
     dict: The output data.
     """
+    token_stats = TokenStats()
+    total_input_tokens: int = 0
+    total_output_tokens: int = 0
+
     logger.info(f"Starting applicability evaluation with name: {evaluation_name}")
     logger.info(f"Starting applicability evaluation for {title}")
+    logger.info(f"Input parameters:\n {input_params}")
     RESULTS_FILE = f"./{evaluation_name}_results.json"
     results = {"data": []}
 
@@ -158,6 +166,7 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
         embedding_response = await get_text_embedding(search_prompt)
         question_embedding = embedding_response.data[0].embedding
         embeddings = LLMClient.get_relevant_embeddings(question_embedding, config.max_content, title=title)
+        document_id = embeddings[0].document.id
         relevant_embeddings = to_relevant_embeddings(question_embedding, embeddings)
         prompt = PromptTemplate.from_template(eval_prompt)
         doc = "".join([embedding.text + "\n\n" for embedding in embeddings])
@@ -165,20 +174,42 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
         output_parser = SimpleJsonOutputParser(pydantic_object=KeyParameterEvaluation)
         chain = LLMChain(llm=chatOpenAI, verbose=True, prompt=prompt, output_parser=output_parser, output_key="response")
         invoke_params = get_invoke_params(input_params, key_parameter, doc, output_parser)
+        prepped_prompt = chain.prep_prompts([invoke_params])
+        input_tokens = token_stats._calculate_total_document_tokens([prepped_prompt[0][0].text])
+        logger.info(f"Input tokens: {input_tokens}")
+        total_input_tokens += input_tokens
         response = chain.invoke(invoke_params)
-        results["data"].append({
+        output_tokens = token_stats._calculate_total_document_tokens([str(response["response"])])
+        logger.info(f"Output tokens: {output_tokens}")
+        total_output_tokens += output_tokens
+        record = {
             "key_parameter": key_parameter,
             "key_parameter_value": input_params[KEY_PARAMETERS_TO_VARIABLES_MAP[key_parameter]],
             "response": response["response"],
             "relevant_embeddings": relevant_embeddings,
             "title": doc_title,
-        })
-        with open(RESULTS_FILE, "w") as f:
-            json.dump(results, f, indent=4)
+        }
+        if key_parameter in ["Assets", "Revenue"]:
+            record["currency"] = input_params["currency"]
+
+        results["data"].append(record)
+        with open(RESULTS_FILE, "w", encoding="utf8") as f:
+            json.dump(results, f, indent=4, ensure_ascii=False)
             print(f"saved results to results/{RESULTS_FILE} for key parameter {key_parameter}")
-        if response["response"]["answer"] == "yes":
+        if response["response"]["answer"] == "yes": # temporal comment
             break
+
+    # save to database
+    evaluation_result = EvaluationResultCreate(
+        document_id=document_id,
+        evaluation_name=evaluation_name,
+        evaluation=results
+    )
+    create_evaluation_result(evaluation_result)
+
     logger.info(f"Applicability evaluation {evaluation_name} completed")
+    logger.info(f"Total input tokens: {total_input_tokens}")
+    logger.info(f"Total output tokens: {total_output_tokens}")
 
 
 def get_invoke_params(input_params, key_parameter, doc, output_parser):

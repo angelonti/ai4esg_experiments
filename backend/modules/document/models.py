@@ -17,6 +17,7 @@ class DocumentModel(Base):
     doc_type = Column(Enum(DocType))
     source = Column(String)
     embeddings = relationship("EmbeddingModel", cascade="all,delete", backref="documents")
+    #evaluation_results = relationship("EvaluationResultModel", backref="documents")
     #penalties = relationship("PenaltyModel", cascade="all,delete", backref="documents")
     #requirements = relationship("RequirementModel", cascade="all,delete", backref="documents")
     #penalty_summaries = relationship("PenaltySummaryModel", cascade="all,delete", backref="documents")

@@ -24,7 +24,6 @@ openai.api_key = config.azure_openai_key
 openai.api_base = config.api_endpoint
 openai.api_version = "2023-05-15"
 
-logger.info(f"calling openai chat with api_key: {config.azure_openai_key}")
 azure_client = AzureOpenAI(
     api_key=config.azure_openai_key,
     api_version=config.api_version,

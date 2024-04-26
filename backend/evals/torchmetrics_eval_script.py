@@ -21,7 +21,7 @@ def eval_squad_metrics(file_path: str):
 
 
 def prepare_squad_data(file_path: str) -> tuple[list[dict], list[dict]]:
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding="utf-8") as file:
         results_data = json.load(file)
 
     preds = []
@@ -89,7 +89,7 @@ def eval_retrieval_metrics(file_path: str, top_k: int = 5):
 
 
 def prepare_retrieval_data(file_path: str, top_k: int = 5):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding="utf-8") as file:
         data = json.load(file)['data']
 
     ids = []

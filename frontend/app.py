@@ -12,6 +12,7 @@ from modules.requirement.service import get_by_document_id as get_requirements_b
 from modules.penalty.service import get_by_document_id as get_penalties_by_document_id
 from modules.answer.schemas import AnswerCreate
 from modules.answer.service import create as create_answer
+from modules.evaluation_result.service import get_all as get_all_evaluations
 from modules.esg.applicability.service import determine_applicability_single
 from data import all_countries, all_regions
 import random
@@ -57,15 +58,18 @@ def show_evaluation_form():
     all_regions_and_countries = all_regions + all_countries
     with st.form(key="evaluation_form", border=True, clear_on_submit=False):
         st.write("**Give this evaluation a name**:")
-        st.text_input("Evaluation name", key="evaluation_name", placeholder="Enter a name for this evaluation")
+        st.text_input("Evaluation name", key="evaluation_name", placeholder="Enter a name for this evaluation",
+                      help="Evaluation name must be an alphanumeric string with no spaces. Underscores '_' are allowed.")
         st.write("**Enter your company's parameters**:")
         st.text_input("Company name", key="company_name")
         st.radio("Is the company capital market oriented?", ["is", "is not"], format_func=map_yes_no_radios,
                  key="is_capital_market_oriented")
         st.number_input("Number of employees", min_value=0, step=1, key="num_employees")
         st.selectbox("Currency", ["USD", "EUR", "GBP", "JPY", "CNY"], key="currency", index=1)
-        st.number_input("Total Assets", min_value=0.00, step=0.01, key="assets")
-        st.number_input("Yearly Revenue", min_value=0.00, step=0.01, key="revenue")
+        st.number_input("Total assets", min_value=0.00, step=0.01,
+                        format="%.2f", key="assets")
+        st.number_input("Yearly revenue", min_value=0.00, step=0.01,
+                        format="%.2f", key="revenue")
         st.radio("Is the company offering financial products?", ["is", "is not"], format_func=map_yes_no_radios,
                  key="is_offering_financial_products")
         st.radio(
@@ -103,12 +107,18 @@ def map_yes_no_radios(value):
         return "No"
 
 
+def validate_evaluation_name(name: str):
+    if not (name.replace("_", "").isalnum() or len(name) == 0) or (" " in name):
+        return False
+    return True
+
+
 def validate_input_data(input_data: dict):
     st.session_state["evaluation_form_error"] = False
     for key, value in input_data.items():
-        if key == "evaluation_name" and not (value.isalnum() and len(value) > 0):
+        if key == "evaluation_name" and not (validate_evaluation_name(value)):
             st.session_state[
-                "error_message"] = "Evaluation name must be an alphanumeric string. No special characters allowed."
+                "error_message"] = "Evaluation name must be an alphanumeric string with no spaces. Underscores '_' are allowed."
             st.session_state["evaluation_form_error"] = True
         if not value:
             st.session_state["error_message"] = f"Please provide a value for {key}"
@@ -129,8 +139,8 @@ def process_form_data() -> tuple[dict, str]:
         "is_capital_market_oriented": st.session_state["is_capital_market_oriented"],
         "num_employees": st.session_state["num_employees"],
         "currency": st.session_state["currency"],
-        "assets": st.session_state["assets"],
-        "revenue": st.session_state["revenue"],
+        "assets": st.session_state['assets'],
+        "revenue": st.session_state['revenue'],
         "is_offering_financial_products": st.session_state["is_offering_financial_products"],
         "is_REACH": st.session_state["is_REACH"],
         "is_battery": st.session_state["is_battery"],
@@ -252,14 +262,14 @@ def regulations_page():
 def results_page():
     st.divider()
     st.subheader("View saved results 🗄️")
+    st.write(get_all_evaluations())
 
 
-def test_response_generator():
+def initial_response_generator():
     response = random.choice(
         [
-            "Hello there! How can I assist you today?",
-            "Hi, human! Is there anything I can help you with?",
-            "Do you need help?",
+            "Hi! Is there any question about hits regulation I can help you with?",
+            "Do you have any question about this regulation?",
         ]
     )
     for word in response.split():
@@ -274,10 +284,14 @@ def chatbot_page():
     st.divider()
     if "messages" not in st.session_state:
         st.session_state.messages = []
-
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        with st.chat_message("assistant"):
+            initial_response = initial_response_generator()
+            initial_message = st.write_stream(initial_response)
+        st.session_state.messages.append({"role": "assistant", "content": initial_message})
+    else:
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
 
     if question := st.chat_input("Ask your question about regulations here."):
         with st.chat_message("user"):
@@ -290,7 +304,15 @@ def chatbot_page():
                 model=Model.AZURE_GPT4,
                 prompt="You are a legal expert in ESG regulation, "
                        "first cite the relevant text from the contexts that can be used to answer the question. "
-                       "Then answer the question based of the given contexts"
+                       "Then answer the question based on the given contexts"
+                #prompt="""You are a legal expert in ESG regulation,
+                #Answer the question by copying exactly a portion of the context shown after the delimiter ####.
+                #The portion you copy can directly answer the question or be evidence that supports the answer.
+                #The portion you copy can be any substring of the context, the whole context, or even a single word. But favor short and concise answers.
+                #*Mandatory*: your answer is always an exact excerpt of the the context shown after the delimiter ####, never respond with text not contained in the contexts.
+                #Begin!
+                #####
+                #"""
             )
             answer_tuple = asyncio.run(create_answer(request, title=st.session_state["explored_regulation"]))
             response = st.write_stream(answer_tuple[2])
