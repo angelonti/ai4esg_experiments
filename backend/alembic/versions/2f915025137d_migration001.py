@@ -45,7 +45,6 @@ def upgrade() -> None:
             "doc_type", sa.Enum("PDF", "HTML", "Website", name="doctype"), nullable=True
         ),
         sa.Column("source", sa.String(), nullable=True),
-        sa.Column("crawl", sa.Boolean(), nullable=True),
         sa.ForeignKeyConstraint(
             ["user_id"],
             ["users.id"],

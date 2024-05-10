@@ -1,3 +1,4 @@
+import threading
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -16,7 +17,12 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class DB:
     def __init__(self):
-        self.session = SessionLocal()
+        self._lock = threading.Lock()
+        self.session = self.get_session()
+
+    def get_session(self):
+        with self._lock:
+            return SessionLocal()
 
     def __enter__(self):
         return self

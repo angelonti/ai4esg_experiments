@@ -32,7 +32,7 @@ logger.addHandler(consoleHandler)
 
 warnings.filterwarnings("ignore")
 
-_ = load_dotenv(find_dotenv(filename="local.env"))
+_ = load_dotenv(find_dotenv(filename="demo.env"))
 
 openai.api_key = config.azure_openai_key
 openai.api_base = config.api_endpoint

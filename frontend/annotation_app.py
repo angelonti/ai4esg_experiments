@@ -7,6 +7,15 @@ sys.path.append("../backend")
 
 from modules.evaluation_result.service import get_all as get_all_evaluation_results
 
+st.set_page_config(
+    page_title="ESG IT-Tool|annotation", page_icon=":white_check_mark:", layout="wide", initial_sidebar_state="auto",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None
+    }
+)
+
 st.title("ESG IT-Tool ⚖️🌍 | Data Annotation App")
 
 st.write("""
@@ -19,7 +28,7 @@ Please follow the instructions below to annotate the data. When you are done wit
 def load_data():
     evaluation_results = get_all_evaluation_results()
     print(evaluation_results)
-    json_data = [item.evaluation["data"] for  item in evaluation_results]
+    json_data = [item.evaluation["data"] for item in evaluation_results]
     # json_data = json.load(open("./testEval1_results.json", "r", encoding="utf-8"))
     return json_data
 
@@ -74,6 +83,8 @@ def move_next_page():
         st.rerun()
     except StopIteration:
         st.session_state.completed = True
+        print("reached end of data")
+        st.rerun()
 
 
 def all_fields_filled(key_parameter: str) -> bool:
@@ -125,8 +136,8 @@ def data_annotation_page():
             move_next_page()
         elif (submit_button and response_match) or st.session_state.first_submit:
             st.session_state.first_submit = True
-            st.write("Give a rating from 1 to 5 to the reasoning that explains the answer to the previous question.")
-            st.write("Reasoning: ", item["response"]["reasoning"])
+            st.write("*Give a rating from 1 to 5 to the reasoning that explains the answer to the previous question.*")
+            st.write("**Reasoning**: ", item["response"]["reasoning"])
             st.slider(f"Rating", 1, 5, key=f"{item['key_parameter']}_rating", value=None)
             st.button("Submit Rating", key=f"{item['key_parameter']}_rating_submit")
         elif submit_button and not response_match:
@@ -136,11 +147,13 @@ def data_annotation_page():
 
 def completed_page():
     st.markdown("## Data annotation completed. Thank you for your time! 🎉")
+    st.balloons()
 
 
 # initialize data
 if st.session_state.get("iterator") is None:
-    data = load_data()[0]
+    #data = load_data()[0]
+    data = [parameter_data for item in load_data() for parameter_data in item]
     set_initial_page(data)
     st.session_state.num_completed = 0
     st.session_state.total = len(data)

@@ -40,7 +40,7 @@ logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)
 
-_ = load_dotenv(find_dotenv(filename="local.env"))
+_ = load_dotenv(find_dotenv(filename="demo.env"))
 
 OUTPUT_KEY = "response"
 # KEY_PARAMETERS_FILE = "key_parameters.json"

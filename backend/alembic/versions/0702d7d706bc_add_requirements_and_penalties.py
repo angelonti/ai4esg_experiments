@@ -23,7 +23,7 @@ def upgrade() -> None:
         sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("document_id", sa.UUID(), nullable=False),
         sa.Column("text", sa.String(), nullable=True),
-        sa.column("page_number", sa.Integer(), nullable=True),
+        sa.Column("page_number", sa.Integer(), nullable=True),
         sa.ForeignKeyConstraint(
             ["document_id"],
             ["documents.id"],
@@ -36,7 +36,7 @@ def upgrade() -> None:
         sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("document_id", sa.UUID(), nullable=False),
         sa.Column("text", sa.String(), nullable=True),
-        sa.column("page_number", sa.Integer(), nullable=True),
+        sa.Column("page_number", sa.Integer(), nullable=True),
         sa.ForeignKeyConstraint(
             ["document_id"],
             ["documents.id"],
@@ -69,7 +69,7 @@ def upgrade() -> None:
     )
 
 
-    op.add_column("embeddings", sa.column("page_number", sa.Integer(), nullable=True))
+    op.add_column("embeddings", sa.Column("page_number", sa.Integer(), nullable=True))
     # ### end Alembic commands ###
 
 

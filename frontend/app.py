@@ -1,23 +1,34 @@
 import sys
+from typing import Union
 
 sys.path.append("../backend")
 
 import streamlit as st
 from modules.llm.llm_infos import Model
 from modules.document.service import get_all_titles
-from modules.document.service import get_by_title
+from modules.document.service import get_by_title, get as get_document_by_id
 from modules.requirement.service import get_summary_by_document_id as get_requirement_summary_by_document_id
 from modules.penalty.service import get_summary_by_document_id as get_penalty_summary_by_document_id
 from modules.requirement.service import get_by_document_id as get_requirements_by_document_id
 from modules.penalty.service import get_by_document_id as get_penalties_by_document_id
 from modules.answer.schemas import AnswerCreate
 from modules.answer.service import create as create_answer
-from modules.evaluation_result.service import get_all as get_all_evaluations
+from modules.evaluation_result.service import get_all as get_all_evaluations, get as get_evaluation_by_id
 from modules.esg.applicability.service import determine_applicability_single
 from data import all_countries, all_regions
 import random
 import time
 import asyncio
+import pandas as pd
+
+st.set_page_config(
+    page_title="ESG IT-Tool", page_icon=":earth_americas:", layout="wide", initial_sidebar_state="auto",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None
+    }
+)
 
 st.title("ESG IT-Tool ⚖️🌍")
 
@@ -215,20 +226,21 @@ def get_all_penalties(title):
 
 
 def show_regulations_widget(message):
-    st.checkbox("Show only applicable regulations", key="show_applicable_regulations", value=True)
+    #st.checkbox("Show only applicable regulations", key="show_applicable_regulations", value=True)
     message = message if message else "Select a regulation:"
     st.write(f"**{message}**")
-    if st.session_state["show_applicable_regulations"]:
-        regulation_titles = [
-            "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
-            "Union REGULATION (EU) 2020/852 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 18 June 2020",
-            "REGULATION (EU) 2023/1542 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 12 July 2023 concerning batteries and waste batteries, amending Directive 2008/98/EC and Regulation (EU) 2019/1020 and repealing Directive 2006/66/EC (Text with EEA relevance)",
-            "Act on Corporate Due Diligence Obligations for the Prevention of Human Rights Violations in Supply Chains (Lieferkettensorgfaltspflichtengesetz – LkSG)",
-            "REGULATION (EU) 2019/2088 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 27 November 2019 on sustainability‐related disclosures in the financial services sector (Text with EEA relevance)",
-            "DIRECTIVE 2008/98/EC OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 19 November 2008 on waste and repealing certain Directives (Text with EEA relevance)"
-        ]
-    else:
-        regulation_titles = get_regulation_titles()
+    #if st.session_state["show_applicable_regulations"]:
+    #    regulation_titles = [
+    #        "DIRECTIVES DIRECTIVE (EU) 2022/2464 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL",
+    #        "Union REGULATION (EU) 2020/852 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 18 June 2020",
+    #        "REGULATION (EU) 2023/1542 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 12 July 2023 concerning batteries and waste batteries, amending Directive 2008/98/EC and Regulation (EU) 2019/1020 and repealing Directive 2006/66/EC (Text with EEA relevance)",
+    #        "Act on Corporate Due Diligence Obligations for the Prevention of Human Rights Violations in Supply Chains (Lieferkettensorgfaltspflichtengesetz – LkSG)",
+    #        "REGULATION (EU) 2019/2088 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 27 November 2019 on sustainability‐related disclosures in the financial services sector (Text with EEA relevance)",
+    #        "DIRECTIVE 2008/98/EC OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 19 November 2008 on waste and repealing certain Directives (Text with EEA relevance)"
+    #    ]
+    #else:
+    #    regulation_titles = get_regulation_titles()
+    regulation_titles = get_regulation_titles()
     st.selectbox(
         label="Regulation",
         options=regulation_titles,
@@ -259,16 +271,101 @@ def regulations_page():
             st.write(get_all_penalties(st.session_state["explored_regulation"]))
 
 
+def show_evaluations_table(df):
+    data_with_details = df.copy()
+    data_with_details['show_details'] = [False for _ in range(len(df))]
+    column_config = {
+        "id": None,
+        "show_details": "Show details",
+        "evaluation_name": "Evaluation name",
+        "title": st.column_config.TextColumn(
+            label="Regulation title",
+            disabled=True
+        )
+    }
+    st.session_state.data_editor = st.data_editor(
+        data_with_details,
+        use_container_width=True,
+        disabled=("evaluation_name", "title"),
+        column_config=column_config, hide_index=True,
+        column_order=("show_details", "evaluation_name", "title")
+    )
+
+
+@st.cache_data
+def get_evaluation_by_id_cached(id):
+    return get_evaluation_by_id(id)
+
+
+def map_yes_no_parameter_value(parameter_value: str):
+    match parameter_value:
+        case "is":
+            return "Yes"
+        case "is not":
+            return "No"
+        case _:
+            return parameter_value
+
+
+def map_parameter_value(parameter_value: Union[str, list]):
+    if isinstance(parameter_value, list):
+        return ", ".join(parameter_value)
+    else:
+        return map_yes_no_parameter_value(parameter_value)
+
+
+def show_detail(id):
+    evaluation = get_evaluation_by_id_cached(id)
+    evaluation.document = ""
+    evaluation_data = evaluation.evaluation["data"]
+    with st.container(border=True):
+        st.write(f"Evaluation details for **{evaluation.evaluation_name}**")
+        st.write(f"**Regulation title:** {evaluation_data[0]['title']}")
+        for item in evaluation_data:
+            with st.container(border=True):
+                st.write(f"**Parameter:** {item['key_parameter']}")
+                st.write(f"**Value:** {map_parameter_value(item['key_parameter_value'])}")
+                st.write(f"**Applicable:** {str(item['response']['answer']).capitalize()}")
+                st.write(f"**Reasoning:** {item['response']['reasoning']}")
+                with st.expander("**Relevant excerpts**", expanded=False):
+                    for i, context in enumerate(item["relevant_embeddings"]):
+                        st.write(f"**Excerpt ({i + 1}):**")
+                        st.write(context["text"])
+                        st.divider()
+
+
 def results_page():
     st.divider()
     st.subheader("View saved results 🗄️")
-    st.write(get_all_evaluations())
+    evaluations_data = get_all_evaluations()
+    for evaluation in evaluations_data:
+        evaluation.document_id = str(evaluation.document_id)
+        evaluation.id = str(evaluation.id)
+        evaluation.evaluation = str(evaluation.evaluation)
+        evaluation.document = ""
+    evaluations_df = pd.DataFrame([{
+        "id": evaluation.id,
+        "evaluation_name": evaluation.evaluation_name,
+        "title": get_document_by_id(evaluation.document_id).title,
+    } for evaluation in evaluations_data])
+
+    show_evaluations_table(evaluations_df)
+
+    st.session_state["selected_evaluation"] = st.session_state.data_editor.loc[
+        st.session_state.data_editor['show_details']]
+    st.session_state["clicked_indexes"] = st.session_state["selected_evaluation"].index if not st.session_state[
+        "selected_evaluation"].empty else []
+
+    if len(st.session_state["clicked_indexes"]) > 0:
+        for index in st.session_state["clicked_indexes"]:
+            show_detail(st.session_state.data_editor.iloc[index].id)
+    st.session_state.data_editor["show_details"] = False
 
 
 def initial_response_generator():
     response = random.choice(
         [
-            "Hi! Is there any question about hits regulation I can help you with?",
+            "Hi! Is there any question about this regulation I can help you with?",
             "Do you have any question about this regulation?",
         ]
     )
