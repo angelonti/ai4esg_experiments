@@ -96,10 +96,12 @@ def all_fields_filled(key_parameter: str) -> bool:
 
 st.write("## Instructions")
 st.expander("Show Instructions").markdown("""
-You will be presented with company parameters and text extracted from ESG law. For each company parameter, you will be asked to do the following tasks:
-1. Read the text extracted from ESG law, and decide if the text is relevant to determine the applicability of the law for the given company parameter.
-2. Given the law text, and the company parameter value, decide if this law applies to the company.
-3. In some cases, you will be presented a reasoning for whether the law applies to the company or not. Your task is to rate this reasoning on a scale of 1 to 5, where 1 is the lowest and 5 is the highest.
+You will be presented with company parameters and law text extracted from ESG regulations. In each page you will be asked to complete some tasks related to a company parameter (i.e number of employees, revenue, etc). When you complete the tasks in the current page, please press **submit** or **submit rating** at the bottom of the page.
+  
+Here are the tasks you will be asked to complete in each page
+1. Read carefully the text extracted from ESG law, and decide if the text is relevant to decide whether this law (see law title) applies to a company based on the current parameter.
+2. Considering all three law texts you read in the current page, and the company parameter value, decide if this law applies to the company based on the parameter value.
+3. In some pages, you will be presented a reasoning explaining why the law applies to a company or not for the current parameter value. Your task is to rate this reasoning on a scale of 1 to 5, where 1 is the lowest and 5 is the highest.
 """)
 
 

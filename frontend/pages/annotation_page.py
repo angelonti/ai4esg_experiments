@@ -1,5 +1,4 @@
 import time
-from itertools import count
 
 import streamlit as st
 import sys
@@ -21,34 +20,37 @@ def load_data(annotator):
     tasks = annotator.tasks
     return tasks
 
+def list_to_comma_separated(my_list: list) -> str:
+    return ", ".join(my_list)
+
 
 @st.cache_data
 def applicability_question_label_map(key_parameter: str, key_parameter_value: str) -> str:
     match key_parameter:
         case "Capital market oriented companies":
-            return f"Given that the company **{key_parameter_value}** capital market oriented, and the above law text, does this law apply to the company?"
+            return f"Given that the company **{key_parameter_value}** capital market oriented, and the **above 3 law texts**, does this law apply to the company?"
         case "Number of employees":
-            return f"Given that the company has **{key_parameter_value}** employees, and the above law text, does this law apply to the company?"
+            return f"Given that the company has **{key_parameter_value}** employees, and the **above 3 law texts**, does this law apply to the company?"
         case "Assets":
-            return f"Given that the company has **{key_parameter_value}€** in assets, and the above law text, does this law apply to the company?"
+            return f"Given that the company has **{key_parameter_value}€** in assets, and the **above 3 law texts**, does this law apply to the company?"
         case "Revenue":
-            return f"Given that the company has **{key_parameter_value}€** in yearly revenue, and the above law text, does this law apply to the company?"
+            return f"Given that the company has **{key_parameter_value}€** in yearly revenue, and the **above 3 law texts**, does this law apply to the company?"
         case "Offering of financial products":
-            return f"Given that the company **{key_parameter_value}** offering financial products, and the above law text, does this law apply to the company?"
+            return f"Given that the company **{key_parameter_value}** offering financial products, and the **above 3 law texts**, does this law apply to the company?"
         case "Scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH)":
-            return f"Given that the company **{key_parameter_value}** in the scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH), and the above law text, does this law apply to the company?"
+            return f"Given that the company **{key_parameter_value}** in the scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH), and the **above 3 law texts**, does this law apply to the company?"
         case "Manufacturers or distributors of batteries":
-            return f"Given that the company **{key_parameter_value}** a manufacturer or distributor of batteries, and the above law text, does this law apply to the company?"
+            return f"Given that the company **{key_parameter_value}** a manufacturer or distributor of batteries, and the **above 3 law texts**, does this law apply to the company?"
         case "Jurisdiction":
-            return f"Given that the company operates in the following jurisdictions: **{key_parameter_value}**, and the above law text, does this law apply to the company?"
+            return f"Given that the company operates in the following jurisdictions: **{list_to_comma_separated(key_parameter_value)}**, and the **above 3 law texts**, does this law apply to the company?"
         case "Markets (countries)":
-            return f"Given that the company operates in the following markets: **{key_parameter_value}**, and the above law text, does this law apply to the company?"
+            return f"Given that the company operates in the following markets: **{list_to_comma_separated(key_parameter_value)}**, and the **above 3 law texts**, does this law apply to the company?"
         case "Sourcing (countries)":
-            return f"Given that the company is sourcing from the following countries: **{key_parameter_value}**, and the above law text, does this law apply to the company?"
+            return f"Given that the company is sourcing from the following countries: **{list_to_comma_separated(key_parameter_value)}**, and the **above 3 law texts**, does this law apply to the company?"
         case "Production (Countries)":
-            return f"Given that the company is producing in the following countries: **{key_parameter_value}**, and the above law text, does this law apply to the company?"
+            return f"Given that the company is producing in the following countries: **{list_to_comma_separated(key_parameter_value)}**, and the **above 3 law texts**, does this law apply to the company?"
         case "Products and Services offered":
-            return f"Given that the company offers the following products and services: **{key_parameter_value}**, and the above law text, does this law apply to the company?"
+            return f"Given that the company offers the following products and services: **{key_parameter_value}**, and the **above 3 law texts**, does this law apply to the company?"
 
 
 def set_initial_page(my_data: dict):
@@ -105,14 +107,20 @@ def data_annotation_page():
     This is a data annotation app for the ESG IT-Tool.
     Please follow the instructions below to annotate the data. When you are done with the current page, please click the **submit button** to save the data, and move to the next page.
     """)
-
+    st.write("## Purpose")
+    st.expander("Show Purpose").markdown("""
+    The purpose of this annotation task is to gather information about how humans would complete tasks related to ESG regulations. This information will be used to evaluate and improve an AI IT-tool to automate the process of determining the applicability of ESG regulations to companies based on their parameters. \n
+    **No personal information will be saved. This task is anonymized**
+    """)
     st.write("## Instructions")
     st.expander("Show Instructions").markdown("""
-    You will be presented with company parameters and text extracted from ESG law. For each company parameter, you will be asked to do the following tasks:
-    1. Read the text extracted from ESG law, and decide if the text is relevant to determine the applicability of the law for the given company parameter.
-    2. Given the law text, and the company parameter value, decide if this law applies to the company.
-    3. In some cases, you will be presented a reasoning for whether the law applies to the company or not. Your task is to rate this reasoning on a scale of 1 to 5, where 1 is the lowest and 5 is the highest.
-    """)
+You will be presented with company parameters and law text extracted from ESG regulations. In each page you will be asked to complete some tasks related to a company parameter (i.e number of employees, revenue, etc). When you complete the tasks in the current page, please press **submit** or **submit rating** at the bottom of the page. Once each page is submitted it cannot be changed. Answer to the best of your capacity but don't overthink too much or spend a lot of time on a page.
+  
+Here are the tasks you will be asked to complete in each page:
+1. Read carefully the text extracted from ESG law, and decide if the text is relevant for the current parameter. The text is relevant if we could use it to determine if this law (see law title) applies to a company given the current parameter.
+2. Considering all three law texts you read in the current page, and the company parameter value, decide if this law applies to the company based on the parameter value.
+3. In some pages, you will be presented a reasoning explaining why the law applies to a company or not for the current parameter value. Your task is to rate this reasoning on a scale of 1 to 5, where 1 is the lowest and 5 is the highest.
+""")
 
     st.write("## Data Annotation")
     progress = (st.session_state.num_completed / st.session_state.total) * 100
@@ -125,12 +133,15 @@ def data_annotation_page():
         st.markdown(f"Law title: **{task_data['title']}**")
         st.write(
             f"_Select whether the following texts are relevant or not to determine the applicability of the law with respect to the company parameter **\"{task_data['key_parameter']}\"**:_")
+        st.write("**Text 1:**")
         st.write(f"{task_data['relevant_embeddings'][0]['text']}")
         st.radio("Is this text relevant?", ("Yes", "No"), key=f"{task_data['key_parameter']}_relevant_1", index=None)
         st.divider()
+        st.write("**Text 2:**")
         st.write(f"{task_data['relevant_embeddings'][1]['text']}")
         st.radio("Is this text relevant?", ("Yes", "No"), key=f"{task_data['key_parameter']}_relevant_2", index=None)
         st.divider()
+        st.write("**Text 3:**")
         st.write(f"{task_data['relevant_embeddings'][2]['text']}")
         st.radio("Is this text relevant?", ("Yes", "No"), key=f"{task_data['key_parameter']}_relevant_3", index=None)
         st.divider()

@@ -37,7 +37,8 @@ def show_evaluation_form():
                  key="is_offering_financial_products")
         st.radio(
             "Is the company subject the Scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH)?",
-            ["Yes", "No"], key="is_REACH")
+            ["is", "is not"],
+            format_func=map_yes_no_radios, key="is_REACH")
         st.radio("Is the company a manufacturer or distributor of batteries?", ["is", "is not"],
                  format_func=map_yes_no_radios, key="is_battery")
         with st.container(border=True):
