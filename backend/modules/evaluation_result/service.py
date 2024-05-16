@@ -20,12 +20,6 @@ def get_all() -> list[EvaluationResult]:
     return [EvaluationResult.from_orm(evaluation_result_model) for evaluation_result_model in evaluation_result_models]
 
 
-def get_by_document_id(document_id: UUID) -> list[EvaluationResult]:
-    evaluation_result_models = db.session.query(EvaluationResultModel).filter(
-        EvaluationResultModel.document_id == document_id).all()
-    return [EvaluationResult.from_orm(evaluation_result_model) for evaluation_result_model in evaluation_result_models]
-
-
 def create(evaluation_result: EvaluationResultCreate) -> EvaluationResult:
     evaluation_result_obj = EvaluationResultModel(**evaluation_result.dict(), id=uuid4())
     db.session.add(evaluation_result_obj)

@@ -130,7 +130,7 @@ def get_remaining_key_parameters(remaining_key_parameters, saved_results, title)
     return remaining_key_parameters
 
 
-async def determine_applicability_single(input_params: dict, title: str, evaluation_name: str) -> dict:
+async def determine_applicability_single(input_params: dict, title: str, evaluation_name: str, recorder: list = None) -> dict:
     """
     Determine if a regulation applies to a company based on the company's key parameters.
 
@@ -160,6 +160,8 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
         remaining_key_parameters = get_remaining_key_parameters(remaining_key_parameters, results, title)
 
     logger.info(f"Remaining key parameters: {remaining_key_parameters}")
+    params_len = len(remaining_key_parameters)
+    finished_params = 0
     for key_parameter in remaining_key_parameters:
         search_prompt = SEARCH_PROMPT_MAP[key_parameter]
         eval_prompt = APPLICABILITY_PROMPT_MAP[key_parameter]
@@ -193,10 +195,21 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
             record["currency"] = input_params["currency"]
 
         results["data"].append(record)
+
         with open(RESULTS_FILE, "w", encoding="utf8") as f:
             json.dump(results, f, indent=4, ensure_ascii=False)
             print(f"saved results to results/{RESULTS_FILE} for key parameter {key_parameter}")
-        if response["response"]["answer"] == "yes": # temporal comment
+
+        if recorder is not None:
+            finished_params += 1
+            message = f"Parameter: **{key_parameter}** done. {finished_params} out of {params_len} completed..."
+            recorder.append(message)
+            logger.info(message)
+
+        if response["response"]["answer"] == "yes":
+            message = f"Parameter **{key_parameter}** is applicable to the company. Other parameters will be skipped."
+            recorder.append(message)
+            logger.info(message)
             break
 
     # save to database
@@ -206,6 +219,9 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
         evaluation=results
     )
     create_evaluation_result(evaluation_result)
+
+    if recorder is not None:
+        recorder.append(f"Applicability evaluation **{evaluation_name}** completed")
 
     logger.info(f"Applicability evaluation {evaluation_name} completed")
     logger.info(f"Total input tokens: {total_input_tokens}")

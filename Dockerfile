@@ -10,7 +10,7 @@ COPY backend /app/
 COPY entrypoint.sh /app/entrypoint.sh
 COPY demo.env /app/demo.env
 COPY frontend/app.py /app/app.py
-COPY frontend/data.py /app/data.py
+COPY frontend/pages /app/pages
 COPY frontend/.streamlit /app/.streamlit
 RUN rm -rf /app/AutoGPTQ
 
