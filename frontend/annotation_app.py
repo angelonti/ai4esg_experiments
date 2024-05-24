@@ -1,7 +1,7 @@
-import json
 import time
 import sys
 import streamlit as st
+import streamlit.components.v1 as st_components
 
 sys.path.append("../backend")
 
@@ -77,7 +77,7 @@ def move_next_page():
             body.scrollTop = 0;
         </script>
         '''
-        st.components.v1.html(js)
+        st_components.v1.html(js)
         time.sleep(0.1)
         st.session_state.num_completed += 1
         st.rerun()

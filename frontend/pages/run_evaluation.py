@@ -1,6 +1,7 @@
 import asyncio
 
 import streamlit as st
+import streamlit.components.v1 as st_components
 
 from pages.page_utils import show_regulations_widget, header, menu, page_config
 from pages.location_data import all_regions, all_countries
@@ -129,7 +130,7 @@ def scroll_to_top():
         body.scrollTop = 0;
     </script>
     '''
-    st.components.v1.html(js)
+    st_components.html(js)
 
 
 def run_evaluation():
