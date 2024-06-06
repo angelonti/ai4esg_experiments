@@ -8,6 +8,7 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 
 from config import config
 from modules.llm.clients.base import LLMClient
+from modules.llm.clients.openai.utils import streamed_content_generator
 from modules.llm.llm_infos import ModelType
 
 logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
@@ -38,20 +39,22 @@ class LocalLLMClient(LLMClient):
     def get_completion_gguf(self, prompt) -> Generator[str, None, None]:
         start = time.time()
         client = OpenAI(base_url=config.api_endpoint, api_key=config.openai_api_key)
-        output = client.chat.completions.create(
-            model=self.model.value,
-            messages=[
-                {"role": "system", "content": self.priming},
-                {"role": "user", "content": prompt},
-            ],
-            temperature=config.temperature,
-            max_tokens=config.prompt_size,
-            stream=False
-        )
+        try:
+            output = client.chat.completions.create(
+                model=self.model.value,
+                messages=[
+                    {"role": "system", "content": self.priming},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=config.temperature,
+                stream=True
+            )
+        except Exception as e:
+            logger.error(f"Error in openai completion: {e.__str__()}")
+            raise e
 
         logger.debug(f"Time: {time.time() - start}")
-        output = self.clean_output(output.choices[0].message.content)
-        yield output
+        return streamed_content_generator(output)
 
     @staticmethod
     def clean_output(output: str) -> str:

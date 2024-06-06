@@ -1,11 +1,15 @@
 import json
 
 import torch
+import os
 from torch.utils.data import random_split
 
 
 def create_qa_train_test_split(file_path: str, split: float = 0.6):
     with open(file_path, encoding="utf8") as f:
+        abs_path = os.path.abspath(file_path)
+        root_path = os.path.dirname(abs_path)
+        print(f"root path: {root_path}")
         json_data = json.load(f)
         if 'data' in json_data and isinstance(json_data['data'], list):
             question_ids = list_question_ids(json_data)
@@ -17,9 +21,9 @@ def create_qa_train_test_split(file_path: str, split: float = 0.6):
             print(f"the intersection has size {len(intersection)}")
             train_data = filter_questions_by_id(file_path, list(train_ids), split_name="train")
             test_data = filter_questions_by_id(file_path, list(test_ids), split_name="test")
-            with open("/data/generated/train.json", "w", encoding="utf8") as train_file:
+            with open(f"{root_path}/train.json", "w", encoding="utf8") as train_file:
                 json.dump(train_data, train_file, indent=4, ensure_ascii=False)
-            with open("/data/generated/test.json", "w", encoding="utf8") as test_file:
+            with open(f"{root_path}/test.json", "w", encoding="utf8") as test_file:
                 json.dump(test_data, test_file, indent=4, ensure_ascii=False)
 
 

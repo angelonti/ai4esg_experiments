@@ -71,6 +71,15 @@ def delete_saved_results(results_file):
         logger.error(f"Error: {e.filename} - {e.strerror}")
 
 
+def remove_old_saved_results():
+    files = list(filter(lambda x: x.endswith("_results.json"), os.listdir()))
+
+    if len(files) >= 2:
+        for file in os.listdir():
+            logger.info(f"removing file {file}")
+            if file.endswith("_results.json"):
+                delete_saved_results(file)
+
 
 def get_remaining_key_parameters(remaining_key_parameters, saved_results, title):
     if "data" in saved_results:
@@ -91,6 +100,8 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
     Returns:
     dict: The output data.
     """
+
+    remove_old_saved_results()
     token_stats = TokenStats()
     total_input_tokens: int = 0
     total_output_tokens: int = 0

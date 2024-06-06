@@ -8,6 +8,7 @@ from db.engine import db
 from modules.answer.models import AnswerModel
 from modules.answer.schemas import AnswerCreate
 from modules.embedding.schemas import Embedding
+from modules.embedding.utils import to_relevant_embeddings
 from modules.llm.llm_infos import Model
 from modules.embedding.models import EmbeddingModel
 from modules.llm.clients.openai.openai_client import OpenAILLMClient
@@ -81,4 +82,6 @@ async def create(request: AnswerCreate, title: str = None) -> tuple[list[float],
         db.session.commit()
 
     # return question_embedding, Answer.from_orm(answer_obj), generator_wrapper()
-    return question_embedding, answer_embeddings.embeddings, generator_wrapper(), num_tokens
+    relevant_embeddings = to_relevant_embeddings(question_embedding,answer_embeddings.embeddings)
+
+    return question_embedding, relevant_embeddings, generator_wrapper(), num_tokens

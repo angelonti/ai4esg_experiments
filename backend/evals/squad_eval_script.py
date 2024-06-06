@@ -1,6 +1,7 @@
 '''
 Official evaluation script for the SQuAD dataset. Version 1.
-modified to return em, f1, precision, recall
+modified to return em, f1, precision, recall.
+internal evaluator normalizes the texts before comparing.
 '''
 
 from collections import Counter

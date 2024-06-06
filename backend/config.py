@@ -28,6 +28,7 @@ class Config:
         self.db_port: str = os.getenv("DB_PORT", "5432")
         self.db_name: str = os.getenv("DB_NAME", "ai4esg")
         print("connecting to database: ", self.db_host, self.db_port, self.db_name)
+        self.app_path: str = os.getenv("APP_PATH", "http://localhost:8501")
 
 
 config = Config()

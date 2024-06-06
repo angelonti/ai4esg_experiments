@@ -2,6 +2,7 @@ import asyncio
 
 import streamlit as st
 import streamlit.components.v1 as st_components
+from config import config
 
 from pages.page_utils import show_regulations_widget, header, menu, page_config
 from pages.location_data import all_regions, all_countries
@@ -173,7 +174,7 @@ async def run_evaluation_internal(evaluation_input, title):
             st.toast(message)
         status.update(label="Evaluation complete!", state="complete", expanded=False)
 
-    app_path = 'http://localhost:8501'
+    app_path = config.app_path
     page_file_path = 'pages/saved_evaluations.py'
     page = page_file_path.split('/')[1][0:-3]
     st.success("Evaluation completed! You can view the result under:")

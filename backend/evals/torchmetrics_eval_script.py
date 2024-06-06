@@ -8,6 +8,8 @@ import json
 import torch
 import logging
 
+from evals.utils import normalize_text
+
 logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
@@ -104,7 +106,7 @@ def prepare_retrieval_data(file_path: str, top_k: int = 5):
             for embedding in item['relevant_embeddings'][:top_k]:
                 indexes.append(i)
                 preds.append(embedding['score'])
-                if any(answer for answer in item['answers'] if answer['text'] in embedding['text']):
+                if any(answer for answer in item['answers'] if normalize_text(answer['text']) in normalize_text(embedding['text'])):
                     targets.append(True)
                 else:
                     targets.append(False)
