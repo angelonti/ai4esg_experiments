@@ -1,6 +1,6 @@
 import json
 import logging
-import os.path
+import os
 import sys
 
 from modules.embedding.utils import to_relevant_embeddings
@@ -48,79 +48,28 @@ chatOpenAI = AzureChatOpenAI(
     openai_api_key=openai.api_key,
 )
 
-EXTRACTED_FILE = "C:/Users/onan/IdeaProjects/ai4esg_experiments_new/experiments/key_parameters/DIRECTIVES_DIRECTIVE_(EU)_2022_2464_OF_THE_EUROPEAN_PARLIAMENT_AND_OF_THE_COUNCIL_key_parameters.json"
-RESULTS_FILE = "./company_x_applicability_evaluation_results.json"
 
-
-def load_saved_results(RESULTS_FILE):
-    with open(RESULTS_FILE, "r") as f:
+def load_saved_results(results_file):
+    with open(results_file, "r") as f:
         json_data = json.load(f)
     return json_data
 
 
-# add regulation title
-'''
-def determine_applicability_single_from_extracted(input_params: dict) -> dict:
-    """
-    Determine if a regulation applies to a company based on the company's key parameters.
-
-    Args:
-    extracted_file (str): The extracted text from the legal document.
-    regulation_title (str): The title of the regulation.
-    input (dict): The input data.
-
-    Returns:
-    dict: The output data.
-    """
-    results = {"data": []}
-
-    remaining_key_parameters = KEY_PARAMETERS
-
-    if os.path.isfile(RESULTS_FILE):  # check if there are saved results and load them
-        saved_results = load_saved_results(RESULTS_FILE)
-    else:
-        saved_results = {}
-    if "data" in saved_results:
-        results = saved_results
-        processed_key_parameters = [d["key_parameter"] for d in results["data"]]
-        remaining_key_parameters = list(set(remaining_key_parameters) - set(processed_key_parameters))
-
-    # load datafile with relevant key parameter texts
-    extracted_data = esg_regulation_ingestor.load_saved_data(EXTRACTED_FILE)  # add regulation title
-    if not extracted_data:
-        raise ValueError("No extracted data found for the regulation title")
-    key_parameter_data = extracted_data["data"]  # load data
-    metadata = extracted_data["metadata"]  # load metadata
-
-    for key_parameter in remaining_key_parameters:
-        current_data = [d for d in key_parameter_data if
-                        d["key_parameter"] == key_parameter]  # data for current key parameter
-        eval_prompt = APPLICABILITY_PROMPT_MAP[key_parameter]
-        prompt = PromptTemplate.from_template(eval_prompt)
-        doc = "".join(
-            [excerpt["text"] + "\n\n" for element in current_data for excerpt in
-             element["excerpts"]])  # merge all excerpts for context
-        output_parser = SimpleJsonOutputParser(pydantic_object=KeyParameterEvaluation)
-        chain = LLMChain(llm=chatOpenAI, verbose=True, prompt=prompt, output_parser=output_parser,
-                         output_key="response")
-        invoke_params = get_invoke_params(input_params, key_parameter, doc, output_parser)
-        response = chain.invoke(invoke_params)
-        results["data"].append({
-            "key_parameter": key_parameter,
-            "response": response["response"],
-            "title": metadata["title"],
-        })
-        with open(RESULTS_FILE, "w") as f:
-            json.dump(results, f, indent=4)
-            print(f"saved results to results/{RESULTS_FILE} for key parameter {key_parameter}")
-'''
-
-
-def load_saved_evaluations(RESULTS_FILE):
-    if os.path.isfile(RESULTS_FILE):  # check if there are saved results and load them
-        saved_results = load_saved_results(RESULTS_FILE)
+def load_saved_evaluations(results_file):
+    if os.path.isfile(results_file):  # check if there are saved results and load them
+        saved_results = load_saved_results(results_file)
         return saved_results
     return {}
+
+
+def delete_saved_results(results_file):
+    try:
+        os.remove(results_file)
+    except FileNotFoundError:
+        logger.error(f"File {results_file} does not exist.")
+    except OSError as e:
+        logger.error(f"Error: {e.filename} - {e.strerror}")
+
 
 
 def get_remaining_key_parameters(remaining_key_parameters, saved_results, title):
@@ -224,6 +173,8 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
         recorder.append(f"Applicability evaluation **{evaluation_name}** completed")
 
     logger.info(f"Applicability evaluation {evaluation_name} completed")
+    logger.info(f"deleting temp results file: {RESULTS_FILE}")
+    delete_saved_results(RESULTS_FILE)
     logger.info(f"Total input tokens: {total_input_tokens}")
     logger.info(f"Total output tokens: {total_output_tokens}")
 
