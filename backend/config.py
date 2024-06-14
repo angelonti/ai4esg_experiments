@@ -20,6 +20,9 @@ class Config:
         self.add_title: bool = bool(os.getenv("ADD_TITLE", True))
         self.answer_do_not_know: bool = bool(os.getenv("ANSWER_DO_NOT_KNOW", False))
         self.temperature: float = float(os.getenv("TEMPERATURE", 0.0001))
+        self.use_hybrid: bool = bool(os.getenv("USE_HYBRID", True))
+        self.use_reranking: bool = bool(os.getenv("USE_RERANKING", False))
+        self.hybrid_fusion: str = os.getenv("HYBRID_FUSION", "reciprocal_rank")
 
         self.db_user: str = os.getenv("DB_USER", "postgres")
         self.db_pass: str = os.getenv("DB_PASS", "postgres")
@@ -27,7 +30,9 @@ class Config:
         self.db_port: str = os.getenv("DB_PORT", "5432")
         self.db_name: str = os.getenv("DB_NAME", "ai4esg")
         self.app_path: str = os.getenv("APP_PATH", "http://localhost:8501")
+        self.log_path: str = os.getenv("LOG_PATH", "ai4esg.log")
         print("connecting to database: ", self.db_host, self.db_port, self.db_name)
+        print("log path: ", self.log_path)
 
 
 config = Config()

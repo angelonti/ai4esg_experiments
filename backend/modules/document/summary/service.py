@@ -16,7 +16,7 @@ from modules.prompts.summary_prompts import prompt_summary_requirements, prompt_
 
 from config import config
 
-logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)

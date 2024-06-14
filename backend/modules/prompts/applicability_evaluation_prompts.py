@@ -21,7 +21,8 @@ Given the following ESG legal document,
 and considering that company {company_name} {is_capital_market_oriented} a capital market oriented company
 determine if this regulation applies to this company based on its capital market orientation.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
-Then say only yes, no, or unclear.
+Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -33,6 +34,7 @@ Given the following ESG legal document, and considering that company {company_na
 determine if this regulation applies to this company based on its number of employees.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -45,6 +47,7 @@ and considering that company {company_name} has {assets}{currency} in assets
 determine if this regulation applies to this company based on its assets in {currency}.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -57,6 +60,7 @@ and considering that company {company_name} perceives {revenue}{currency} in ann
 determine if this regulation applies to this company based on its annual revenue in {currency}.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -69,6 +73,7 @@ and considering that company {company_name} {is_offering_financial_products} fin
 determine if this regulation applies to this company based on whether it offers financial products.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -81,6 +86,7 @@ and considering that company {company_name} {is_REACH} subject to the REACH regu
 determine if this regulation applies to this company based on the scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH) regulation.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -93,6 +99,7 @@ and considering that company {company_name} {is_battery} a manufacturer or distr
 determine if this regulation applies to this company based on whether it is a manufacturer or distributor of batteries.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -108,6 +115,7 @@ and considering that company {company_name} is subject to the jurisdiction of {j
 determine if this regulation applies to this company based on its jurisdiction.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -120,6 +128,7 @@ and considering that company {company_name} operates in {markets}
 determine if this regulation applies to this company based on the markets it operates in.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -132,6 +141,7 @@ and considering that company {company_name} sources from {sourcing}
 determine if this regulation applies to this company based on the countries it sources from.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -144,6 +154,7 @@ and considering that company {company_name} produces in {production}
 determine if this regulation applies to this company based on the countries it produces in.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''
@@ -156,6 +167,7 @@ and considering that company {company_name} offers the following products and se
 determine if this regulation applies to this company based on the products and services it offers.
 If applicable, first Cite the relevant text you used to make your decision and provide your reasoning to arrive at your answer.
 Then, answer only with yes, no, or unclear.
+Important: if there is not sufficient or relevant information to make a decision, say unclear. 
 {format_instructions}
 Begin!
 <BEGIN DOCUMENT>{doc}<END DOCUMENT>'''

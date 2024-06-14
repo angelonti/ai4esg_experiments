@@ -1,12 +1,20 @@
 from uuid import UUID, uuid4
+from enum import Enum
 
 from fastapi import HTTPException
 from sqlalchemy.orm import joinedload
+from sqlalchemy import text, Integer, UUID, Float
 
 from db.engine import db
 from modules.document.models import DocumentModel
 from modules.embedding.models import EmbeddingModel
 from modules.embedding.schemas import Embedding, EmbeddingCreate
+from config import config
+
+
+class HybridFusionType(Enum):
+    RECIPROCAL_RANK_FUSION = "reciprocal_rank"
+    RELATIVE_SCORE_FUSION = "relative_score"
 
 
 def get(id: UUID) -> Embedding:
@@ -26,6 +34,118 @@ def get_similar(embedding: list[float], max_num: int, title: str = None) -> list
     )
 
     return [Embedding.from_orm(embedding) for embedding in db_embeddings]
+
+
+def get_similar_hybrid( query: str, embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
+
+    scoring_function = HybridFusionType(config.hybrid_fusion).value
+
+    text_chunks = f"""
+        SELECT
+            emb.id,
+            emb.values,
+            SUBSTRING(doc.text, emb."offset" + 1, emb.size) AS content
+        FROM embeddings emb INNER JOIN documents doc
+        ON emb.document_id = doc.id
+        WHERE doc.title = :title
+    """
+
+    semantic_search = f"""
+        SELECT
+            id,
+            RANK() OVER (ORDER BY -1*(values <#> :embedding) DESC) AS rank,
+            -1*(values <#> :embedding) AS vector_score
+        FROM chunks
+        ORDER BY vector_score DESC
+        LIMIT :max_num * 3    
+    """
+
+    keyword_search = f"""
+        SELECT
+            id,
+            RANK() OVER (ORDER BY ts_rank_cd(to_tsvector('english', TRIM(content)), query) DESC) AS rank,
+            ts_rank_cd(to_tsvector('english', TRIM(content)), query) AS text_score
+        FROM chunks, plainto_tsquery('english', TRIM(:query)) query
+        WHERE to_tsvector('english', TRIM(content)) @@ query
+        ORDER BY text_score DESC
+        LIMIT :max_num * 3    
+    """
+
+    aggregates = f"""
+        SELECT
+            MIN(text_score) - 0.0000001 AS min_text_score, -- avoid division by zero
+            MAX(text_score) AS max_text_score,
+            MIN(vector_score) - 0.0000001 AS min_vector_score, -- avoid division by zero
+            MAX(vector_score) AS max_vector_score
+        FROM semantic_search, keyword_search   
+    """
+
+    hybrid_search = f"""
+        WITH chunks AS (
+            {text_chunks}
+        ),
+        semantic_search AS (
+            {semantic_search}
+        ), --replace by vector_query
+        keyword_search AS (
+            {keyword_search}
+        ),
+        aggregates AS (
+            {aggregates}
+        )
+        SELECT
+            COALESCE(semantic_search.id, keyword_search.id) AS id,
+            semantic_search.vector_score,
+            keyword_search.text_score,
+            COALESCE((semantic_search.vector_score - aggregates.min_vector_score) / (aggregates.max_vector_score - aggregates.min_vector_score), 0.0) AS normalized_vector_score,
+            COALESCE((keyword_search.text_score - aggregates.min_text_score) / (aggregates.max_text_score - aggregates.min_text_score), 0.0) AS normalized_text_score,
+            semantic_search.rank AS vector_rank,
+            keyword_search.rank AS text_rank,
+            (
+                (
+                    COALESCE((semantic_search.vector_score - aggregates.min_vector_score) / (aggregates.max_vector_score - aggregates.min_vector_score), 0.0)
+                )
+                +
+                (
+                    COALESCE((keyword_search.text_score - aggregates.min_text_score) / (aggregates.max_text_score - aggregates.min_text_score), 0.0)
+                )
+            )/2 AS relative_score,
+            COALESCE(1.0 /(:k + semantic_search.rank), 0.0) + COALESCE(1.0 /(:k + keyword_search.rank), 0.0) AS reciprocal_rank
+        FROM aggregates,
+        semantic_search FULL OUTER JOIN keyword_search
+        ON semantic_search.id = keyword_search.id
+        ORDER BY {scoring_function} DESC   
+    """
+
+    sql = text(hybrid_search).columns(
+        id=UUID,
+        vector_score=Float,
+        text_score=Float,
+        normalized_vector_score=Float,
+        normalized_text_score=Float,
+        vector_rank=Integer,
+        text_rank=Integer,
+        relative_score=Float,
+        reciprocal_rank=Float
+    )
+
+    records = db.session.execute(sql,
+                                 {
+                                    'query': query,
+                                    'embedding': embedding,
+                                    'max_num': max_num,
+                                    'title': title,
+                                    'k': 60
+                                 }).fetchall()
+
+    results = list()
+    if config.use_reranking:
+        raise NotImplementedError("Reranking is not implemented yet.")
+    else:
+        for record in records[:max_num]:
+            results.append((get(record.id), record.__getattr__(scoring_function)))
+
+    return results
 
 
 def get_distances(embedding1: list[float], embedding_ids: list[str]) -> list[tuple[str, float]]:

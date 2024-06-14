@@ -35,7 +35,7 @@ from modules.requirement.service import get_summary_by_document_id as get_requir
 from modules.penalty.service import get_summary_by_document_id as get_penalty_summary_by_document_id
 from modules.document.summary.service import SummaryService
 
-logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)

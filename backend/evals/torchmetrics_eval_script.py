@@ -7,10 +7,11 @@ from tqdm import tqdm
 import json
 import torch
 import logging
+from config import config
 
 from evals.utils import normalize_text
 
-logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)

@@ -6,7 +6,7 @@ from config import config
 from modules.answer.schemas import AnsweredCreate
 from modules.llm.llm_infos import CONTEXT_SIZE, Model
 from modules.embedding.schemas import Embedding
-from modules.embedding.service import get_all, get_similar
+from modules.embedding.service import get_all, get_similar, get_similar_hybrid
 from modules.llm.utils import get_text_embedding
 import tiktoken
 
@@ -56,6 +56,10 @@ class LLMClient(ABC):
     @staticmethod
     def get_relevant_embeddings(question_embedding: list[float], max_num: int, title: str = None) -> list[Embedding]:
         return get_similar(question_embedding, max_num, title=title)
+
+    @staticmethod
+    def get_relevant_embeddings_hybrid(query: str, question_embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
+        return get_similar_hybrid(question_embedding, query, max_num, title=title)
 
     def generate_prompt(self, question: str, embeddings: list[Embedding]) -> str:
         if self.prompt:

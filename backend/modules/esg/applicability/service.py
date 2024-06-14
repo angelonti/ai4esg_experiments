@@ -25,7 +25,7 @@ from modules.llm.clients.base import LLMClient
 from modules.evaluation_result.schemas import EvaluationResultCreate
 from modules.evaluation_result.service import create as create_evaluation_result
 
-logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)

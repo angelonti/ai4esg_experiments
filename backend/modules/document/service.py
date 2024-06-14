@@ -1,6 +1,7 @@
 from uuid import UUID, uuid4
 
 from db.engine import db
+from config import config
 from modules.document.models import DocumentModel
 from modules.document.schemas import Document, DocumentParsed
 from modules.embedding.utils import create_embeddings_for_document, create_embeddings_for_chunks, chunk_partitions
@@ -10,7 +11,7 @@ from unstructured.documents.elements import Element
 import logging
 import sys
 
-logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)

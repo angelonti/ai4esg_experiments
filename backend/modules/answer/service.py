@@ -4,6 +4,7 @@ import logging
 
 from fastapi import HTTPException
 from db.engine import db
+from config import config
 
 from modules.answer.models import AnswerModel
 from modules.answer.schemas import AnswerCreate
@@ -16,7 +17,7 @@ from modules.llm.clients.openai.azure_openai_client import AzureOpenAILLMClient
 from modules.llm.clients.open_source.local_llm_client import LocalLLMClient
 import time
 
-logging.basicConfig(level=logging.DEBUG, filename="ai4esg.log", format="%(asctime)s %(name)s %(levelname)s:%(message)s")
+logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 consoleHandler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(consoleHandler)
