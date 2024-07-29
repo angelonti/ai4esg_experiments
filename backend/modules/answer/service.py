@@ -81,6 +81,4 @@ async def create(request: AnswerCreate, title: str = None) -> tuple[list[float],
         db.session.add(answer_obj)
         db.session.commit()
 
-    # return question_embedding, Answer.from_orm(answer_obj), generator_wrapper()
-
     return question_embedding, relevant_embeddings, generator_wrapper(), num_tokens

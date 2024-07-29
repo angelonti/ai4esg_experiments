@@ -153,11 +153,9 @@ def chunk_partitions(partitions: list[Element]) -> list[Chunk]:
 
 
 def to_relevant_embeddings(answer_embeddings_with_scores: list[tuple[Embedding, float]]) -> list[dict]:
-    # print(f"#### length embeddings with scores: {len(answer_embeddings_with_scores)}")
     relevant_embeddings = list()
     score_type = "cross_encoder" if config.use_reranking else config.hybrid_fusion if config.use_hybrid else "cosine_similarity"
     for i, (embedding, score) in enumerate(answer_embeddings_with_scores):
-        # print(f"creating relevant embedding for id: {embedding.id} and score {score}")
         relevant_embedding = {
             "embedding_id": str(embedding.id),
             "rank": i + 1,
