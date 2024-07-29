@@ -14,5 +14,5 @@
 
 ## Run locally
 
-1. docker build --progress=plain -t ai4esg-app:1.0 . 
-2. docker run -d -p 8080:8080 --name ai4esg-app ai4esg-app:1.0
+1. `docker build --progress=plain -t ai4esg-app:1.0 .`
+2. `docker run -d -p 8080:8080 --name ai4esg-app ai4esg-app:1.0`
