@@ -7,10 +7,12 @@ from typing import Union
 
 
 def get_annotator_by_number(annotator_number: int) -> Union[Annotator, None]:
-    annotator_model = db.session.query(AnnotatorModel).filter(AnnotatorModel.annotator_number == annotator_number).first()
+    annotator_model = db.session.query(AnnotatorModel).filter(
+        AnnotatorModel.annotator_number == annotator_number).first()
     if annotator_model is None:
         return None
     return Annotator.from_orm(annotator_model)
+
 
 def get_annotator_by_password(password: str) -> Union[Annotator, None]:
     annotator_model = db.session.query(AnnotatorModel).filter(AnnotatorModel.password == password).first()
@@ -32,7 +34,7 @@ def create_annotator(annotator: AnnotatorCreate) -> Annotator:
     return Annotator.from_orm(annotator_obj)
 
 
-def crete_annotation_task(annotation_task: AnnotationTaskCreate) -> AnnotationTask:
+def create_annotation_task(annotation_task: AnnotationTaskCreate) -> AnnotationTask:
     annotation_task_obj = AnnotationTaskModel(**annotation_task.dict(), id=uuid4())
     db.session.add(annotation_task_obj)
     db.session.commit()
@@ -51,3 +53,16 @@ def update_annotation_task_data(annotation_task_id: UUID, data: dict) -> None:
     annotation_task_obj.data = data
     db.session.commit()
 
+
+def get_annotation_task_by_id(annotation_task_id: UUID) -> Union[AnnotationTask, None]:
+    annotation_task_model = db.session.query(AnnotationTaskModel).get(annotation_task_id)
+    if annotation_task_model is None:
+        return None
+    return AnnotationTask.from_orm(annotation_task_model)
+
+
+def get_finished_tasks() -> list[AnnotationTask]:
+    annotation_tasks = (db.session.query(AnnotationTaskModel)
+                        .filter(AnnotationTaskModel.finished)
+                        .order_by(AnnotationTaskModel.task_number, AnnotationTaskModel.annotator_number).all())
+    return [AnnotationTask.from_orm(annotation_task_model) for annotation_task_model in annotation_tasks]

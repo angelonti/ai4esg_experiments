@@ -7,6 +7,7 @@ from modules.answer.schemas import AnsweredCreate
 from modules.llm.llm_infos import CONTEXT_SIZE, Model
 from modules.embedding.schemas import Embedding
 from modules.embedding.service import get_all, get_similar, get_similar_hybrid
+from modules.embedding.utils import to_relevant_embeddings
 from modules.llm.utils import get_text_embedding
 import tiktoken
 
@@ -32,34 +33,49 @@ class LLMClient(ABC):
         return default_prompt
 
     async def ask(self, question: str, prompt: str | None = None, title: str = None) \
-            -> tuple[list[float], AnsweredCreate, Generator[str, None, None], int]:
+            -> tuple[list[float], AnsweredCreate, Generator[str, None, None], int, list[dict]]:
         self.prompt = prompt
         question_embedding_response = await get_text_embedding(question)
-        question_embedding = question_embedding_response.data[0].embedding
+        question_embedding: list[float] = question_embedding_response.data[0].embedding
 
         max_embedding_cnt = self.get_max_embedding_cnt()
-        embeddings = self.get_relevant_embeddings(question_embedding, max_embedding_cnt, title=title)
+        # Refactor later. Now easier to test like this
+        if config.use_hybrid:
+            print(f"###### using hybrid search")
+            embeddings_with_scores = self.get_relevant_embeddings_hybrid(question, question_embedding, max_embedding_cnt, title=title)
+            print(f"got {len(embeddings_with_scores)} embeddings with scores.")
+        else:
+            print(f"###### using regular search")
+            embeddings_with_scores = self.get_relevant_embeddings(question_embedding, max_embedding_cnt, title=title)
 
+        embeddings = [embedding for embedding, _ in embeddings_with_scores]
         prompt = self.generate_prompt(question, embeddings)
 
         num_tokens = len(self.token_encoding.encode(prompt))
-
+        # print(f"##### the full prompt is: {prompt}")
         answer_generator = self.get_completion(prompt)
 
-        return question_embedding, AnsweredCreate(answer="", embeddings=embeddings, model=self.model,
-                                                  question=question), answer_generator, num_tokens
+        relevant_embeddings = to_relevant_embeddings(embeddings_with_scores)
+
+        return (
+                question_embedding,
+                AnsweredCreate(answer="", embeddings=embeddings, model=self.model, question=question),
+                answer_generator,
+                num_tokens,
+                relevant_embeddings
+        )
 
     @abstractmethod
     def get_completion(self, prompt: str) -> Generator[str, None, None]:
         pass
 
     @staticmethod
-    def get_relevant_embeddings(question_embedding: list[float], max_num: int, title: str = None) -> list[Embedding]:
+    def get_relevant_embeddings(question_embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
         return get_similar(question_embedding, max_num, title=title)
 
     @staticmethod
     def get_relevant_embeddings_hybrid(query: str, question_embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
-        return get_similar_hybrid(question_embedding, query, max_num, title=title)
+        return get_similar_hybrid(query, question_embedding, max_num, title=title)
 
     def generate_prompt(self, question: str, embeddings: list[Embedding]) -> str:
         if self.prompt:

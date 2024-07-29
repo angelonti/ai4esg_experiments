@@ -3,13 +3,16 @@ from enum import Enum
 
 from fastapi import HTTPException
 from sqlalchemy.orm import joinedload
-from sqlalchemy import text, Integer, UUID, Float
+from sqlalchemy import text, Integer, UUID, Float, String
 
 from db.engine import db
 from modules.document.models import DocumentModel
 from modules.embedding.models import EmbeddingModel
 from modules.embedding.schemas import Embedding, EmbeddingCreate
 from config import config
+
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
 
 
 class HybridFusionType(Enum):
@@ -24,19 +27,26 @@ def get(id: UUID) -> Embedding:
     return Embedding.from_orm(embedding_model) if embedding_model else None
 
 
-def get_similar(embedding: list[float], max_num: int, title: str = None) -> list[Embedding]:
+def get_similar(search_embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
     db_embeddings = (
         db.session.query(EmbeddingModel)
         .join(DocumentModel, EmbeddingModel.document_id == DocumentModel.id)
         .where(DocumentModel.title == title if title else True)
-        .order_by(EmbeddingModel.values.max_inner_product(embedding))
+        .order_by(EmbeddingModel.values.max_inner_product(search_embedding))
         .limit(max_num).all()
     )
 
-    return [Embedding.from_orm(embedding) for embedding in db_embeddings]
+    embeddings = [Embedding.from_orm(embedding) for embedding in db_embeddings]
+    embedding_ids = [emb.id for emb in embeddings]
+    distances = get_distances(search_embedding, embedding_ids)
+    scores = [distance["score"] for distance in distances]
+
+    embeddings_with_scores = list(zip(embeddings, scores))
+
+    return embeddings_with_scores
 
 
-def get_similar_hybrid( query: str, embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
+def get_similar_hybrid(query: str, embedding: list[float], max_num: int, title: str = None) -> list[tuple[Embedding, float]]:
 
     scoring_function = HybridFusionType(config.hybrid_fusion).value
 
@@ -95,6 +105,7 @@ def get_similar_hybrid( query: str, embedding: list[float], max_num: int, title:
         )
         SELECT
             COALESCE(semantic_search.id, keyword_search.id) AS id,
+            chunks.content AS content,
             semantic_search.vector_score,
             keyword_search.text_score,
             COALESCE((semantic_search.vector_score - aggregates.min_vector_score) / (aggregates.max_vector_score - aggregates.min_vector_score), 0.0) AS normalized_vector_score,
@@ -111,14 +122,17 @@ def get_similar_hybrid( query: str, embedding: list[float], max_num: int, title:
                 )
             )/2 AS relative_score,
             COALESCE(1.0 /(:k + semantic_search.rank), 0.0) + COALESCE(1.0 /(:k + keyword_search.rank), 0.0) AS reciprocal_rank
-        FROM aggregates,
-        semantic_search FULL OUTER JOIN keyword_search
+        FROM aggregates, semantic_search
+        FULL OUTER JOIN keyword_search
         ON semantic_search.id = keyword_search.id
+        INNER JOIN chunks 
+        ON chunks.id = COALESCE(semantic_search.id, keyword_search.id)
         ORDER BY {scoring_function} DESC   
     """
 
     sql = text(hybrid_search).columns(
         id=UUID,
+        content=String,
         vector_score=Float,
         text_score=Float,
         normalized_vector_score=Float,
@@ -132,30 +146,43 @@ def get_similar_hybrid( query: str, embedding: list[float], max_num: int, title:
     records = db.session.execute(sql,
                                  {
                                     'query': query,
-                                    'embedding': embedding,
+                                    'embedding': str(embedding),
                                     'max_num': max_num,
                                     'title': title,
                                     'k': 60
                                  }).fetchall()
 
     results = list()
+    print(f"#####db returned {len(records)} records.")
     if config.use_reranking:
-        raise NotImplementedError("Reranking is not implemented yet.")
+        pairs = [[query, record.content] for record in records]
+        ids = [record.id for record in records]
+        tokenizer = AutoTokenizer.from_pretrained('BAAI/bge-reranker-v2-m3')
+        model = AutoModelForSequenceClassification.from_pretrained('BAAI/bge-reranker-v2-m3')
+        with torch.no_grad():
+            inputs = tokenizer(pairs, padding=True, return_tensors='pt')
+            scores = model(**inputs, return_dict=True).logits.view(-1, ).float()
+            reranked = [(id, pair[1], score)
+                        for score, pair, id
+                        in sorted(zip(scores, pairs, ids), reverse=True)
+                        ]
+            for id, _, score in reranked[:max_num]:
+                results.append((get(id), float(score)))
     else:
         for record in records[:max_num]:
             results.append((get(record.id), record.__getattr__(scoring_function)))
-
+    print(f"returning {len(results)} results.")
     return results
 
 
-def get_distances(embedding1: list[float], embedding_ids: list[str]) -> list[tuple[str, float]]:
+def get_distances(embedding1: list[float], embedding_ids: list[str]) -> list[dict[str, float]]:
     rows = (
-        db.session.query(EmbeddingModel.id, EmbeddingModel.values.max_inner_product(embedding1))
+        db.session.query(EmbeddingModel.id, (EmbeddingModel.values.max_inner_product(embedding1)).label("score"))
         .where(EmbeddingModel.id.in_(embedding_ids))
         .order_by(EmbeddingModel.values.max_inner_product(embedding1))
         .all()
     )
-    distances = [(str(row[0]), row[1]*(-1)) for row in rows]
+    distances = list({'id': str(row.id), 'score': -1*row.score} for row in rows) # query returns negative inner product
     return distances
 
 

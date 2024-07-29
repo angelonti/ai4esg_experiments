@@ -9,7 +9,6 @@ from config import config
 from modules.answer.models import AnswerModel
 from modules.answer.schemas import AnswerCreate
 from modules.embedding.schemas import Embedding
-from modules.embedding.utils import to_relevant_embeddings
 from modules.llm.llm_infos import Model
 from modules.embedding.models import EmbeddingModel
 from modules.llm.clients.openai.openai_client import OpenAILLMClient
@@ -41,7 +40,7 @@ async def create(request: AnswerCreate, title: str = None) -> tuple[list[float],
         raise HTTPException(status_code=400, detail="Unknown model selected.")
 
     logger.info(f"Requesting answer for question: {request.question} and prompt: {request.prompt}")
-    question_embedding, answer_embeddings, answer_generator, num_tokens = await llm_client.ask(
+    question_embedding, answer_embeddings, answer_generator, num_tokens, relevant_embeddings = await llm_client.ask(
         request.question, request.prompt, title=title
     )
 
@@ -83,6 +82,5 @@ async def create(request: AnswerCreate, title: str = None) -> tuple[list[float],
         db.session.commit()
 
     # return question_embedding, Answer.from_orm(answer_obj), generator_wrapper()
-    relevant_embeddings = to_relevant_embeddings(question_embedding,answer_embeddings.embeddings)
 
     return question_embedding, relevant_embeddings, generator_wrapper(), num_tokens

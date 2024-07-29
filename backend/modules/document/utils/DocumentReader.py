@@ -1,5 +1,6 @@
 from langchain.document_loaders import PyPDFDirectoryLoader
 from langchain.document_loaders import PyPDFLoader
+from llama_index import SimpleDirectoryReader
 from unstructured.cleaners.core import clean_non_ascii_chars, replace_unicode_quotes, clean_extra_whitespace, \
     bytes_string_to_string
 from unstructured.documents.elements import Element
@@ -23,6 +24,10 @@ class DocumentReader:
                 return PyPDFDirectoryLoader(self.file_path).load()
             else:
                 return PyPDFLoader(self.file_path).load()
+        elif self.provider == Providers.LLAMA_INDEX:
+            return SimpleDirectoryReader(
+                input_files=[self.file_path]
+            ).load_data()
         elif self.provider.value == Providers.UNSTRUCTURED.value:
             self.documents = partition_pdf(
                 filename=self.file_path,
@@ -46,10 +51,8 @@ class DocumentReader:
     @staticmethod
     def clean_text(documents: list[Element]) -> None:
         for element in documents:
-            # element.apply(clean_non_ascii_chars)
             element.apply(replace_unicode_quotes)
             element.apply(clean_extra_whitespace)
-            # element.apply(bytes_string_to_string)
 
 
 def get_document_metadata(documents: list[Element], title: str = None) -> dict[str, str]:

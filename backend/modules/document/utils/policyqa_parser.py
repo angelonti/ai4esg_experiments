@@ -28,6 +28,16 @@ def parse_policy_text_by_title(policy_title: str, file_path: str = "data/test.js
             raise ValueError(f"Policy title {policy_title} not found in {file_path}")
 
 
+def parse_policy_text_by_title_with_json(policy_title: str, file_path: str = "data/test.json") -> DocumentParsed:
+    with open(file_path) as f:
+        json_data = json.load(f)
+        policy_data = find_policy(json_data, policy_title)
+        if policy_data:
+            return parse_policy(policy_data), policy_data
+        else:
+            raise ValueError(f"Policy title {policy_title} not found in {file_path}")
+
+
 def find_policy(json_data: Any, policy_title: str) -> Any:
     if 'data' in json_data and isinstance(json_data['data'], list):
         for item in json_data['data']:

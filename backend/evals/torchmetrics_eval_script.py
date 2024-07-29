@@ -57,9 +57,19 @@ def eval_retrieval_metrics(file_path: str, top_k: int = 5):
     question_ids, indexes, preds, targets = prepare_retrieval_data(file_path, top_k=top_k)
     num_batches = len(question_ids)
 
+    print(f"len(question_ids): {len(question_ids)}")
+    print(f"len(indexes): {len(indexes)}")
+    print(f"len(preds): {len(preds)}")
+    print(f"len(targets): {len(targets)}")
+
     indexes_batches = torch.chunk(indexes, num_batches)
     preds_batches = torch.chunk(preds, num_batches)
     targets_batches = torch.chunk(targets, num_batches)
+
+    print(f"num_batches: {num_batches}")
+    print(f"len(indexes_batches): {len(indexes_batches)}")
+    print(f"len(preds_batches): {len(preds_batches)}")
+    print(f"len(targets_batches): {len(targets_batches)}")
 
     map = RetrievalMAP(top_k=top_k)
     mrr = RetrievalMRR(top_k=top_k)
@@ -67,7 +77,7 @@ def eval_retrieval_metrics(file_path: str, top_k: int = 5):
     questions_answered = 0
     question_ids_unanswered = []
 
-    for i in tqdm(range(num_batches)):
+    for i in tqdm(range(len(preds_batches))):
         batch_map = map(preds_batches[i], targets_batches[i], indexes_batches[i])
         batch_mrr = mrr(preds_batches[i], targets_batches[i], indexes_batches[i])
         if targets_batches[i].sum() > 0:

@@ -127,9 +127,16 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
         eval_prompt = APPLICABILITY_PROMPT_MAP[key_parameter]
         embedding_response = await get_text_embedding(search_prompt)
         question_embedding = embedding_response.data[0].embedding
-        embeddings = LLMClient.get_relevant_embeddings(question_embedding, config.max_content, title=title)
+        # Refactor this later. Now easier to test like this
+        if config.use_hybrid:
+            embeddings_with_scores = LLMClient.get_relevant_embeddings_hybrid(
+                search_prompt, question_embedding, config.max_content, title=title)
+        else:
+            embeddings_with_scores = LLMClient.get_relevant_embeddings(question_embedding, config.max_content, title=title)
+
+        embeddings = [embedding for embedding, _ in embeddings_with_scores]
+        relevant_embeddings = to_relevant_embeddings(embeddings_with_scores)
         document_id = embeddings[0].document.id
-        relevant_embeddings = to_relevant_embeddings(question_embedding, embeddings)
         prompt = PromptTemplate.from_template(eval_prompt)
         doc = "".join([embedding.text + "\n\n" for embedding in embeddings])
         doc_title = embeddings[0].document.title

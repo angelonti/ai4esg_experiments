@@ -4,7 +4,8 @@ from db.engine import db
 from config import config
 from modules.document.models import DocumentModel
 from modules.document.schemas import Document, DocumentParsed
-from modules.embedding.utils import create_embeddings_for_document, create_embeddings_for_chunks, chunk_partitions
+from modules.embedding.utils import create_embeddings_for_document, create_embeddings_for_chunks, chunk_partitions, \
+    create_embeddings_from_contexts
 from modules.document.utils import DocumentReader
 from typing import Union
 from unstructured.documents.elements import Element
@@ -36,6 +37,11 @@ def get_all() -> list[Document]:
     return [Document.from_orm(doc_model) for doc_model in doc_models]
 
 
+def get_all_type_pdf() -> list[Document]:
+    doc_models = db.session.query(DocumentModel).filter(DocumentModel.doc_type == "PDF").all()
+    return [Document.from_orm(doc_model) for doc_model in doc_models]
+
+
 def get_all_titles() -> list[str]:
     doc_models = db.session.query(DocumentModel).all()
     return [doc_model.title for doc_model in doc_models]
@@ -48,6 +54,17 @@ async def create(document: DocumentParsed) -> Document:
     db.session.refresh(doc_obj)
 
     await create_embeddings_for_document(doc_obj)
+
+    return Document.from_orm(doc_obj)
+
+
+async def create_from_contexts(document: DocumentParsed, json_data: dict) -> Document:
+    doc_obj = DocumentModel(**document.dict(), id=uuid4())
+    db.session.add(doc_obj)
+    db.session.commit()
+    db.session.refresh(doc_obj)
+
+    await create_embeddings_from_contexts(doc_obj, json_data)
 
     return Document.from_orm(doc_obj)
 

@@ -17,9 +17,10 @@ class Config:
         self.overlap_size: int = int(os.getenv("OVERLAP_SIZE", 256))
         self.max_content: int = int(os.getenv("MAX_CONTENT", 5))
         self.prompt_size: int = int(os.getenv("PROMPT_SIZE", 5000))
-        self.add_title: bool = bool(os.getenv("ADD_TITLE", True))
+        self.add_title: bool = bool(os.getenv("ADD_TITLE", False))
         self.answer_do_not_know: bool = bool(os.getenv("ANSWER_DO_NOT_KNOW", False))
         self.temperature: float = float(os.getenv("TEMPERATURE", 0.0001))
+        #TODO: might need to add to env file later
         self.use_hybrid: bool = bool(os.getenv("USE_HYBRID", True))
         self.use_reranking: bool = bool(os.getenv("USE_RERANKING", False))
         self.hybrid_fusion: str = os.getenv("HYBRID_FUSION", "reciprocal_rank")

@@ -6,7 +6,6 @@
 -Offering of financial products
 -Scope of the Registration, Evaluation, Authorisation, and Restriction of Chemicals (REACH)
 -Manufacturers or distributors of batteries
--Date of applicability
 -Jurisdiction
 -Markets (countries)
 -Sourcing (countries)

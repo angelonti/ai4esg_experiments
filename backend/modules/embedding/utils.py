@@ -19,6 +19,7 @@ class Chunk(NamedTuple):
     size: int
     page_number: int = 0
 
+
 async def create_embeddings_for_document(document: DocumentModel) -> list[Embedding]:
     tasks: list[EmbeddingResponse] = []
     chunks = text_to_chunks(document.text)
@@ -69,6 +70,33 @@ async def create_embeddings_for_chunks(document: DocumentModel, chunks: list[Chu
             )
         )
         print(f"chunk {i} of {len(embeddings)} done")
+    return embedding_objs
+
+
+async def create_embeddings_from_contexts(document: DocumentModel, json_data: dict) -> list[Embedding]:
+    tasks: list[EmbeddingResponse] = []
+    embedding_objs = []
+    if "paragraphs" in json_data:
+        for paragraph in json_data["paragraphs"]:
+            text = paragraph["context"]
+            tasks.append(get_text_embedding(text))
+        embeddings = await asyncio.gather(*tasks)
+        for i, embedding in enumerate(embeddings):
+            context = json_data["paragraphs"][i]["context"]
+            size = len(context)
+            offset = document.text.find(context)
+            embedding_objs.append(
+                create(
+                    EmbeddingCreate(
+                        document_id=document.id,
+                        values=embedding.data[0].embedding,
+                        document=document,
+                        offset=offset,
+                        size=size,
+                        page_number=0
+                    )
+                )
+            )
     return embedding_objs
 
 
@@ -124,17 +152,20 @@ def chunk_partitions(partitions: list[Element]) -> list[Chunk]:
     return chunks
 
 
-def to_relevant_embeddings(question_embedding, answer_embeddings) -> list[dict]:
-    relevant_embeddings = []
-    embedding_ids = [emb.id for emb in answer_embeddings]
-    distances = get_distances(question_embedding, embedding_ids)
-    for i, embedding in enumerate(answer_embeddings):
+def to_relevant_embeddings(answer_embeddings_with_scores: list[tuple[Embedding, float]]) -> list[dict]:
+    # print(f"#### length embeddings with scores: {len(answer_embeddings_with_scores)}")
+    relevant_embeddings = list()
+    score_type = "cross_encoder" if config.use_reranking else config.hybrid_fusion if config.use_hybrid else "cosine_similarity"
+    for i, (embedding, score) in enumerate(answer_embeddings_with_scores):
+        # print(f"creating relevant embedding for id: {embedding.id} and score {score}")
         relevant_embedding = {
             "embedding_id": str(embedding.id),
             "rank": i + 1,
             "title": embedding.document.title,
             "offset": embedding.offset,
-            "score": distances[i][1],
+            "score": score,
+            "score_type": score_type,
+            "reranked": config.use_reranking,
             "text": embedding.text
         }
         relevant_embeddings.append(relevant_embedding)
