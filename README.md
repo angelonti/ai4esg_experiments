@@ -11,3 +11,8 @@
 7. Update database table structure: `poetry run alembic upgrade head`
 8. Set your OpenAI API info in the .env file or in `backend\config.py`
 9. Now you can run the cells in the notebook `experimets/AI4ESG_experiments.ipynb`
+
+## Run locally
+
+1. docker build --progress=plain -t ai4esg-app:1.0 . 
+2. docker run -d -p 8080:8080 --name ai4esg-app ai4esg-app:1.0
