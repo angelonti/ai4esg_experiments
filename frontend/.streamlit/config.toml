@@ -1,0 +1,12 @@
+[client]
+
+toolbarMode="minimal"
+showSidebarNavigation = false
+
+[server]
+
+runOnSave=true
+
+[theme]
+
+base="light"
