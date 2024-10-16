@@ -24,7 +24,7 @@ def get_regulation_titles():
 
 def page_config():
     st.set_page_config(
-        page_title="ESG IT-Tool", page_icon=":earth_americas:", layout="wide", initial_sidebar_state="auto",
+        page_title="ESG-Consultant", page_icon=":earth_americas:", layout="wide", initial_sidebar_state="auto",
         menu_items={
             'Get Help': None,
             'Report a bug': None,
@@ -34,7 +34,7 @@ def page_config():
 
 
 def header():
-    st.title("ESG IT-Tool ⚖️🌍")
+    st.title("ESG-Consultant ⚖️🌍")
 
 
 def menu():

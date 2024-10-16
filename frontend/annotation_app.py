@@ -8,7 +8,7 @@ sys.path.append("../backend")
 from modules.evaluation_result.service import get_all as get_all_evaluation_results
 
 st.set_page_config(
-    page_title="ESG IT-Tool|annotation", page_icon=":white_check_mark:", layout="wide", initial_sidebar_state="auto",
+    page_title="ESG-Consultant|annotation", page_icon=":white_check_mark:", layout="wide", initial_sidebar_state="auto",
     menu_items={
         'Get Help': None,
         'Report a bug': None,
@@ -16,10 +16,10 @@ st.set_page_config(
     }
 )
 
-st.title("ESG IT-Tool ⚖️🌍 | Data Annotation App")
+st.title("ESG-Consultant ⚖️🌍 | Data Annotation App")
 
 st.write("""
-This is a data annotation app for the ESG IT-Tool.
+This is a data annotation app for the ESG-Consultant.
 Please follow the instructions below to annotate the data. When you are done with the current page, please click the **submit button** to save the data, and move to the next page.
 """)
 

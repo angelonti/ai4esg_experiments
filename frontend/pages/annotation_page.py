@@ -14,7 +14,7 @@ from pages.page_utils import menu, page_config
 
 page_config()
 
-st.title("ESG IT-Tool ⚖️🌍 | Data Annotation")
+st.title("ESG-Consultant ⚖️🌍 | Data Annotation")
 
 
 def load_data(annotator):
@@ -105,7 +105,7 @@ def all_fields_filled(key_parameter: str) -> bool:
 
 def data_annotation_page():
     st.write("""
-    This is a data annotation app for the ESG IT-Tool.
+    This is a data annotation app for the ESG-Consultant.
     Please follow the instructions below to annotate the data. When you are done with the current page, please click the **submit button** to save the data, and move to the next page.
     """)
     st.write("## Purpose")
