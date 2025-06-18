@@ -6,7 +6,7 @@ from typing import Generator
 from openai import OpenAI
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
-from config import config
+from app_config import config
 from modules.llm.clients.base import LLMClient
 from modules.llm.clients.openai.utils import streamed_content_generator
 from modules.llm.llm_infos import ModelType

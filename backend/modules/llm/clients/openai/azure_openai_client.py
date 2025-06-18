@@ -1,5 +1,5 @@
 from typing import Generator
-from config import config
+from app_config import config
 import logging
 import sys
 import openai
@@ -43,4 +43,6 @@ class AzureOpenAILLMClient(LLMClient):
                                                                ],
                                                                temperature=config.temperature,
                                                                stream=True)
+        logger.debug("### Azure OpenAI client created, streaming response...")
+        logger.debug(f"### chunk_generator is {chunk_generator}")
         return streamed_content_generator(chunk_generator)

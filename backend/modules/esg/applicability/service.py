@@ -12,7 +12,7 @@ from modules.prompts.applicability_evaluation_prompts import (
 )
 from dotenv import load_dotenv, find_dotenv
 import warnings
-from config import config
+from app_config import config
 import openai
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
@@ -173,11 +173,12 @@ async def determine_applicability_single(input_params: dict, title: str, evaluat
             recorder.append(message)
             logger.info(message)
 
-        if response["response"]["answer"] == "yes":
-            message = f"Parameter **{key_parameter}** is applicable to the company. Other parameters will be skipped."
-            recorder.append(message)
-            logger.info(message)
-            break
+        # uncomment this block to stop after the first applicable parameter
+        # if response["response"]["answer"] == "yes":
+        #     message = f"Parameter **{key_parameter}** is applicable to the company. Other parameters will be skipped."
+        #     recorder.append(message)
+        #     logger.info(message)
+        #     break
 
     # save to database
     evaluation_result = EvaluationResultCreate(

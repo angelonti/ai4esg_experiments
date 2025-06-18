@@ -2,7 +2,7 @@ import threading
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from config import config
+from app_config import config
 
 __all__ = ["engine", "SQLALCHEMY_DATABASE_URL", "db"]
 

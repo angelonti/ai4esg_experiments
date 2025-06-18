@@ -14,7 +14,7 @@ from modules.penalty.service import get_by_document_id as get_penalties_by_docum
 from modules.prompts.summary_prompts import prompt_summary_requirements, prompt_summary_penalties
 
 
-from config import config
+from app_config import config
 
 logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)

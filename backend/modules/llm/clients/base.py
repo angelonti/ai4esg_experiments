@@ -2,7 +2,7 @@ import math
 from abc import ABC, abstractmethod
 from typing import Generator
 
-from config import config
+from app_config import config
 from modules.answer.schemas import AnsweredCreate
 from modules.llm.llm_infos import CONTEXT_SIZE, Model
 from modules.embedding.schemas import Embedding

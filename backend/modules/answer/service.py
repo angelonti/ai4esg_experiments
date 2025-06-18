@@ -4,7 +4,7 @@ import logging
 
 from fastapi import HTTPException
 from db.engine import db
-from config import config
+from app_config import config
 
 from modules.answer.models import AnswerModel
 from modules.answer.schemas import AnswerCreate

@@ -9,7 +9,7 @@ from db.engine import db
 from modules.document.models import DocumentModel
 from modules.embedding.models import EmbeddingModel
 from modules.embedding.schemas import Embedding, EmbeddingCreate
-from config import config
+from app_config import config
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch

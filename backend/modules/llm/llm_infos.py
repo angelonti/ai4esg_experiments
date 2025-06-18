@@ -1,5 +1,5 @@
 from enum import Enum
-from config import config
+from app_config import config
 
 
 class Model(Enum):

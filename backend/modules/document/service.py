@@ -1,7 +1,7 @@
 from uuid import UUID, uuid4
 
 from db.engine import db
-from config import config
+from app_config import config
 from modules.document.models import DocumentModel
 from modules.document.schemas import Document, DocumentParsed
 from modules.embedding.utils import create_embeddings_for_document, create_embeddings_for_chunks, chunk_partitions, \

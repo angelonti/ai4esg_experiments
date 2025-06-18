@@ -1,5 +1,5 @@
 from typing import Generator
-from config import config
+from app_config import config
 import logging
 import sys
 

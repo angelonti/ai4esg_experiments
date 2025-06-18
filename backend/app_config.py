@@ -30,7 +30,7 @@ class Config:
         self.db_host: str = os.getenv("DB_HOST", "localhost")
         self.db_port: str = os.getenv("DB_PORT", "5432")
         self.db_name: str = os.getenv("DB_NAME", "ai4esg")
-        self.app_path: str = os.getenv("APP_PATH", "http://localhost:8501")
+        self.app_path: str = os.getenv("APP_PATH", "http://localhost:8080")
         self.log_path: str = os.getenv("LOG_PATH", "ai4esg.log")
         print("connecting to database: ", self.db_host, self.db_port, self.db_name)
         print("log path: ", self.log_path)

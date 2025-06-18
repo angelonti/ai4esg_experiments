@@ -12,7 +12,7 @@ from langchain_core.output_parsers import SimpleJsonOutputParser
 from langchain_core.prompts import SystemMessagePromptTemplate
 from unstructured.partition.pdf import Element
 
-from config import config
+from app_config import config
 from modules.document.pydantic.models import (
     RequirementsAndPenalties
 )

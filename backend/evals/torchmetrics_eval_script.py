@@ -7,7 +7,7 @@ from tqdm import tqdm
 import json
 import torch
 import logging
-from config import config
+from app_config import config
 
 from evals.utils import normalize_text
 

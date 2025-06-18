@@ -6,7 +6,7 @@ import aiohttp
 import numpy as np
 from fastapi import HTTPException
 
-from config import config
+from app_config import config
 from modules.llm.schemas import EmbeddingResponse
 
 logging.basicConfig(level=logging.DEBUG, filename=config.log_path, format="%(asctime)s %(name)s %(levelname)s:%(message)s")
@@ -24,7 +24,8 @@ semaphore = asyncio.Semaphore(10)
 
 async def get_text_embedding(text: str) -> EmbeddingResponse:
     logger.debug(f"calling openai embeddings with text: {text}")
-    url = "https://api.openai.com/v1/embeddings"
+    # url = "https://api.openai.com/v1/embeddings"
+    url = "https://insight-ai-openai.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {config.openai_api_key}"

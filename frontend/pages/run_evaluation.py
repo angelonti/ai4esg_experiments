@@ -2,7 +2,7 @@ import asyncio
 
 import streamlit as st
 import streamlit.components.v1 as st_components
-from config import config
+from app_config import config
 
 from pages.page_utils import show_regulations_widget, header, menu, page_config
 from pages.location_data import all_regions, all_countries

@@ -5,7 +5,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from unstructured.chunking.title import chunk_by_title
 from unstructured.documents.elements import Element
 
-from config import config
+from app_config import config
 from modules.document.models import DocumentModel
 from modules.embedding.schemas import Embedding, EmbeddingCreate
 from modules.embedding.service import create, get_embedding_from_embedding_create, get_distances

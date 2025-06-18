@@ -2,7 +2,7 @@ from typing import Generator
 
 from openai import Stream
 from openai.types.chat import ChatCompletionChunk
-from config import config
+from app_config import config
 import logging
 import sys
 
@@ -15,6 +15,11 @@ logger.addHandler(consoleHandler)
 def streamed_content_generator(chunk_generator: Stream[ChatCompletionChunk]) -> Generator[str, None, None]:
     response = {"content": ""}
     for chunk_all in chunk_generator:
+        # print(f"### chunk_all.choices is {chunk_all.choices}")
+        # print(f"### chunk_all is {chunk_all}")
+        if not chunk_all.choices:
+            continue
+
         delta = chunk_all.choices[0].delta
         if delta.content:
             response["content"] = delta.content
