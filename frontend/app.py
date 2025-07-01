@@ -1,6 +1,7 @@
 import sys
+from pathlib import Path
 
-sys.path.append("../backend")
+sys.path.append(str(Path(__file__).resolve().parent.parent)+'/backend')
 
 import streamlit as st
 from pages.page_utils import header

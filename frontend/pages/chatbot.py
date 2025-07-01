@@ -65,18 +65,13 @@ def chatbot_page():
             request = AnswerCreate(
                 question=question,
                 model=Model.AZURE_GPT4,
-                prompt="You are a legal expert in ESG regulation, "
-                       "first cite the relevant text from the contexts that can be used to answer the question. "
-                       "Then answer the question based on the given contexts"
-                       "Important: Make sure your answer is as complete as possible both in citing the relevant text and in answering the question. "
-                # prompt="""You are a legal expert in ESG regulation,
-                # Answer the question by copying exactly a portion of the context shown after the delimiter ####.
-                # The portion you copy can directly answer the question or be evidence that supports the answer.
-                # The portion you copy can be any substring of the context, the whole context, or even a single word. But favor short and concise answers.
-                # *Mandatory*: your answer is always an exact excerpt of the the context shown after the delimiter ####, never respond with text not contained in the contexts.
-                # Begin!
-                # ####
-                # """
+                prompt="""You are a legal expert in ESG regulation, please give thorough and professional answer to
+                the question based on the given context. The answer must be an exact
+                excerpt extracted from the given context that answers the question. Make
+                sure to not add any additional or irrelevant information to the answer.
+                Make sure the answer is as complete and correct as possible given the information in the context.
+                Add quotes around every exact excerpt you use in the answer.
+                If the answer consist of multiple excerpts from the context, add them as a bulleted list."""
             )
             answer_tuple = asyncio.run(create_answer(request, title=st.session_state["explored_regulation"]))
             response = st.write_stream(answer_tuple[2])

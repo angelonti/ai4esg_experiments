@@ -195,3 +195,4 @@ backend/AutoGPTQ/
 llama-cpp-python/
 learning/
 local.env
+demo.env
